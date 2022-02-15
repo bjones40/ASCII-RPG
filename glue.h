@@ -74,18 +74,20 @@ class Hero: public Character{
         int Get_Exp();
         int Get_MP();
         int Get_tmp_mp();
+        int Get_Inventory_Count();
         Item * Show_Inventory();
+        Item Show_Inventory_Item(int target);
 
         void Set_Level(int change);
         void Set_Exp(int change);
         void Set_MP(int change);
         void Set_tmp_mp(int change);
-        
+
         void Gain_Item(Item get);
         string Show_Info();
 };
 
 void Hello_World();
-void Combat_Loop(Hero &);
+void Combat_Loop(Hero &,Monster enemy);
 
 #endif

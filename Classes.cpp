@@ -45,6 +45,9 @@ Character::Character(string name,int hp,int attack,int defense)
 }
 
 //Character Getters
+string Character::Get_Name(){
+    return name;
+}
 int Character::Get_HP(){
     return hp;
 }
@@ -103,6 +106,7 @@ Hero::Hero(string name,int level,int exp, int hp,int mp, int attack, int defense
     this->exp = exp;
     this->mp = mp;
     this->tmp_mp = mp;
+    this->inventory_count = 0;
 }
 
 //Hero Getters
@@ -117,6 +121,9 @@ int Hero::Get_MP(){
 }
 int Hero::Get_tmp_mp(){
     return tmp_mp;
+}
+int Hero::Get_Inventory_Count(){
+    return inventory_count;
 }
 
 //Hero setters
@@ -154,6 +161,11 @@ string Hero::Show_Info(){
 }
 
 //Returns pointer to inventory for various uses
+//Reminder: Item * pointer = Hero.Show_Inventory(); then it works like your standard array[]
 Item * Hero::Show_Inventory(){
     return inventory;
+}
+//Returns a specific item from the inventory
+Item Hero::Show_Inventory_Item(int target){
+    return inventory[target];
 }
