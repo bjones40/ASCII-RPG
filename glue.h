@@ -1,6 +1,7 @@
 #ifndef SOUP_H_GUARD
 #define SOUP_H_GUARD
 #include <string>
+#include <scene.h>
 using namespace std;
 
 class Item{
