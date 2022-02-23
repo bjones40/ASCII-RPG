@@ -1,30 +1,65 @@
 #include "glue.h"
 using namespace std;
 //Generic Item Class
+enum Itypes{consumable,weapon,armor};
 Item::Item(){
     this->name = "Empty";
     this->value = 0;
 }
-Item::Item(string name, int value)
+Item::Item(string name, int value,int modifier,int type)
 {
     this-> name = name;
     this-> value = value;
+    this->type = type;
+    if(type == consumable){
+        this->healing = modifier;
+        this->attack = -1;
+        this->defense = -1;
+    }
+    else if(type == weapon){
+        this->attack = modifier;
+        this->defense = -1;
+        this->healing = -1;
+    }
+    else{
+        this->defense = modifier;
+        this->attack = -1;
+        this->healing = -1;
+    }
 }
+
 string Item::Get_Name(){
     return name;
 }
 int Item::Get_Value(){
     return value;
 }
-
-//Weapon Class
-Weapon::Weapon(string name, int value, int attack):Item::Item(name,value){
-    this-> attack = attack;
-}
-int Weapon::Get_Attack(){
+int Item::Get_Attack(){
     return attack;
 }
-
+int Item::Get_Defense(){
+    return defense;
+}
+int Item::Get_Healing(){
+    return healing;
+}
+int Item::Get_Type(){
+    return type;
+}
+string Item::Full_Display(){
+    string output = "";
+    output = output + name+"\n"+to_string(value)+" currency\n";
+    if(type == consumable){
+        output = output + "Heals "+to_string(healing)+" HP\n";
+    }
+    else if(type == weapon){
+        output = output + to_string(attack) + " ATK\n";
+    }
+    else{
+        output = output + to_string(defense) + " DEF\n";
+    }
+    return output;
+}
 //Character Class
 //Empty (Dummy) Character
 Character::Character(){

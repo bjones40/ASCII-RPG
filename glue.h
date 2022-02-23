@@ -1,26 +1,27 @@
 #ifndef SOUP_H_GUARD
 #define SOUP_H_GUARD
 #include <string>
-#include <scene.h>
+
 using namespace std;
 
 class Item{
     protected:
         string name;
         int value;
+        int attack;
+        int defense;
+        int healing;
+        int type;
     public:
         Item();
-        Item(string name, int value);
+        Item(string name, int value,int modifier,int type);
+        string Full_Display();
         string Get_Name();
         int Get_Value();
-};
-
-class Weapon: public Item{
-    private:
-        int attack;
-    public:
-        Weapon(string name, int value,int attack);
-    int Get_Attack();
+        int Get_Attack();
+        int Get_Defense();
+        int Get_Healing();
+        int Get_Type();
 };
 
 class Character{
@@ -63,6 +64,8 @@ class Monster: public Character{
 class Hero: public Character{
     private:
         Item inventory[100];
+        Item equipped_weapon;
+        Item equipped_armor;
         int inventory_count;
         int level;
         int exp;
@@ -76,6 +79,8 @@ class Hero: public Character{
         int Get_MP();
         int Get_tmp_mp();
         int Get_Inventory_Count();
+        Item Get_Equipped_Weapon();
+        Item Get_Equipped_Armor();
         Item * Show_Inventory();
         Item Show_Inventory_Item(int target);
 
