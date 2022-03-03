@@ -1,7 +1,36 @@
 #include "glue.h"
 using namespace std;
-//Generic Item Class
 enum Itypes{consumable,weapon,armor};
+enum Stypes{phys_attack,magic_attack,healing,buff};
+//Skill class, modifies player's damage during calculations when used, different types have different costs
+Skill::Skill(){
+    this->name = "Dummy";
+    this->modifier = 0.0;
+}
+Skill::Skill(string name,string flavor_text,int cost,double modifier,int type){
+    this-> name = name;
+    this-> flavor_text = flavor_text;
+    this-> cost = cost;
+    this-> modifier = modifier;
+    this-> type = type;
+}
+string Skill::Get_Name(){
+    return name;
+}
+string Skill::Get_Flavor(){
+    return flavor_text;
+}
+double Skill::Get_Modifier(){
+    return modifier;
+}
+int Skill::Get_Type(){
+    return type;
+}
+int Skill::Get_Cost(){
+    return cost;
+}
+
+//Item class, assigns values based on "Type"
 Item::Item(){
     this->name = "Empty";
     this->value = 0;
@@ -96,7 +125,7 @@ int Character::Get_Defense(){
     return defense;
 }
 
-//Character setters
+//Character Setters
 void Character::Set_Name(string change){
     this->name = change;
 }
@@ -142,6 +171,9 @@ Hero::Hero(string name,int level,int exp, int hp,int mp, int attack, int defense
     this->mp = mp;
     this->tmp_mp = mp;
     this->inventory_count = 0;
+    this->skill_count = 0;
+    //Attack skill is always available, x1 modifier, keeps with "modular skills" avoiding having to code each one
+    skill_list[0] = Skill("Attack","attacks!",0,1.0,phys_attack);
 }
 
 //Hero Getters
@@ -160,6 +192,9 @@ int Hero::Get_tmp_mp(){
 int Hero::Get_Inventory_Count(){
     return inventory_count;
 }
+int Hero::Get_Skill_Count(){
+    return skill_count;
+}
 
 //Hero setters
 void Hero::Set_Level(int change){
@@ -177,10 +212,14 @@ void Hero::Set_tmp_mp(int change){
 
 //Hero public functions
 //-----------------------------------------------------------------------------
-//Adds passed item to lowest slot in inventory
+//Adds passed item/skill to the next slot in inventory
 void Hero::Gain_Item(Item get){
-    inventory[inventory_count] = get;
     inventory_count++;
+    inventory[inventory_count] = get;
+}
+void Hero::Gain_Skill(Skill get){
+    skill_count++;
+    skill_list[skill_count] = get;
 }
 
 //Displays all of Hero's info as a string
@@ -200,7 +239,10 @@ string Hero::Show_Info(){
 Item * Hero::Show_Inventory(){
     return inventory;
 }
-//Returns a specific item from the inventory
+//Returns a specific item/skill from inventory
 Item Hero::Show_Inventory_Item(int target){
     return inventory[target];
+}
+Skill Hero::Get_Target_Skill(int target){
+    return skill_list[target];
 }

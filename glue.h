@@ -3,7 +3,22 @@
 #include <string>
 
 using namespace std;
-
+class Skill{
+    protected:
+        string name;
+        string flavor_text;
+        int cost;
+        double modifier;
+        int type;
+    public:
+        Skill();
+        Skill(string name, string flavor_text,int cost,double modifier, int type);
+        string Get_Name();
+        string Get_Flavor();
+        double Get_Modifier();
+        int Get_Type();
+        int Get_Cost();
+};
 class Item{
     protected:
         string name;
@@ -64,9 +79,11 @@ class Monster: public Character{
 class Hero: public Character{
     private:
         Item inventory[100];
+        Skill skill_list[100];
         Item equipped_weapon;
         Item equipped_armor;
         int inventory_count;
+        int skill_count;
         int level;
         int exp;
         int mp;
@@ -79,16 +96,21 @@ class Hero: public Character{
         int Get_MP();
         int Get_tmp_mp();
         int Get_Inventory_Count();
+        int Get_Skill_Count();
         Item Get_Equipped_Weapon();
         Item Get_Equipped_Armor();
         Item * Show_Inventory();
         Item Show_Inventory_Item(int target);
+
+        Skill Get_Target_Skill(int target);
+        
 
         void Set_Level(int change);
         void Set_Exp(int change);
         void Set_MP(int change);
         void Set_tmp_mp(int change);
 
+        void Gain_Skill(Skill get);
         void Gain_Item(Item get);
         string Show_Info();
 };
