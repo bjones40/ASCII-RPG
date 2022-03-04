@@ -3,6 +3,8 @@
 #include <string>
 
 using namespace std;
+enum Itypes{consumable,weapon,armor};
+enum Stypes{phys_attack,magic_attack,healing,buff};
 class Skill{
     protected:
         string name;
@@ -68,12 +70,16 @@ class Monster: public Character{
         int gold;
         int ai_type;
         Item drop;
+        Skill monster_skills[100];
+        int monster_skill_count;
     public:
         Monster(string name, int hp, int attack, int defense, int exp_drop, int gold, int ai_type, Item drop);
         int Get_Exp_Drop();
         int Get_Gold();
         int Get_Ai_Type();
+        int Get_Monster_Skill_Count();
         Item Get_Drop();
+        Skill & Get_Monster_Skill(int target);
 };
 
 class Hero: public Character{
@@ -102,7 +108,7 @@ class Hero: public Character{
         Item * Show_Inventory();
         Item Show_Inventory_Item(int target);
 
-        Skill Get_Target_Skill(int target);
+        Skill & Get_Target_Skill(int target);
         
 
         void Set_Level(int change);

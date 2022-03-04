@@ -1,7 +1,5 @@
 #include "glue.h"
 using namespace std;
-enum Itypes{consumable,weapon,armor};
-enum Stypes{phys_attack,magic_attack,healing,buff};
 //Skill class, modifies player's damage during calculations when used, different types have different costs
 Skill::Skill(){
     this->name = "Dummy";
@@ -160,8 +158,14 @@ int Monster::Get_Gold(){
 int Monster::Get_Ai_Type(){
     return ai_type;
 }
+int Monster::Get_Monster_Skill_Count(){
+    return monster_skill_count;
+}
 Item Monster::Get_Drop(){
     return drop;
+}
+Skill & Monster::Get_Monster_Skill(int target){
+    return monster_skills[target];
 }
 
 //Hero class (inherits Character)
@@ -243,6 +247,6 @@ Item * Hero::Show_Inventory(){
 Item Hero::Show_Inventory_Item(int target){
     return inventory[target];
 }
-Skill Hero::Get_Target_Skill(int target){
+Skill & Hero::Get_Target_Skill(int target){
     return skill_list[target];
 }
