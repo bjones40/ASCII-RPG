@@ -1,25 +1,37 @@
 #include "glue.h"
 #include <iostream>
 #include <algorithm>
+#include <random>
 using namespace std;
-//Currently has logic for player's turn, needs monster turn
+void Rewards(Hero & player,Monster & enemy){
+    player.Set_Gold_Count(player.Get_Gold_Count() + enemy.Get_Gold());
+    player.Set_Exp(player.Get_Exp() + enemy.Get_Exp_Drop());
+    //string reward_string = player.Get_Name() +" receives:\n"+to_string(enemy.Get_Exp_Drop())+"exp\n"+to_string(enemy.Get_Gold())+"gold\n";
+    cout << player.Get_Name() <<" receives:\n"<<to_string(enemy.Get_Exp_Drop())<<"exp\n"<<to_string(enemy.Get_Gold())<<"gold\n";
+    //impliment random chance for item drops
+}
 void Combat_Loop(Hero &player,Monster enemy){
     //Flags and utility data declarations
+    srand(time(NULL));
     bool chosen = false;
     bool proper_input = false;
     int command = -1;
     int calculation = 0;
+    int move = 0;
     string player_move = "";
+    string monster_move = "";
 
     //Test skills
     Item taco = Item("taco",10,1,0);
     Item tacosword = Item("tacosword",10,534543,1);
     Skill fireball = Skill("Fireball","You shoot a fireball",1,1.2,1);
     Skill heal = Skill("Heal","wounds begin to close",2,5,2);
+    Skill bullshit = Skill("Diarahan"," is a cheating jerk.",0,enemy.Get_HP(),2);
     player.Gain_Item(taco);
     player.Gain_Item(tacosword);
     player.Gain_Skill(fireball);
     player.Gain_Skill(heal);
+    enemy.Gain_Skill(bullshit);
 
     while(player.Get_tmp_hp() > 0 && enemy.Get_tmp_hp() > 0){
         chosen = false;
@@ -33,7 +45,7 @@ void Combat_Loop(Hero &player,Monster enemy){
                 cout << "Choose a move: \n";
 
                 //Show all skills, add item skill to end for inventory?
-                for(int i = 0; i <= player.Get_Skill_Count(); i++){
+                for(int i = 0; i < player.Get_Skill_Count(); i++){
                     cout << i << " " << player.Get_Target_Skill(i).Get_Name() << endl;
                 }
 
@@ -55,7 +67,7 @@ void Combat_Loop(Hero &player,Monster enemy){
                     case phys_attack:
                         //player_move = player.Get_Name+" "+choice.Get_Flavor()+"\n";
                         cout << player.Get_Name()<<" "<<choice.Get_Flavor() << endl;
-                        calculation = player.Get_Attack()*choice.Get_Modifier()-enemy.Get_Defense();
+                        calculation = max(int(player.Get_Attack()*choice.Get_Modifier()-enemy.Get_Defense()),0);
                         //player_move = enemy.Get_Name()+ " receives "+to_string(calculation)+" damage!\n";
                         cout << enemy.Get_Name() << " receives " << calculation << " damage!" << endl;
                         enemy.Set_tmp_hp(enemy.Get_tmp_hp() - calculation);
@@ -102,8 +114,39 @@ void Combat_Loop(Hero &player,Monster enemy){
                 cout << "Incorrect selection" << endl;
             }
         }
+        move = rand()% enemy.Get_Monster_Skill_Count();
+        Skill monster_choice = enemy.Get_Monster_Skill(move);
+        switch(monster_choice.Get_Type()){
+            case phys_attack:
+                //monster_move = enemy.Get_Name() + " " + monster_choice.Get_Flavor() + "\n";
+                cout << enemy.Get_Name() << " " << monster_choice.Get_Flavor() + "\n";
+                calculation = max(int(enemy.Get_Attack()*monster_choice.Get_Modifier() - player.Get_Defense()),0);
+                //monster_move = player.Get_Name() + " receives "+to_string(calculation)+ " damage!\n";
+                cout << player.Get_Name() << " receives "<<to_string(calculation)<< " damage!\n";
+                player.Set_tmp_hp(player.Get_tmp_hp()-calculation);
+            break;
+            case magic_attack:
+                //monster_move = enemy.Get_Name() + " " + monster_choice.Get_Flavor() + "\n";
+                cout << enemy.Get_Name() + " " << monster_choice.Get_Flavor() << "\n";
+                //monster_move = player.Get_Name() + " receives " + to_string(monster_choice.Get_Modifier())+" damage!\n";
+                cout << player.Get_Name() << " receives " << to_string(monster_choice.Get_Modifier())<<" damage!\n";
+                player.Set_tmp_hp(player.Get_tmp_hp()-monster_choice.Get_Modifier());
+            break;
+            case healing:
+                calculation = min((enemy.Get_HP()-enemy.Get_tmp_hp()),int(monster_choice.Get_Modifier()));
+                //monster_move = enemy.Get_Name()+" "+monster_choice.Get_Flavor()+"\n"+to_string(calculation)+"HP recovered!\n";
+                cout << enemy.Get_Name() << " " << monster_choice.Get_Flavor()<< "\n" << calculation << "HP recovered!\n";
+                enemy.Set_tmp_hp(enemy.Get_tmp_hp()+calculation);
+            break;
+        }
         //Monster Move, impliment
     }
     //Impliment level_up function?
-    cout << player.Get_Name() << " has felled the " << enemy.Get_Name() << "!" << endl;
+    if(player.Get_tmp_hp() > 0){
+        cout << player.Get_Name() << " has felled the " << enemy.Get_Name() << "!" << endl;
+        Rewards(player,enemy);
+    }
+    else{
+        cout << "Thou art dead";
+    }
 }

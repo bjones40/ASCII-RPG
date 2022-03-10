@@ -146,6 +146,9 @@ Monster::Monster(string name, int hp, int attack, int defense, int exp_drop, int
     this->gold = gold;
     this->ai_type = ai_type;
     this->drop = drop;
+    this->monster_skill_count = 1;
+    //Attack skill is always available, x1 modifier, keeps with "modular skills" avoiding having to code each one
+    monster_skills[0] = Skill("Attack","attacks!",0,1.0,phys_attack);
 }
 
 //Monster Getters
@@ -168,6 +171,12 @@ Skill & Monster::Get_Monster_Skill(int target){
     return monster_skills[target];
 }
 
+//Monster Setters
+void Monster::Gain_Skill(Skill get){
+    monster_skills[monster_skill_count] = get;
+    monster_skill_count++;
+}
+
 //Hero class (inherits Character)
 Hero::Hero(string name,int level,int exp, int hp,int mp, int attack, int defense):Character::Character(name,hp,attack,defense){
     this->level = level;
@@ -175,7 +184,7 @@ Hero::Hero(string name,int level,int exp, int hp,int mp, int attack, int defense
     this->mp = mp;
     this->tmp_mp = mp;
     this->inventory_count = 0;
-    this->skill_count = 0;
+    this->skill_count = 1;
     //Attack skill is always available, x1 modifier, keeps with "modular skills" avoiding having to code each one
     skill_list[0] = Skill("Attack","attacks!",0,1.0,phys_attack);
 }
@@ -186,6 +195,9 @@ int Hero::Get_Level(){
 }
 int Hero::Get_Exp(){
     return exp;
+}
+int Hero::Get_Gold_Count(){
+    return gold_count;
 }
 int Hero::Get_MP(){
     return mp;
@@ -204,6 +216,9 @@ int Hero::Get_Skill_Count(){
 void Hero::Set_Level(int change){
     this->level = change;
 }
+void Hero::Set_Gold_Count(int change){
+    this->gold_count = change;
+}
 void Hero::Set_Exp(int change){
     this->exp = change;
 }
@@ -218,12 +233,12 @@ void Hero::Set_tmp_mp(int change){
 //-----------------------------------------------------------------------------
 //Adds passed item/skill to the next slot in inventory
 void Hero::Gain_Item(Item get){
-    inventory_count++;
     inventory[inventory_count] = get;
+    inventory_count++;
 }
 void Hero::Gain_Skill(Skill get){
-    skill_count++;
     skill_list[skill_count] = get;
+    skill_count++;
 }
 
 //Displays all of Hero's info as a string
@@ -231,6 +246,7 @@ string Hero::Show_Info(){
     string output = "Name: " + name +"\n";
     output = output + "Level: " + to_string(level) + "\n";
     output = output + "Exp: " + to_string(exp) + "\n";
+    output = output + "Gold: "+ to_string(gold_count) + "\n";
     output = output + "Hp: " + to_string(tmp_hp) + "/" + to_string(hp) + "\n";
     output = output + "Mp: " + to_string(tmp_mp) + "/" + to_string(mp) + "\n";
     output = output + "Attack: " + to_string(attack) + "\n";

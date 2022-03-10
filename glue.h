@@ -80,6 +80,7 @@ class Monster: public Character{
         int Get_Monster_Skill_Count();
         Item Get_Drop();
         Skill & Get_Monster_Skill(int target);
+        void Gain_Skill(Skill get);
 };
 
 class Hero: public Character{
@@ -90,6 +91,7 @@ class Hero: public Character{
         Item equipped_armor;
         int inventory_count;
         int skill_count;
+        int gold_count;
         int level;
         int exp;
         int mp;
@@ -101,6 +103,7 @@ class Hero: public Character{
         int Get_Exp();
         int Get_MP();
         int Get_tmp_mp();
+        int Get_Gold_Count();
         int Get_Inventory_Count();
         int Get_Skill_Count();
         Item Get_Equipped_Weapon();
@@ -114,6 +117,7 @@ class Hero: public Character{
         void Set_Level(int change);
         void Set_Exp(int change);
         void Set_MP(int change);
+        void Set_Gold_Count(int change);
         void Set_tmp_mp(int change);
 
         void Gain_Skill(Skill get);
@@ -123,5 +127,6 @@ class Hero: public Character{
 
 void Hello_World();
 void Combat_Loop(Hero &,Monster enemy);
+void Rewards(Hero &,Monster &);
 
 #endif
