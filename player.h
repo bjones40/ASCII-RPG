@@ -1,10 +1,12 @@
 #ifndef _PLAYER_H_
 #define _PLAYER_H_
 
+#include "terrain.h"
+
 class Player
 {
     public:
-        Player(WINDOW * win, int y, int x, char c);
+        Player(WINDOW * win, int y, int x, char c, Terrain * map);
 
         void mvup();
         void mvdown();
@@ -16,12 +18,15 @@ class Player
     private:
         int xLoc, yLoc, xMax, yMax;
         char character;
+        char map_char;
         WINDOW * curwin;
+        Terrain * curmap;
 };
 
-Player::Player(WINDOW * win, int y, int x, char c)
+Player::Player(WINDOW * win, int y, int x, char c, Terrain * map)
 {
     curwin = win;
+    curmap = map;
     yLoc = y;
     xLoc = x;
     getmaxyx(curwin, yMax, xMax);
@@ -31,6 +36,10 @@ Player::Player(WINDOW * win, int y, int x, char c)
 
 void Player::mvup()
 {
+    if (!curmap->tiles[xLoc][yLoc-1].get_traverse())
+        return;
+    map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
+    mvwaddch(curwin, yLoc, xLoc, map_char);
     yLoc--;
     if(yLoc < 1)
         yLoc = 1;
@@ -38,6 +47,10 @@ void Player::mvup()
 
 void Player::mvdown()
 {
+    if (!curmap->tiles[xLoc][yLoc+1].get_traverse())
+        return;
+    map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
+    mvwaddch(curwin, yLoc, xLoc, map_char);
     yLoc++;
     if(yLoc > yMax - 2)
         yLoc = yMax - 2;
@@ -45,6 +58,10 @@ void Player::mvdown()
 
 void Player::mvleft()
 {
+    if (!curmap->tiles[xLoc-1][yLoc].get_traverse())
+        return;
+    map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
+    mvwaddch(curwin, yLoc, xLoc, map_char);
     xLoc--;
     if(xLoc < 1)
         xLoc = 1;
@@ -52,6 +69,10 @@ void Player::mvleft()
 
 void Player::mvright()
 {
+    if (!curmap->tiles[xLoc+1][yLoc].get_traverse())
+        return;
+    map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
+    mvwaddch(curwin, yLoc, xLoc, map_char);
     xLoc++;
     if(xLoc > xMax - 2)
         xLoc = xMax - 2;
