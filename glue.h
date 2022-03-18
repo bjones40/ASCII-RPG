@@ -3,8 +3,9 @@
 #include <string>
 
 using namespace std;
-enum Itypes{consumable,weapon,armor};
+enum Itypes{consumable,weapon,armor,key};
 enum Stypes{phys_attack,magic_attack,healing,buff};
+enum Maps{Dessert_Desert_Town,Dessert_Desert};
 class Skill{
     protected:
         string name;
@@ -31,6 +32,7 @@ class Item{
         int type;
     public:
         Item();
+        Item(string name, int type);
         Item(string name, int value,int modifier,int type);
         string Full_Display();
         string Get_Name();
@@ -40,7 +42,21 @@ class Item{
         int Get_Healing();
         int Get_Type();
 };
-
+class NPC{
+    private:
+        string name;
+        int x_position;
+        int y_position;
+        Item key_item;
+        string dialogue_list[100];
+    public:
+        NPC();
+        NPC(string name,int x_position,int y_position);
+        NPC(string name,int x_position,int y_position,Item key_item);
+        string Get_Name();
+        string Get_Dialogues(int world_state);
+        void Add_Dialogue(int world_state, string input);
+};
 class Character{
     protected:
         string name;
@@ -96,9 +112,12 @@ class Hero: public Character{
         int exp;
         int mp;
         int tmp_mp;
+        int x_position;
+        int y_position;
+        int current_map;
 
     public:
-        Hero(string name,int level,int exp,int hp,int mp,int attack,int defense);
+        Hero(string name,int level,int exp,int hp,int mp,int attack,int defense,int x, int y, int map);
         int Get_Level();
         int Get_Exp();
         int Get_MP();
@@ -106,6 +125,9 @@ class Hero: public Character{
         int Get_Gold_Count();
         int Get_Inventory_Count();
         int Get_Skill_Count();
+        int Get_X_Position();
+        int Get_Y_Position();
+        int Get_Current_Map();
         Item Get_Equipped_Weapon();
         Item Get_Equipped_Armor();
         Item * Show_Inventory();
@@ -122,6 +144,7 @@ class Hero: public Character{
 
         void Gain_Skill(Skill get);
         void Gain_Item(Item get);
+        void Update_Location(int x,int y, int map);
         string Show_Info();
 };
 

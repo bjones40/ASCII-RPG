@@ -33,6 +33,13 @@ Item::Item(){
     this->name = "Empty";
     this->value = 0;
 }
+Item::Item(string name, int type){
+    this-> name = name;
+    this-> type = type;
+    this-> healing = -1;
+    this-> attack = -1;
+    this-> defense = -1;
+}
 Item::Item(string name, int value,int modifier,int type)
 {
     this-> name = name;
@@ -86,6 +93,30 @@ string Item::Full_Display(){
         output = output + to_string(defense) + " DEF\n";
     }
     return output;
+}
+//NPC Class
+NPC::NPC(){
+    this -> name = "Empty";
+}
+NPC::NPC(string name,int x_position,int y_position){
+    this -> name = name;
+    this -> x_position = x_position;
+    this -> y_position = y_position;
+}
+NPC::NPC(string name,int x_position,int y_position,Item key_item){
+    this -> name = name;
+    this -> x_position = x_position;
+    this -> y_position = y_position;
+    this -> key_item = key_item;
+}
+string NPC::Get_Name(){
+    return name;
+}
+string NPC::Get_Dialogues(int world_state){
+    return dialogue_list[world_state];
+}
+void NPC::Add_Dialogue(int world_state,string input){
+    dialogue_list[world_state] = input;
 }
 //Character Class
 //Empty (Dummy) Character
@@ -178,13 +209,16 @@ void Monster::Gain_Skill(Skill get){
 }
 
 //Hero class (inherits Character)
-Hero::Hero(string name,int level,int exp, int hp,int mp, int attack, int defense):Character::Character(name,hp,attack,defense){
-    this->level = level;
-    this->exp = exp;
-    this->mp = mp;
-    this->tmp_mp = mp;
-    this->inventory_count = 0;
-    this->skill_count = 1;
+Hero::Hero(string name,int level,int exp, int hp,int mp, int attack, int defense,int x,int y,int map):Character::Character(name,hp,attack,defense){
+    this-> level = level;
+    this-> exp = exp;
+    this-> mp = mp;
+    this-> tmp_mp = mp;
+    this-> inventory_count = 0;
+    this-> skill_count = 1;
+    this-> x_position = x;
+    this-> y_position = y;
+    this-> current_map = map;
     //Attack skill is always available, x1 modifier, keeps with "modular skills" avoiding having to code each one
     skill_list[0] = Skill("Attack","attacks!",0,1.0,phys_attack);
 }
@@ -211,6 +245,15 @@ int Hero::Get_Inventory_Count(){
 int Hero::Get_Skill_Count(){
     return skill_count;
 }
+int Hero::Get_X_Position(){
+    return x_position;
+}
+int Hero::Get_Y_Position(){
+    return y_position;
+}
+int Hero::Get_Current_Map(){
+    return current_map;
+}
 
 //Hero setters
 void Hero::Set_Level(int change){
@@ -231,6 +274,11 @@ void Hero::Set_tmp_mp(int change){
 
 //Hero public functions
 //-----------------------------------------------------------------------------
+void Hero::Update_Location(int x,int y,int map){
+    this-> x_position = x;
+    this-> y_position = y;
+    this-> current_map = map;
+}
 //Adds passed item/skill to the next slot in inventory
 void Hero::Gain_Item(Item get){
     inventory[inventory_count] = get;

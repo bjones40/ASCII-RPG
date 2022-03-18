@@ -27,11 +27,13 @@ void Combat_Loop(Hero &player,Monster enemy){
     Skill fireball = Skill("Fireball","You shoot a fireball",1,1.2,1);
     Skill heal = Skill("Heal","wounds begin to close",2,5,2);
     Skill bullshit = Skill("Diarahan"," is a cheating jerk.",0,enemy.Get_HP(),2);
+    Skill ded = Skill("Murderodyne"," blows you to pieces.",0,1000000,1);
     player.Gain_Item(taco);
     player.Gain_Item(tacosword);
     player.Gain_Skill(fireball);
     player.Gain_Skill(heal);
     enemy.Gain_Skill(bullshit);
+    enemy.Gain_Skill(ded);
 
     while(player.Get_tmp_hp() > 0 && enemy.Get_tmp_hp() > 0){
         chosen = false;
