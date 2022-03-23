@@ -1,5 +1,5 @@
-#ifndef _PLAYER_H_
-#define _PLAYER_H_
+#ifndef _PLAYERMOVEMENT_H_
+#define _PLAYERMOVEMENT_H_
 
 #include "terrain.h"
 
