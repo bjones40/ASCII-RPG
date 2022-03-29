@@ -20,6 +20,7 @@ void Combat_Loop(Hero &player,Monster enemy){
     int move = 0;
     string player_move = "";
     string monster_move = "";
+    string move_menu = "";
 
     //Test skills
     Item taco = Item("taco",10,1,0);
@@ -37,7 +38,7 @@ void Combat_Loop(Hero &player,Monster enemy){
 
     while(player.Get_tmp_hp() > 0 && enemy.Get_tmp_hp() > 0){
         chosen = false;
-        //Player move <all cut out player_move strings are for n-curses implimentation later
+        //Player move <all cut out //player_move strings are for n-curses implimentation later
         while(!chosen){
             //Reject all but ints, can change later depending on n-curses menu design
             while(!proper_input){
@@ -48,6 +49,7 @@ void Combat_Loop(Hero &player,Monster enemy){
 
                 //Show all skills, add item skill to end for inventory?
                 for(int i = 0; i < player.Get_Skill_Count(); i++){
+                    //move_menu = to_string(i)+ " " + player.Get_Target_Skill(i).Get_Name() + "\n";
                     cout << i << " " << player.Get_Target_Skill(i).Get_Name() << endl;
                 }
 
@@ -67,7 +69,7 @@ void Combat_Loop(Hero &player,Monster enemy){
                 Skill & choice = player.Get_Target_Skill(command);
                 switch(choice.Get_Type()){
                     case phys_attack:
-                        //player_move = player.Get_Name+" "+choice.Get_Flavor()+"\n";
+                        //player_move = player.Get_Name()+" "+choice.Get_Flavor()+"\n";
                         cout << player.Get_Name()<<" "<<choice.Get_Flavor() << endl;
                         calculation = max(int(player.Get_Attack()*choice.Get_Modifier()-enemy.Get_Defense()),0);
                         //player_move = enemy.Get_Name()+ " receives "+to_string(calculation)+" damage!\n";
@@ -116,39 +118,42 @@ void Combat_Loop(Hero &player,Monster enemy){
                 cout << "Incorrect selection" << endl;
             }
         }
-        move = rand()% enemy.Get_Monster_Skill_Count();
-        Skill monster_choice = enemy.Get_Monster_Skill(move);
-        switch(monster_choice.Get_Type()){
-            case phys_attack:
-                //monster_move = enemy.Get_Name() + " " + monster_choice.Get_Flavor() + "\n";
-                cout << enemy.Get_Name() << " " << monster_choice.Get_Flavor() + "\n";
-                calculation = max(int(enemy.Get_Attack()*monster_choice.Get_Modifier() - player.Get_Defense()),0);
-                //monster_move = player.Get_Name() + " receives "+to_string(calculation)+ " damage!\n";
-                cout << player.Get_Name() << " receives "<<to_string(calculation)<< " damage!\n";
-                player.Set_tmp_hp(player.Get_tmp_hp()-calculation);
-            break;
-            case magic_attack:
-                //monster_move = enemy.Get_Name() + " " + monster_choice.Get_Flavor() + "\n";
-                cout << enemy.Get_Name() + " " << monster_choice.Get_Flavor() << "\n";
-                //monster_move = player.Get_Name() + " receives " + to_string(monster_choice.Get_Modifier())+" damage!\n";
-                cout << player.Get_Name() << " receives " << to_string(monster_choice.Get_Modifier())<<" damage!\n";
-                player.Set_tmp_hp(player.Get_tmp_hp()-monster_choice.Get_Modifier());
-            break;
-            case healing:
-                calculation = min((enemy.Get_HP()-enemy.Get_tmp_hp()),int(monster_choice.Get_Modifier()));
-                //monster_move = enemy.Get_Name()+" "+monster_choice.Get_Flavor()+"\n"+to_string(calculation)+"HP recovered!\n";
-                cout << enemy.Get_Name() << " " << monster_choice.Get_Flavor()<< "\n" << calculation << "HP recovered!\n";
-                enemy.Set_tmp_hp(enemy.Get_tmp_hp()+calculation);
-            break;
+        if(enemy.Get_tmp_hp() > 0){
+            move = rand()% enemy.Get_Monster_Skill_Count();
+            Skill monster_choice = enemy.Get_Monster_Skill(move);
+            switch(monster_choice.Get_Type()){
+                case phys_attack:
+                    //monster_move = enemy.Get_Name() + " " + monster_choice.Get_Flavor() + "\n";
+                    cout << enemy.Get_Name() << " " << monster_choice.Get_Flavor() + "\n";
+                    calculation = max(int(enemy.Get_Attack()*monster_choice.Get_Modifier() - player.Get_Defense()),0);
+                    //monster_move = player.Get_Name() + " receives "+to_string(calculation)+ " damage!\n";
+                    cout << player.Get_Name() << " receives "<<to_string(calculation)<< " damage!\n";
+                    player.Set_tmp_hp(player.Get_tmp_hp()-calculation);
+                break;
+                case magic_attack:
+                    //monster_move = enemy.Get_Name() + " " + monster_choice.Get_Flavor() + "\n";
+                    cout << enemy.Get_Name() + " " << monster_choice.Get_Flavor() << "\n";
+                    //monster_move = player.Get_Name() + " receives " + to_string(monster_choice.Get_Modifier())+" damage!\n";
+                    cout << player.Get_Name() << " receives " << to_string(monster_choice.Get_Modifier())<<" damage!\n";
+                    player.Set_tmp_hp(player.Get_tmp_hp()-monster_choice.Get_Modifier());
+                break;
+                case healing:
+                    calculation = min((enemy.Get_HP()-enemy.Get_tmp_hp()),int(monster_choice.Get_Modifier()));
+                    //monster_move = enemy.Get_Name()+" "+monster_choice.Get_Flavor()+"\n"+to_string(calculation)+"HP recovered!\n";
+                    cout << enemy.Get_Name() << " " << monster_choice.Get_Flavor()<< "\n" << calculation << "HP recovered!\n";
+                    enemy.Set_tmp_hp(enemy.Get_tmp_hp()+calculation);
+                break;
+            }
         }
-        //Monster Move, impliment
     }
     //Impliment level_up function?
     if(player.Get_tmp_hp() > 0){
+        //player_move = player.Get_Name() + " has felled the " + enemy.Get_Name() + "!\n";
         cout << player.Get_Name() << " has felled the " << enemy.Get_Name() << "!" << endl;
         Rewards(player,enemy);
     }
     else{
+        //player_move = "Thou art dead";
         cout << "Thou art dead";
     }
 }
