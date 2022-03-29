@@ -41,11 +41,11 @@ char MAP[][COLUMNS] =
 	"+  #                                     ####################################################                               ^^^   ^^^   ^^^   ^^^           #     +",
 	"|  #                                                                                                                        ^^^   ^^^   ^^^   ^^^           #     |",
 	"+  #                                                                                                                                                        #     +",
-    "|  #                                                                                                                                                        #     |",
+        "|  #                                                                                                                                                        #     |",
 	"+  #                                     #######################       ######################                               ^^^   ^^^   ^^^   ^^^           #     +",
 	"|  #                                     #llllccccclllcccccllll#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     |",
 	"+  #                                     #llcccKcccccccccccKcll#       #                    #                                                               #     +",
-	"|  #       t                             #lcccKcccccccccccccccl#       #                    #                                                               #     |",
+	"|  #                                     #lcccKcccccccccccccccl#       #                    #                                                               #     |",
 	"+  #                                     #lccccccccccccKccccccl#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     +",
 	"|  #                                     #lcccccccccccccccccccl#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     |",
 	"+  #                                     #lcKccccccccccKKcccccl#       #                    #                                                     ################+",
@@ -108,13 +108,7 @@ void printMap()
             else if( MAP[rows][columns] == 'l' || MAP[rows][columns] == 'C')
             {
                 cout << ChangeToGreen();
-            }
-
-            else if( MAP[rows][columns] == 't')
-            {
-                cout << ChangeToIdk();
-            }
-
+	    }
 
             //PositionCursor(rows,columns);
             cout <<  MAP[rows][columns];
