@@ -3,9 +3,13 @@
 #include <string>
 
 using namespace std;
+//Differentiates item functions
 enum Itypes{consumable,weapon,armor,key};
+//Differentiates ability types
 enum Stypes{phys_attack,magic_attack,healing,buff};
+//Location enumeration
 enum Maps{Dessert_Desert_Town,Dessert_Desert};
+//Differentiates enemy type for calling upon appropriate table from Parse_Monster_Tables
 enum Enemy_Type{normal_enemy,rare_enemy,boss};
 class Skill{
     protected:
@@ -150,6 +154,7 @@ class Hero: public Character{
         string Show_Info();
 };
 
+//Functions from other files to make available to entire system
 void Hello_World();
 void Combat_Loop(Hero &,Monster enemy);
 void Rewards(Hero &,Monster &);

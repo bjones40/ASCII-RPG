@@ -6,8 +6,8 @@
 using namespace std;
 Item taco = Item("Taco",1,1,0);
 //Monster Dessert_Normal_Monster_Table[2] = {Monster("slime",1,1,1,50,100,1,taco),Monster("slime2",1,1,1,50,100,1,taco)};
-Monster Dessert_Boss_Monster_Table[1] = {Monster("Slave Master",1,1,1,50,100,1,taco)};
-Monster Dessert_Rare_Monster_Table[1] = {Monster("Tree Sentinal",100,100,20,50,100,1,taco)};
+//Monster Dessert_Boss_Monster_Table[1] = {Monster("Slave Master",1,1,1,50,100,1,taco)};
+//Monster Dessert_Rare_Monster_Table[1] = {Monster("Tree Sentinal",100,100,20,50,100,1,taco)};
 
 Monster Monster_Table[10][5] = {{Monster("slime",1,1,1,50,100,1,taco),Monster("slime2",1,1,1,50,100,1,taco)}};
 Monster Rare_Monster_Table[1][1];
