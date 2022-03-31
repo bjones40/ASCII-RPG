@@ -181,7 +181,9 @@ Monster::Monster(string name, int hp, int attack, int defense, int exp_drop, int
     //Attack skill is always available, x1 modifier, keeps with "modular skills" avoiding having to code each one
     monster_skills[0] = Skill("Attack","attacks!",0,1.0,phys_attack);
 }
-
+Monster::Monster(){
+    this->name = "Null";
+}
 //Monster Getters
 int Monster::Get_Exp_Drop(){
     return exp_drop;

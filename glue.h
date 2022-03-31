@@ -6,6 +6,7 @@ using namespace std;
 enum Itypes{consumable,weapon,armor,key};
 enum Stypes{phys_attack,magic_attack,healing,buff};
 enum Maps{Dessert_Desert_Town,Dessert_Desert};
+enum Enemy_Type{normal_enemy,rare_enemy,boss};
 class Skill{
     protected:
         string name;
@@ -89,6 +90,7 @@ class Monster: public Character{
         Skill monster_skills[100];
         int monster_skill_count;
     public:
+        Monster();
         Monster(string name, int hp, int attack, int defense, int exp_drop, int gold, int ai_type, Item drop);
         int Get_Exp_Drop();
         int Get_Gold();
@@ -151,5 +153,6 @@ class Hero: public Character{
 void Hello_World();
 void Combat_Loop(Hero &,Monster enemy);
 void Rewards(Hero &,Monster &);
+Monster Parse_Monster_Tables(Hero,int);
 
 #endif

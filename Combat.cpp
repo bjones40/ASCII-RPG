@@ -2,7 +2,39 @@
 #include <iostream>
 #include <algorithm>
 #include <random>
+#include <vector>
 using namespace std;
+Item taco = Item("Taco",1,1,0);
+//Monster Dessert_Normal_Monster_Table[2] = {Monster("slime",1,1,1,50,100,1,taco),Monster("slime2",1,1,1,50,100,1,taco)};
+Monster Dessert_Boss_Monster_Table[1] = {Monster("Slave Master",1,1,1,50,100,1,taco)};
+Monster Dessert_Rare_Monster_Table[1] = {Monster("Tree Sentinal",100,100,20,50,100,1,taco)};
+
+Monster Monster_Table[10][5] = {{Monster("slime",1,1,1,50,100,1,taco),Monster("slime2",1,1,1,50,100,1,taco)}};
+Monster Rare_Monster_Table[1][1];
+Monster Boss_Monster_Table[1][1];
+
+//Usable on overworld to call up a monster to pass to the combat screen
+Monster Parse_Monster_Tables(Hero player,int table){
+    srand(time(NULL));
+    Monster output;
+    int choice = 0;
+    int location = player.Get_Current_Map();
+    switch(table){
+        case normal_enemy:
+            choice = rand()% 2;
+            output = Monster_Table[location][choice];
+            break;
+        case rare_enemy:
+            choice = rand()%1;
+            output = Rare_Monster_Table[location][choice];
+            break;
+        case boss:
+            choice = rand()%1; 
+            output = Boss_Monster_Table[location][choice];             
+            break;
+    }
+    return output;
+}
 void Rewards(Hero & player,Monster & enemy){
     player.Set_Gold_Count(player.Get_Gold_Count() + enemy.Get_Gold());
     player.Set_Exp(player.Get_Exp() + enemy.Get_Exp_Drop());
@@ -36,6 +68,8 @@ void Combat_Loop(Hero &player,Monster enemy){
     enemy.Gain_Skill(bullshit);
     enemy.Gain_Skill(ded);
 
+    player_move = enemy.Get_Name() + " draws near!\n";
+    cout << enemy.Get_Name() << " draws near!"  << endl;
     while(player.Get_tmp_hp() > 0 && enemy.Get_tmp_hp() > 0){
         chosen = false;
         //Player move <all cut out //player_move strings are for n-curses implimentation later
