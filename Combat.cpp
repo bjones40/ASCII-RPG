@@ -5,15 +5,12 @@
 #include <vector>
 using namespace std;
 Item taco = Item("Taco",1,1,0);
-//Monster Dessert_Normal_Monster_Table[2] = {Monster("slime",1,1,1,50,100,1,taco),Monster("slime2",1,1,1,50,100,1,taco)};
-//Monster Dessert_Boss_Monster_Table[1] = {Monster("Slave Master",1,1,1,50,100,1,taco)};
-//Monster Dessert_Rare_Monster_Table[1] = {Monster("Tree Sentinal",100,100,20,50,100,1,taco)};
 
 Monster Monster_Table[10][5] = {{Monster("slime",1,1,1,50,100,1,taco),Monster("slime2",1,1,1,50,100,1,taco)}};
-Monster Rare_Monster_Table[1][1];
-Monster Boss_Monster_Table[1][1];
+Monster Rare_Monster_Table[10];
+Monster Boss_Monster_Table[10];
 
-//Usable on overworld to call up a monster to pass to the combat screen
+//Usable on overworld to call up a monster to pass to the combat screen, use the enums to specify "table" in call!
 Monster Parse_Monster_Tables(Hero player,int table){
     srand(time(NULL));
     Monster output;
@@ -25,12 +22,10 @@ Monster Parse_Monster_Tables(Hero player,int table){
             output = Monster_Table[location][choice];
             break;
         case rare_enemy:
-            choice = rand()%1;
-            output = Rare_Monster_Table[location][choice];
+            output = Rare_Monster_Table[location];
             break;
         case boss:
-            choice = rand()%1; 
-            output = Boss_Monster_Table[location][choice];             
+            output = Boss_Monster_Table[location];             
             break;
     }
     return output;
