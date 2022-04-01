@@ -30,10 +30,11 @@ int main(int argc, char ** argv)
     tlc = trc = blc = brc = '+';
 
     //Ncurses window declaration
-    WINDOW * playwin = newwin(36, 72, 0, 0); //Window for player movement and combat
-    WINDOW * logwin = newwin(12, 72, 36, 0); //Window for exploration and combat logs
-    WINDOW * controlswin = newwin(36, 20, 0, 72); //Window for displaying controls
+    WINDOW * playwin = newwin(53, 165, 0, 0); //Window for player movement and combat
+    WINDOW * logwin = newwin(17, 165, 53, 0); //Window for exploration and combat logs
+    WINDOW * controlswin = newwin(36, 25, 0, 165); //Window for displaying controls
 
+    //Get the max width and length of the windows
     int playxMax, playyMax, logxMax, logyMax, controlsxMax, controlsyMax;
     getmaxyx(playwin, playyMax, playxMax);
     getmaxyx(logwin, logyMax, logxMax);
@@ -49,15 +50,15 @@ int main(int argc, char ** argv)
     wrefresh(controlswin);
 
     //displaying strings for controlswin
-    for (int i = 1; i < controlsyMax-3; i++)
+    for (int i = 2; i < controlsyMax-4; i++)
     {
-        mvwaddstr(controlswin, i, 1, "C-Controls Example");
+        mvwaddstr(controlswin, i, 3, "C-Controls Example");
     }
     wrefresh(controlswin);
 
     
     Terrain * map = new Terrain(playwin);
-    Player * p = new Player(playwin, 1, 1, '@', map);
+    Player * p = new Player(playwin, 46, 5, '@', map);
     //map->generatetiles();
 
     Hero player = Hero("man",1,0,5,5,5,5,0,0,0);

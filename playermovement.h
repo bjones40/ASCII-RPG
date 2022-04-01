@@ -32,6 +32,7 @@ Player::Player(WINDOW * win, int y, int x, char c, Terrain * map)
     getmaxyx(curwin, yMax, xMax);
     keypad(curwin, true);
     character = c;
+    display();
 }
 
 void Player::mvup()

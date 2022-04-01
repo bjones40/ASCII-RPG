@@ -84,7 +84,7 @@ Terrain::Terrain(WINDOW * win)
 void Terrain::generatetiles()
 {
     //Tile tilemap[xMax][yMax];
-
+/*
     char map[16][49] = {{"   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},
                         {"                AAAAAAAAAAAAAAA                 "},
                         {"AAAAAAAAAA    AAAAAAA          AAAAA  A      AAA"},
@@ -101,10 +101,67 @@ void Terrain::generatetiles()
                         {"AAA       *  **         ** ^ *^*^*          AAAA"},
                         {"AA ^  *^*        ^  ^*^            *^*        AA"},
                         {"AAAA                ^^  ^             ** ^   ^ A"}};
+*/
 
-    for (int i = 0; i < 16; i++)
+    int columns = 163;
+    int rows = 51;
+    char map[][columns] = 
     {
-        for (int j = 0; j < 49; j++)
+    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+    "|~~~~~~~~~~~~~~~#                                                                                                                                                 |",
+    "+~~~~~~~~~~~~~~~#############################################################################################################################################  cc +",
+    "|~~~~~~~~~~~~~~~#                                                                                                                                           #  cc |",
+    "+~~~~~~~~~~~~~~~#                                                                                                                                           #     +",
+    "|~~~~~~~~~~~~~~~#                                                                                                                                           #     |",
+    "+~~~~~~~~~~~~~~~###     #######################################################          ####                                                               #     +",
+    "|~~~~~~~~~~~~~~~~~#     #llllllllllllllllllllllllllllllllllllllllllllllllllllll          lll#                                                               #     |",
+    "+~~~~~~~~~~~~~~~~~#     #lcc        K         cc           KK         cc           cccccc  l#                                                               #     +",
+    "|~~~~~~~~~~~~~~~~~#     #llllllllllllllllll   cc           KK          c      K    cKccKc  l#                                                               #     |",
+    "+~~################     ##################l          cc                            cccKcc  l#                                                               #     +",
+    "|~~#                                     #l          cc         ccc         c              l#                               ^^^   ^^^   ^^^   ^^^           #     |",
+    "+~~#                                     #l  K                  cKc         c      K                                        ^^^   ^^^   ^^^   ^^^           #     +",
+    "|~~#    CCCCCCCCCC         vvvvvvvvvv    #l              K      ccc    KK  cc                                                                               #     |",
+    "+~ #    CCCCCCCCCC         vvvvvvvvvv    #l              K                 ccc         cc  l#                                                               #     +",
+    "|~ #    CCCCCCCCCC         vvvvvvvvvv    #lccc       c                K               ccc  l#                                                               #     |",
+    "+~ #                                     #lcKc        cc      ccc                     cccc l#                               ^^^   ^^^   ^^^   ^^^           #     +",
+    "|~ #    CCCCCCCCCC         vvvvvvvvvv    #lccc        cc      cKc       ccc          ccccc l#                               ^^^   ^^^   ^^^   ^^^           #     |",
+    "+~ #    CCCCCCCCCC         vvvvvvvvvv    #l      K            ccc       ccc                l#                                                               #     +",
+    "|  #    CCCCCCCCCC         vvvvvvvvvv    #llllllllllllllllllllllllllllllllllllllllllllllllll#                                                               #     |",
+    "+  #                                     ####################################################                               ^^^   ^^^   ^^^   ^^^           #     +",
+    "|  #                                                                                                                        ^^^   ^^^   ^^^   ^^^           #     |",
+    "+  #                                                                                                                                                        #     +",
+    "|  #                                                                                                                                                        #     |",
+    "+  #                                     #######################       ######################                               ^^^   ^^^   ^^^   ^^^           #     +",
+    "|  #                                     #llllccccclllcccccllll#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     |",
+    "+  #                                     #llcccKcccccccccccKcll#       #                    #                                                               #     +",
+    "|  #                                     #lcccKcccccccccccccccl#       #                    #                                                               #     |",
+    "+  #                                     #lccccccccccccKccccccl#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     +",
+    "|  #                                     #lcccccccccccccccccccl#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     |",
+    "+  #                                     #lcKccccccccccKKcccccl#       #                    #                                                     ################+",
+    "|  #                                     #lcccccccccKcccccccccl#       #                    #                                                                     |",
+    "+  #                                     #lccccKccccccccccccccl#       #                    #                                                                     +",
+    "|  #                                     #llcccccccccccccccccll#       #                    #                                                                     |",
+    "+  #                                     #lllccccccccccccKcclll#       #                    #                                                     ################+",
+    "|  #                                     #llllccccKccccccccllll#       #                    #                                                               #     |",
+    "+  #################     ##########/######lllllllccccccclllllll#       #                    #                                                               #     +",
+    "|                  #     #        # #llllll#######################   ###################    #                                                               #     |",
+    "+                  #     #        # #lcKccl#             #                  #          #    #                                                               #     +",
+    "|                  #     #        # #lKcKcl#                                #  $       #    #                                                               #     |",
+    "+                  #     #        # #lKcccl#             ####################          #    #                                                               #     +",
+    "|                  #     #        # #llllll#                   #            #          #    #      rrrrrrr                                   rrrrrrrrr      #     |",
+    "+#########         #     #        # ########                   #            ######     #    #    rrrrrrrrrrrr                            rrrrrrrrrrrrrrrrr  #     +",
+    "|        #         #     #        #                                                    #    ####rrrrrrrrrrrrrrrrrr###################rrrrrrrrrrrrrrrrrrrrr##r     |",
+    "+        ###########     #        ##########                   #                       #      rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr    +",
+    "|                        #                 #                   #                       #         rrrrrrrrrrrrrrrrrrrrrrr  rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr     |",
+    "+        #################                 #                   #                       #       rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr     +",
+    "|        #                                 #############################################    rrrrrrr   rrrrrrrrrrrrrrrr  rrrrrrrrrrrrrrrrrrrrrr  rrrrrrrrrrr       |",
+    "+#########                                                                                  rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr     +",
+    "|                                                                                   rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr|",
+    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"};
+    
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
         {
             tiles[j+1][i+1].set_tilechar(map[i][j]);
             
@@ -121,7 +178,7 @@ void Terrain::generatetiles()
             tiles[i][j].xLoc = i;
             tiles[i][j].yLoc = j;
 
-            if (tiles[i][j].get_tilechar() == 'A')
+            if (tiles[i][j].get_tilechar() == '#')
                 tiles[i][j].set_traverse(0);
 
             mvwaddch(curwin, j, i, tiles[i][j].get_tilechar());
