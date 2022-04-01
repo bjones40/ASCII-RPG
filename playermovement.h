@@ -1,5 +1,5 @@
-#ifndef _PLAYER_H_
-#define _PLAYER_H_
+#ifndef _PLAYERMOVEMENT_H_
+#define _PLAYERMOVEMENT_H_
 
 #include "terrain.h"
 
@@ -32,6 +32,7 @@ Player::Player(WINDOW * win, int y, int x, char c, Terrain * map)
     getmaxyx(curwin, yMax, xMax);
     keypad(curwin, true);
     character = c;
+    display();
 }
 
 void Player::mvup()
