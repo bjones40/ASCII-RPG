@@ -35,6 +35,7 @@ class Item{
         int defense;
         int healing;
         int type;
+        int quantity = 1;
     public:
         Item();
         Item(string name, int type);
@@ -46,6 +47,8 @@ class Item{
         int Get_Defense();
         int Get_Healing();
         int Get_Type();
+        int Get_Quantity();
+        void Set_Quantity(int input);
 };
 class NPC{
     private:
@@ -136,7 +139,6 @@ class Hero: public Character{
         int Get_Current_Map();
         Item Get_Equipped_Weapon();
         Item Get_Equipped_Armor();
-        Item * Show_Inventory();
         Item Show_Inventory_Item(int target);
 
         Skill & Get_Target_Skill(int target);
@@ -147,11 +149,16 @@ class Hero: public Character{
         void Set_MP(int change);
         void Set_Gold_Count(int change);
         void Set_tmp_mp(int change);
-
+        void Set_Equipped_Weapon(Item weapon);
+        void Set_Equipped_Armor(Item armor);
         void Gain_Skill(Skill get);
         void Gain_Item(Item get);
         void Update_Location(int x,int y, int map);
+        void Delete_Item(int start);
+        string Use_Item(int target);
         string Show_Info();
+        string Inventory_Menu();
+        void Swap_Inventory_Items(int a, int b);
 };
 
 //Functions from other files to make available to entire system

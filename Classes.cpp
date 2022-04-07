@@ -12,6 +12,7 @@ Skill::Skill(string name,string flavor_text,int cost,double modifier,int type){
     this-> modifier = modifier;
     this-> type = type;
 }
+//Skill Getters
 string Skill::Get_Name(){
     return name;
 }
@@ -44,7 +45,7 @@ Item::Item(string name, int value,int modifier,int type)
 {
     this-> name = name;
     this-> value = value;
-    this->type = type;
+    this-> type = type;
     if(type == consumable){
         this->healing = modifier;
         this->attack = -1;
@@ -61,7 +62,8 @@ Item::Item(string name, int value,int modifier,int type)
         this->healing = -1;
     }
 }
-
+//Item Getters
+//-----------------------------------------------------------------------------
 string Item::Get_Name(){
     return name;
 }
@@ -80,6 +82,15 @@ int Item::Get_Healing(){
 int Item::Get_Type(){
     return type;
 }
+int Item::Get_Quantity(){
+    return quantity;
+}
+//Item Setters
+//-----------------------------------------------------------------------------
+void Item::Set_Quantity(int input){
+    quantity = input;
+}
+//Outputs all Item info
 string Item::Full_Display(){
     string output = "";
     output = output + name+"\n"+to_string(value)+" currency\n";
@@ -96,7 +107,7 @@ string Item::Full_Display(){
 }
 //NPC Class
 NPC::NPC(){
-    this -> name = "Empty";
+    this -> name = "Null";
 }
 NPC::NPC(string name,int x_position,int y_position){
     this -> name = name;
@@ -256,6 +267,13 @@ int Hero::Get_Y_Position(){
 int Hero::Get_Current_Map(){
     return current_map;
 }
+Item Hero::Get_Equipped_Weapon(){
+    return equipped_weapon;
+}
+Item Hero::Get_Equipped_Armor(){
+    return equipped_armor;
+}
+
 
 //Hero setters
 void Hero::Set_Level(int change){
@@ -273,6 +291,12 @@ void Hero::Set_MP(int change){
 void Hero::Set_tmp_mp(int change){
     this->tmp_mp = change;
 }
+void Hero::Set_Equipped_Weapon(Item weapon){
+    this->equipped_weapon = weapon;
+}
+void Hero::Set_Equipped_Armor(Item armor){
+    this->equipped_armor = armor;
+}
 
 //Hero public functions
 //-----------------------------------------------------------------------------
@@ -282,10 +306,6 @@ void Hero::Update_Location(int x,int y,int map){
     this-> current_map = map;
 }
 //Adds passed item/skill to the next slot in inventory
-void Hero::Gain_Item(Item get){
-    inventory[inventory_count] = get;
-    inventory_count++;
-}
 void Hero::Gain_Skill(Skill get){
     skill_list[skill_count] = get;
     skill_count++;
@@ -303,16 +323,132 @@ string Hero::Show_Info(){
     output = output + "Defense: " + to_string(defense) + "\n";
     return output;
 }
-
-//Returns pointer to inventory for various uses
-//Reminder: Item * pointer = Hero.Show_Inventory(); then it works like your standard array[]
-Item * Hero::Show_Inventory(){
-    return inventory;
+//Inventory functions
+//-----------------------------------------------------------------------------
+string Hero::Inventory_Menu(){
+    int i = 0;
+    string output = "";
+    if(inventory[0].Get_Name() == "Empty"){
+        return "Empty";
+    }
+    while(inventory[i].Get_Name() != "Empty"){
+        if(i % 2 == 0){
+            output += to_string(i)+": "+inventory[i].Get_Name();
+            if(inventory[i].Get_Type() == consumable){
+                output += " Amount: "+to_string(inventory[i].Get_Quantity());
+            }
+            output += "     ";
+        }
+        else{
+            output += to_string(i)+": "+inventory[i].Get_Name();
+            if(inventory[i].Get_Type() == consumable){
+                output += " Amount: "+to_string(inventory[i].Get_Quantity())+"\n";
+            }
+            else{
+                output += "\n";
+            }
+        }
+        i++;
+    }
+    output += "\n";
+    return output;
 }
-//Returns a specific item/skill from inventory
+//Gets item and adds to inventory/adjusts inventory count as well
+void Hero::Gain_Item(Item get){
+    int change = 0;
+    for(int i = 0;i < inventory_count;i++){
+        if(inventory[i].Get_Name() == get.Get_Name() && inventory[i].Get_Type() == consumable){
+            change = inventory[i].Get_Quantity() + 1;
+            inventory[i].Set_Quantity(change);
+            return;
+        }
+    }
+    inventory[inventory_count] = get;
+    inventory_count++;
+}
+//Removes item at position, shifts inventory to compensate, adjusts inventory count too
+void Hero::Delete_Item(int position){
+    if(inventory_count == 0){
+        return;
+    }
+    if(inventory[position+1].Get_Name() == "Empty"){
+        inventory[position] = Item();
+        inventory_count--;
+        return;
+    }
+    while(inventory[position+1].Get_Name() != "Empty"){
+        inventory[position] = inventory[position+1];
+        inventory[position+1] = Item();
+        position++;
+    }
+    inventory_count--;
+}
+//Swaps a for b in inventory, limited by the size of it (error handler)
+void Hero::Swap_Inventory_Items(int a, int b){
+    if(a < inventory_count && b < inventory_count){
+        Item temp;
+        temp = inventory[a];
+        inventory[a] = inventory[b];
+        inventory[b] = temp;
+    }
+}
+//Lengthy function for "Using" items, will equip equipment, or use an item, modifies inventory to compensate
+string Hero::Use_Item(int target){
+    string output = "";
+    Item selected = inventory[target];
+    if(selected.Get_Type() == weapon){
+        if(Get_Equipped_Weapon().Get_Name() == "Empty"){
+            Set_Equipped_Weapon(selected);
+            Delete_Item(target);
+            output = name+" dons the "+selected.Get_Name()+".\n";
+            output += "Stats change, attack:" + to_string(equipped_weapon.Get_Attack())+"\n";
+        }
+        else{
+            Item temp = equipped_weapon;
+            equipped_weapon = inventory[target];
+            inventory[target] = temp;
+            output = name +" doffs the "+temp.Get_Name()+" and dons the "+equipped_weapon.Get_Name()+"\n";
+            output += "Stats change, attack: "+to_string(equipped_weapon.Get_Attack()-inventory[target].Get_Attack())+"\n";
+        }
+    }
+    if(selected.Get_Type() == armor){
+        if(Get_Equipped_Armor().Get_Name() == "Empty"){
+            Set_Equipped_Armor(selected);
+            Delete_Item(target);
+            output = name+" dons the "+selected.Get_Name()+".\n";
+            output += "Stats change, defense:" + to_string(equipped_armor.Get_Defense())+"\n";
+        }
+        else{
+            Item temp = equipped_armor;
+            equipped_armor = inventory[target];
+            inventory[target] = temp;
+            output = name +" doffs the "+temp.Get_Name()+" and dons the "+equipped_armor.Get_Name()+"\n";
+            output += "Stats change, defense: "+to_string(equipped_armor.Get_Defense()-inventory[target].Get_Defense())+"\n";
+        }
+    }
+    if(selected.Get_Type() == consumable){
+        if(tmp_hp != hp){
+            int calculation = min(hp-tmp_hp,int(selected.Get_Healing()));
+            output = name + " ate the "+selected.Get_Name()+" "+to_string(calculation)+" HP recovered.\n";
+            inventory[target].Set_Quantity(inventory[target].Get_Quantity() - 1);
+            if(inventory[target].Get_Quantity() == 0){
+                Delete_Item(target);
+            }
+        }
+        else{
+            output = name+"'s HP is full!\n";
+        }
+    }
+    else{
+        //Area for more cases
+    }
+    return output;
+}
+//Returns the targetted item from inventory
 Item Hero::Show_Inventory_Item(int target){
     return inventory[target];
 }
+//Returns a skill from hero's skill list
 Skill & Hero::Get_Target_Skill(int target){
     return skill_list[target];
 }
