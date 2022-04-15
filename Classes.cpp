@@ -1,5 +1,6 @@
 #include "glue.h"
 using namespace std;
+#include <iostream>
 //Skill class, modifies player's damage during calculations when used, different types have different costs
 Skill::Skill(){
     this->name = "Dummy";
@@ -93,6 +94,7 @@ void Item::Set_Quantity(int input){
 //Outputs all Item info
 string Item::Full_Display(){
     string output = "";
+    output += name+"\n";
     output = output + name+"\n"+to_string(value)+" currency\n";
     if(type == consumable){
         output = output + "Heals "+to_string(healing)+" HP\n";
@@ -104,6 +106,73 @@ string Item::Full_Display(){
         output = output + to_string(defense) + " DEF\n";
     }
     return output;
+}
+//Store Class
+Store::Store(){
+    name = "Empty";
+}
+//Constructor
+Store::Store(string name, int location, string flavor_text, Item for_sale[]){
+    this -> name = name;
+    this -> location = location;
+    this -> flavor_text = flavor_text;
+    //Strips items from provided array, putting them in the same slots, also increments the store_item_count;
+    for(int i = 0;i < 20;i++){
+        this -> for_sale[i] = for_sale[i];
+        if(this -> for_sale[i].Get_Name() != "Empty"){
+            this -> store_item_count++;
+        }
+    }
+}
+//Store Getters
+Item Store::Get_Chosen_Item(int selection){
+    return for_sale[selection];
+}
+//Store Functions
+//Shows all items available along with store name <needs to add flavor text>
+string Store::Show_Store_Inventory(){
+    int i = 0;
+    string output = "";
+    output += name + "\n";
+    while(for_sale[i].Get_Name() != "Empty"){
+        if(i % 2 == 0){
+            output += to_string(i)+": "+for_sale[i].Get_Name();
+            output += "     ";
+        }
+        else{
+            output += to_string(i)+": "+for_sale[i].Get_Name()+"\n";
+        }
+        i++;
+    }
+    return output;
+}
+//Checks gold to see if purchasable, returns error string or success gaining item and removing gold
+string Store::Buy_Item(Hero & player,int selection){
+    string result = "";
+    Item target = Get_Chosen_Item(selection);
+    if(player.Get_Gold_Count() >= target.Get_Value()){
+        player.Set_Gold_Count(player.Get_Gold_Count()-target.Get_Value());
+        player.Gain_Item(target);
+        result += "Thank you very much!\n"+player.Get_Name()+" gains "+target.Get_Name()+".\n";
+    }
+    else{
+        result = "Not enough gold!\n";
+    }
+    return result;
+}
+//Removes item and gives gold (will remove an item charge if a consumable is sold instead)
+string Store::Sell_Item(Hero & player,int selection){
+    string result = "";
+    Item target = player.Show_Inventory_Item(selection);
+    result = "I will take this "+target.Get_Name()+"\n"+player.Get_Name()+" receives "+to_string(target.Get_Value())+" gold.\n";
+    player.Set_Gold_Count(player.Get_Gold_Count()+target.Get_Value());
+    if(target.Get_Type() == consumable){
+        player.Reduce_Charge(selection);
+    }
+    else{
+        player.Delete_Item(selection);
+    }
+    return result;
 }
 //NPC Class
 NPC::NPC(){
@@ -383,6 +452,18 @@ void Hero::Delete_Item(int position){
     }
     inventory_count--;
 }
+//Reduces the charge of the selected item only if it is a consumable, will remove if 0
+void Hero::Reduce_Charge(int position){
+    Item target = inventory[position];
+    if(target.Get_Type() == consumable){
+        if(target.Get_Quantity() > 0){
+            inventory[position].Set_Quantity(target.Get_Quantity()-1);
+            if(inventory[position].Get_Quantity() == 0){
+                Delete_Item(position);
+            }
+        }
+    }
+}
 //Swaps a for b in inventory, limited by the size of it (error handler)
 void Hero::Swap_Inventory_Items(int a, int b){
     if(a < inventory_count && b < inventory_count){
@@ -430,10 +511,7 @@ string Hero::Use_Item(int target){
         if(tmp_hp != hp){
             int calculation = min(hp-tmp_hp,int(selected.Get_Healing()));
             output = name + " ate the "+selected.Get_Name()+" "+to_string(calculation)+" HP recovered.\n";
-            inventory[target].Set_Quantity(inventory[target].Get_Quantity() - 1);
-            if(inventory[target].Get_Quantity() == 0){
-                Delete_Item(target);
-            }
+            Reduce_Charge(target);
         }
         else{
             output = name+"'s HP is full!\n";

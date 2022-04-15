@@ -156,9 +156,25 @@ class Hero: public Character{
         void Update_Location(int x,int y, int map);
         void Delete_Item(int start);
         string Use_Item(int target);
+        void Reduce_Charge(int target);
         string Show_Info();
         string Inventory_Menu();
         void Swap_Inventory_Items(int a, int b);
+};
+class Store{
+    private:
+        string name;
+        int location;
+        string flavor_text;
+        Item for_sale[20];
+        int store_item_count;
+    public:
+        Store();
+        Store(string name, int location, string flavor_text, Item for_sale[]);
+        string Show_Store_Inventory();
+        string Buy_Item(Hero &, int selection);
+        string Sell_Item(Hero &, int selection);
+        Item Get_Chosen_Item(int selection);
 };
 
 //Functions from other files to make available to entire system

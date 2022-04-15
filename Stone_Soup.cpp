@@ -26,41 +26,56 @@ int main() {
 
 
 
-    cout << "Inventory Demonstration\n\n";
-    cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
-    cout << player.Inventory_Menu();
-    cout << player.Use_Item(3);
+    // cout << "Inventory Demonstration\n\n";
+    // cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
+    // cout << player.Inventory_Menu();
+    // cout << player.Use_Item(3);
 
 
-    // cout << player.Show_Inventory_Item(0).Get_Name();
-    // cout << player.Show_Inventory_Item(1).Get_Name();
-    // cout << player.Show_Inventory_Item(2).Get_Name();
-        cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
-    cout << player.Inventory_Menu()<<endl;
-    player.Gain_Item(burrito);
-    player.Gain_Item(taco);
-    cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
-    cout << player.Inventory_Menu()<<endl;
-    cout << player.Use_Item(4);
-    cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
+    // // cout << player.Show_Inventory_Item(0).Get_Name();
+    // // cout << player.Show_Inventory_Item(1).Get_Name();
+    // // cout << player.Show_Inventory_Item(2).Get_Name();
+    //     cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
+    // cout << player.Inventory_Menu()<<endl;
+    // player.Gain_Item(burrito);
+    // player.Gain_Item(taco);
+    // cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
+    // cout << player.Inventory_Menu()<<endl;
+    // cout << player.Use_Item(4);
+    // cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
 
-    cout << player.Inventory_Menu()<<endl;
-    player.Set_tmp_hp(player.Get_HP() -4);
-    cout << player.Use_Item(0);
-    cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
+    // cout << player.Inventory_Menu()<<endl;
+    // player.Set_tmp_hp(player.Get_HP() -4);
+    // cout << player.Use_Item(0);
+    // cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
 
-    cout << player.Use_Item(2);
-    cout << player.Inventory_Menu()<<endl;
-    cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
+    // cout << player.Use_Item(2);
+    // cout << player.Inventory_Menu()<<endl;
+    // cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
 
-    cout << player.Inventory_Menu()<<endl;
-    cout << player.Use_Item(0);
-    cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
+    // cout << player.Inventory_Menu()<<endl;
+    // cout << player.Use_Item(0);
+    // cout << "inv_count = "<<to_string(player.Get_Inventory_Count())<<"\n";
 
-    cout << player.Inventory_Menu()<<endl;
+    // cout << player.Inventory_Menu()<<endl;
  
     // //Monster enemy = Monster("slime",1,1,1,50,100,1,taco);
     // Combat_Loop(player,enemy);
     // cout << player.Show_Info();
+    Item store_tester[20] = {burrito,sword};
+    player.Set_tmp_hp(2);
+    Store s_test("Test Store",Dessert_Desert_Town,"Random Junk!",store_tester);
+    player.Set_Gold_Count(0);
+    cout << "current gold: " << player.Get_Gold_Count() << "\n\n";
+    cout << s_test.Show_Store_Inventory() << endl;
+    cout << s_test.Buy_Item(player,0)<< endl;
+    cout << "current gold: " <<player.Get_Gold_Count()<< endl;
+    cout << player.Inventory_Menu()<< endl;
+    cout << s_test.Sell_Item(player,1)<< endl;
+    cout << "current gold: " <<player.Get_Gold_Count() << endl << player.Inventory_Menu();
+    cout << s_test.Sell_Item(player,0)<< endl;
+    cout << "current gold: " <<player.Get_Gold_Count() << endl << player.Inventory_Menu();
+    cout << player.Use_Item(0);
+    cout << player.Inventory_Menu() << endl;
     return 0;
 }
