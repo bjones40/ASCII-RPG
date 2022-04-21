@@ -4,7 +4,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include "glue.h"
+#include "glue2.h"
 #include "playermovement.h"
 #include "terrain.h"
 
@@ -15,7 +15,10 @@ int main(int argc, char ** argv)
     //Basic States
     bool movement_state = 1;
     bool combat_state = 0;
+    bool death_state = 0;
+    bool playing = 1;
 
+    string movement_controls[5] = {"UP - Move Up", "DOWN - Move Down", "LEFT - Move Left", "RIGHT - Move Right", "E - Interact"};
 
     //Ncurses start
     initscr();
@@ -50,12 +53,12 @@ int main(int argc, char ** argv)
     wrefresh(controlswin);
 
     //displaying strings for controlswin
-    for (int i = 2; i < controlsyMax-4; i++)
+    /*for (int i = 2; i < controlsyMax-4; i++)
     {
         mvwaddstr(controlswin, i, 3, "C-Controls Example");
     }
     wrefresh(controlswin);
-
+    */
     
     Terrain * map = new Terrain(playwin);
     Player * p = new Player(playwin, 46, 5, '@', map);
@@ -66,31 +69,62 @@ int main(int argc, char ** argv)
 
     
 
-    if (movement_state)
+    while (playing)
     {
-        do
+        if (movement_state)
         {
-            p->display();
-            wrefresh(playwin);
-
-            if (p->getmv() == 'x')
+            do
             {
-                movement_state = 0;
-                combat_state = 1;
-                refresh();
-            }
+                for (int i = 0; i < 5; i++)
+                {
+                    mvwaddstr(controlswin, 1+i, 1, movement_controls[i].c_str());
+                }
+                wrefresh(controlswin);
 
-        }while(movement_state);
-    }
-    if (combat_state)
-    {
-        do
+                p->display();
+                wrefresh(playwin);
+
+                if (p->getmv() == 'x')
+                {
+                    movement_state = 0;
+                    combat_state = 1;
+
+                    for (int i = 0; i < 5; i++)
+                    {
+                        mvwaddstr(controlswin, 1+i, 1, "                  ");
+                    }
+                    wrefresh(controlswin);
+                    refresh();
+                }
+                //mvwaddstr(logwin, 1, 1, logarray.c_str());
+                //wrefresh(logwin);
+
+            }while(movement_state);
+        }
+        if (combat_state)
         {
-            //map->
-            Combat_Loop(player,enemy);
+            do
+            {
+                //bool battle_complete = 0;
+                if(Combat_Loop(player,enemy, logwin, controlswin))
+                {
+                    movement_state = 1;
+                    combat_state = 0;
+                }
+                else
+                {
+                    movement_state = 0;
+                    combat_state = 0;
+                    death_state = 1;
+                }
 
-
-        }while(combat_state);
+            }while(combat_state);
+        }
+        if (death_state)
+        {
+            mvwaddstr(logwin, 1, 1, "You ded man");
+            mvwaddstr(playwin, playyMax/2, playxMax/2, "RIPPERONI");
+        }
     }
 
     //Ncurses end

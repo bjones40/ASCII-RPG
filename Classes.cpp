@@ -1,4 +1,4 @@
-#include "glue.h"
+#include "glue2.h"
 using namespace std;
 #include <iostream>
 //Skill class, modifies player's damage during calculations when used, different types have different costs
