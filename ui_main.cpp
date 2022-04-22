@@ -71,6 +71,11 @@ int main(){
     map = newwin(43, 165, 0, 0);
     msg = newwin(17, 165, 43, 0);
     controlswin = newwin(60, 16, 0, 165);
+    
+    inventorywin = newwin(60, 165, 0, 0);
+    battlewin = newwin(43, 165, 0, 0);
+    statwin = newwin(17, 165, 0, 0);
+    
     keypad(menu_win, TRUE);
     mvprintw(12, 40, "Stone Soup");
     wborder(menu_win, 0, 0, 0, 0, 0, 0, 0, 0);
@@ -122,6 +127,7 @@ int main(){
                     wrefresh(controlswin);
                     
                     keypad(menu_win, FALSE);
+                    keypad(controlswin, TRUE);
 
 					break;
 				default:
@@ -133,6 +139,31 @@ int main(){
 			if(selection == 3)	
 				break;
 	}	
+    //scene transition + add to player control switch statement in main
+    s = wgetch(controlswin);
+			switch(s)
+			{	case KEY_BACKSPACE:
+					//s = highlight;
+                    scene.sceneUpdate();
+
+                    wborder(inventorywin, 0, 0, 0, 0, 0, 0, 0, 0);
+                    mvwaddstr(inventorywin, 1, 1, "Inventory");
+                    wrefresh(inventorywin); 
+                    wborder(controlswin, 0, 0, 0, 0, 0, 0, 0, 0);
+                    mvwaddstr(controlswin, 1, 1, "Controls");
+                    wrefresh(controlswin);
+                    
+                    keypad(controlswin, FALSE);
+                    keypad(inventorywin, TRUE);
+                    //print_inventory(inventorywin)
+
+					break;
+                default:
+					mvprintw(24, 0, " ", s, s);
+					refresh();
+					break;
+			}
+	}
     //delwin(map);
 	//delwin(msg);   
 	scene.sceneUpdate();	
