@@ -63,6 +63,7 @@ int main(){
     int highlight = 1;
     int selection = 0;
     int s;
+    bool newgame = 0;
    // int n_list = sizeof(list) / sizeof(char *);
     scene.startCurses();
     scene.setSize(startx, starty);
@@ -72,9 +73,9 @@ int main(){
     msg = newwin(17, 165, 43, 0);
     controlswin = newwin(60, 16, 0, 165);
     
-    inventorywin = newwin(60, 165, 0, 0);
+    inventorywin = newwin(43, 165, 6, 0);
     battlewin = newwin(43, 165, 0, 0);
-    statwin = newwin(17, 165, 0, 0);
+    statwin = newwin(6, 165, 0, 0);
     
     keypad(menu_win, TRUE);
     mvprintw(12, 40, "Stone Soup");
@@ -90,55 +91,60 @@ int main(){
 	while(1){
     //scene.start_screen();
 	//print_menu(menu_win, highlight);
-	s = wgetch(menu_win);
-			switch(s)
-			{	case KEY_UP:
-					if(highlight == 1)
-						highlight = n_list;
-					else
-						--highlight;
+	if(newgame == 0){
+        s = wgetch(menu_win);
+                switch(s)
+                {	case KEY_UP:
+                        if(highlight == 1)
+                            highlight = n_list;
+                        else
+                            --highlight;
 
-			        //scene.main_menu(menu_win, highlight);
-			        print_menu(menu_win, highlight);
-					break;
-				case KEY_DOWN:
-					if(highlight == n_list)
-						highlight = 1;
-					else 
-						++highlight;
+                        //scene.main_menu(menu_win, highlight);
+                        print_menu(menu_win, highlight);
+                        break;
+                    case KEY_DOWN:
+                        if(highlight == n_list)
+                            highlight = 1;
+                        else 
+                            ++highlight;
 
-			        //scene.main_menu(menu_win, highlight);
-			        print_menu(menu_win, highlight);
-					break;
-				case 10:
-					s = highlight;
-                    scene.sceneUpdate();
+                        //scene.main_menu(menu_win, highlight);
+                        print_menu(menu_win, highlight);
+                        break;
+                    case 10:
+                        s = highlight;
+                        scene.sceneUpdate();
 
-                    wborder(map, 0, 0, 0, 0, 0, 0, 0, 0);
-                    mvwaddstr(map, 1, 1, "Map");
-                    wrefresh(map);
+                        wborder(map, 0, 0, 0, 0, 0, 0, 0, 0);
+                        mvwaddstr(map, 1, 1, "Map");
+                        wrefresh(map);
 
-                    wborder(msg, 0, 0, 0, 0, 0, 0, 0, 0);
-                    mvwaddstr(msg, 1, 1, "Message Log"); 
-                    wrefresh(msg);
-                    
-                    wborder(controlswin, 0, 0, 0, 0, 0, 0, 0, 0);
-                    mvwaddstr(controlswin, 1, 1, "Controls");
-                    wrefresh(controlswin);
-                    
-                    keypad(menu_win, FALSE);
-                    keypad(controlswin, TRUE);
-
-					break;
-				default:
-					mvprintw(24, 0, " ", s, s);
-					refresh();
-					break;
-			}
-            //print menu
-			if(selection == 3)	
-				break;
-	}	
+                        wborder(msg, 0, 0, 0, 0, 0, 0, 0, 0);
+                        mvwaddstr(msg, 1, 1, "Message Log"); 
+                        wrefresh(msg);
+                        
+                        wborder(controlswin, 0, 0, 0, 0, 0, 0, 0, 0);
+                        mvwaddstr(controlswin, 1, 1, "Controls");
+                        wrefresh(controlswin);
+                        
+                        keypad(menu_win, FALSE);
+                        keypad(controlswin, TRUE);
+                        for(int i=0; i<40;i++){
+                            mvwprintw(controlswin, i+2, 2, "Key");
+                        }
+                        wrefresh(controlswin);
+                        newgame = 1;
+                        break;
+                    default:
+                        mvprintw(24, 0, " ", s, s);
+                        refresh();
+                        break;
+                }
+                //print menu
+                if(selection == 3)	
+                    break;
+    }
     //scene transition + add to player control switch statement in main
     s = wgetch(controlswin);
 			switch(s)
@@ -146,6 +152,9 @@ int main(){
 					//s = highlight;
                     scene.sceneUpdate();
 
+                    wborder(statwin, 0, 0, 0, 0, 0, 0, 0, 0);
+                    mvwaddstr(statwin, 1, 1, "Character Stats");
+                    wrefresh(statwin); 
                     wborder(inventorywin, 0, 0, 0, 0, 0, 0, 0, 0);
                     mvwaddstr(inventorywin, 1, 1, "Inventory");
                     wrefresh(inventorywin); 
@@ -156,7 +165,14 @@ int main(){
                     keypad(controlswin, FALSE);
                     keypad(inventorywin, TRUE);
                     //print_inventory(inventorywin)
-
+                    //placeholder print
+                    for(int i=0; i<40;i++){
+			            mvwprintw(inventorywin, i+2, 2, "Inventory list item");
+			            mvwprintw(controlswin, i+2, 2, "Key");
+                    }
+                    wrefresh(inventorywin); 
+                    wrefresh(controlswin);
+                    newgame = 0;
 					break;
                 default:
 					mvprintw(24, 0, " ", s, s);
