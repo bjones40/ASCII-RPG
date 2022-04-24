@@ -4,7 +4,7 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
-#include "glue2.h"
+#include "glue.h"
 #include "playermovement.h"
 #include "terrain.h"
 

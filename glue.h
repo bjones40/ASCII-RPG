@@ -1,6 +1,7 @@
 #ifndef SOUP_H_GUARD
 #define SOUP_H_GUARD
 #include <string>
+#include <ncurses.h>
 
 using namespace std;
 //Differentiates item functions
@@ -179,8 +180,8 @@ class Store{
 
 //Functions from other files to make available to entire system
 void Hello_World();
-void Combat_Loop(Hero &,Monster enemy);
-void Rewards(Hero &,Monster &);
+bool Combat_Loop(Hero &,Monster enemy, WINDOW * logwin, WINDOW * controlswin);
+void Rewards(Hero &,Monster &, WINDOW * logwin);
 Monster Parse_Monster_Tables(Hero,int);
 
 #endif
