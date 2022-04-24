@@ -19,6 +19,8 @@ int main(int argc, char ** argv)
     bool playing = 1;
 
     string movement_controls[5] = {"UP - Move Up", "DOWN - Move Down", "LEFT - Move Left", "RIGHT - Move Right", "E - Interact"};
+    srand(time(NULL));
+    int encounterchance = 0;
 
     //Ncurses start
     initscr();
@@ -79,17 +81,22 @@ int main(int argc, char ** argv)
                 p->display();
                 wrefresh(playwin);
 
-                if (p->getmv() == 'x')
+                if (p->getmv() == 1)
                 {
-                    movement_state = 0;
-                    combat_state = 1;
+                    encounterchance = rand() % 100 + 1;
 
-                    for (int i = 0; i < 5; i++)
+                    if (encounterchance > 0 && encounterchance <= 10)
                     {
-                        mvwaddstr(controlswin, 1+i, 1, "                  ");
+                        movement_state = 0;
+                        combat_state = 1;
+
+                        for (int i = 0; i < 5; i++)
+                        {
+                            mvwaddstr(controlswin, 1+i, 1, "                  ");
+                        }
+                        wrefresh(controlswin);
+                        refresh();
                     }
-                    wrefresh(controlswin);
-                    refresh();
                 }
                 //mvwaddstr(logwin, 1, 1, logarray.c_str());
                 //wrefresh(logwin);
@@ -98,19 +105,25 @@ int main(int argc, char ** argv)
         }
         if (combat_state)
         {
+            if (encounterchance == 10)
+                enemy = Parse_Monster_Tables(player,rare_enemy);
+            else
+                enemy = Parse_Monster_Tables(player,normal_enemy);
+            
             do
             {
-                //bool battle_complete = 0;
-                if(Combat_Loop(player,enemy, logwin, controlswin))
+                if(Combat_Loop(player, enemy, logwin, controlswin))
                 {
                     movement_state = 1;
                     combat_state = 0;
+                    encounterchance = 0;
                 }
                 else
                 {
                     movement_state = 0;
                     combat_state = 0;
                     death_state = 1;
+                    encounterchance = 0;
                 }
 
             }while(combat_state);

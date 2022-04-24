@@ -33,7 +33,7 @@ Monster Parse_Monster_Tables(Hero player,int table){
 }
 
 int loginc = 0;
-string logarray[15];
+string logarray[13];
 
 void DisplayToLog(string output, WINDOW * logwin)
 {
@@ -45,16 +45,16 @@ void DisplayToLog(string output, WINDOW * logwin)
     
     loginc++;
 
-    if (loginc >= 14)
+    if (loginc >= 12)
     {
-        loginc = 14;
+        loginc = 12;
 
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 13; i++)
         {
             mvwaddstr(logwin, 1+i, 1, "                                                   ");
         }
 
-        for (int i = 0; i < 15; i++)
+        for (int i = 0; i < 13; i++)
         {
             logarray[i] = logarray[i+1];
             mvwaddstr(logwin, 1+i, 1, logarray[i].c_str());

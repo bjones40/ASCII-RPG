@@ -88,15 +88,19 @@ int Player::getmv()
     {
         case KEY_UP:
             mvup();
+            choice = 1;
             break;
         case KEY_DOWN:
             mvdown();
+            choice = 1;
             break;
         case KEY_LEFT:
             mvleft();
+            choice = 1;
             break;
         case KEY_RIGHT:
             mvright();
+            choice = 1;
             break;
         default:
             break;
