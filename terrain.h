@@ -65,20 +65,33 @@ class Terrain
         Tile tiles[200][200];
 
         void generatetiles();
-        void generatemap();
         void cleanmap();
+        void displayCamera(int pyLoc, int pxLoc, char pchar);
+        int get_map_xMax();
+        int get_map_yMax();
+        int pstartX, pstartY;
     private:
         WINDOW * curwin;
-        int xMax, yMax;
+        int mapxMax, mapyMax, CamxMax, CamyMax;
 };
 
 Terrain::Terrain(WINDOW * win)
 {
     curwin = win;
-    getmaxyx(curwin, yMax, xMax);
+    getmaxyx(curwin, CamyMax, CamxMax);
     //keypad(curwin, true);
     //Tile tilemap[xMax][yMax];
     generatetiles();
+}
+
+
+int Terrain::get_map_xMax()
+{
+    return mapxMax;
+}
+int Terrain::get_map_yMax()
+{
+    return mapyMax;
 }
 
 void Terrain::generatetiles()
@@ -103,8 +116,8 @@ void Terrain::generatetiles()
                         {"AAAA                ^^  ^             ** ^   ^ A"}};
 */
 
-    int columns = 163;
-    int rows = 51;
+    int columns = mapxMax = 163;
+    int rows = mapyMax = 51;
     char map[][columns] = 
     {
     "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
@@ -159,31 +172,95 @@ void Terrain::generatetiles()
     "|                                                                                   rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr|",
     "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"};
     
-    for (int i = 0; i < rows; i++)
+    // creating the map, setting tiles, and xLoc, and yLoc of each tile
+    for (int i = 0; i < mapyMax; i++)
     {
-        for (int j = 0; j < columns; j++)
+        for (int j = 0; j < mapxMax; j++)
         {
-            tiles[j+1][i+1].set_tilechar(map[i][j]);
+            tiles[j][i].set_tilechar(map[i][j]);
+            tiles[j][i].xLoc = i;
+            tiles[j][i].yLoc = j;
             
-            //tiles[i][j].xLoc = i;
-            //tiles[i][j].yLoc = j;
+            if (tiles[j][i].get_tilechar() == '#')
+                tiles[j][i].set_traverse(0);
             //mvwaddch(curwin, j, i, tiles[i][j].get_tilechar());
         }
     }
+}
 
-    for (int i = 1; i < xMax-1; i++)
+void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
+{
+    // camera for zoomed in view of map, with its own x and y max
+    for (int i = 1; i < CamxMax-1; i++)
     {
-        for (int j = 1; j < yMax-1; j++)
+        for (int j = 1; j < CamyMax-1; j++)
         {
-            tiles[i][j].xLoc = i;
-            tiles[i][j].yLoc = j;
+            int displayX, displayY;
+            
 
-            if (tiles[i][j].get_tilechar() == '#')
-                tiles[i][j].set_traverse(0);
+            // if player is far top-left of map
+            if (pxLoc < mapxMax && pxLoc <= (CamxMax-1)/2)
+            {
+                displayX = i-1;
+            }
+            if (pyLoc < mapyMax && pyLoc <= (CamyMax-1)/2)
+            {
+                displayY = j-1;
+            }
 
-            mvwaddch(curwin, j, i, tiles[i][j].get_tilechar());
+            // if player is anywhere in middle of map
+            if (pxLoc < mapxMax && pxLoc > (CamxMax-1)/2)
+            {
+                displayX = i + (pxLoc - (CamxMax-1)/2);
+            }
+            if (pyLoc < mapyMax && pyLoc > (CamyMax-1)/2)
+            {
+                displayY = j + (pyLoc - (CamyMax-1)/2);
+            }
+
+            // if player is far bottom-right of map
+            if (pxLoc < mapxMax && pxLoc >= mapxMax - (CamxMax-1)/2)
+            {
+                displayX = i + (mapxMax - (CamxMax - 1));
+            }
+            if (pyLoc < mapyMax && pyLoc >= mapyMax - (CamyMax-1)/2)
+            {
+                displayY = j + (mapyMax - (CamyMax - 1));
+            }
+
+            mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
         }
     }
+
+    int newpyLoc, newpxLoc;
+    if (pxLoc < mapxMax && pxLoc <= (CamxMax-1)/2)
+    {
+        newpxLoc = pxLoc+1;
+    }
+    if (pxLoc < mapxMax && pxLoc >= (CamxMax-1)/2)
+    {
+        newpxLoc = (CamxMax-1)/2;
+    }
+
+    if (pyLoc < mapyMax && pyLoc <= (CamyMax-1)/2)
+    {
+        newpyLoc = pyLoc+1;
+    }
+    if (pyLoc < mapyMax && pyLoc >= (CamyMax-1)/2)
+    {
+        newpyLoc = (CamyMax-1)/2;
+    }
+
+    if (pxLoc < mapxMax && pxLoc >= mapxMax - (CamxMax-1)/2)
+    {
+        newpxLoc = pxLoc - (mapxMax - CamxMax + 1);
+    }
+    if (pyLoc < mapyMax && pyLoc >= mapyMax - (CamyMax-1)/2)
+    {
+        newpyLoc = pyLoc - (mapyMax - CamyMax + 1);
+    }
+
+    mvwaddch(curwin, newpyLoc, newpxLoc, pchar);
     wrefresh(curwin);
 
 }
