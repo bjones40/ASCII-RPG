@@ -190,6 +190,9 @@ void Terrain::generatetiles()
 
 void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
 {
+    int halfCamxOffset = (CamxMax-1)/2;
+    int halfCamyOffset = (CamyMax-1)/2;
+
     // camera for zoomed in view of map, with its own x and y max
     for (int i = 1; i < CamxMax-1; i++)
     {
@@ -199,31 +202,31 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
             
 
             // if player is far top-left of map
-            if (pxLoc < mapxMax && pxLoc <= (CamxMax-1)/2)
+            if (pxLoc < mapxMax && pxLoc <= halfCamxOffset)
             {
                 displayX = i-1;
             }
-            if (pyLoc < mapyMax && pyLoc <= (CamyMax-1)/2)
+            if (pyLoc < mapyMax && pyLoc <= halfCamyOffset)
             {
                 displayY = j-1;
             }
 
             // if player is anywhere in middle of map
-            if (pxLoc < mapxMax && pxLoc > (CamxMax-1)/2)
+            if (pxLoc < mapxMax && pxLoc > halfCamxOffset)
             {
-                displayX = i + (pxLoc - (CamxMax-1)/2);
+                displayX = i + (pxLoc - halfCamxOffset);
             }
-            if (pyLoc < mapyMax && pyLoc > (CamyMax-1)/2)
+            if (pyLoc < mapyMax && pyLoc > halfCamyOffset)
             {
-                displayY = j + (pyLoc - (CamyMax-1)/2);
+                displayY = j + (pyLoc - halfCamyOffset);
             }
 
             // if player is far bottom-right of map
-            if (pxLoc < mapxMax && pxLoc >= mapxMax - (CamxMax-1)/2)
+            if (pxLoc < mapxMax && pxLoc >= mapxMax - halfCamxOffset)
             {
                 displayX = i + (mapxMax - (CamxMax - 1));
             }
-            if (pyLoc < mapyMax && pyLoc >= mapyMax - (CamyMax-1)/2)
+            if (pyLoc < mapyMax && pyLoc >= mapyMax - halfCamyOffset)
             {
                 displayY = j + (mapyMax - (CamyMax - 1));
             }
@@ -233,31 +236,39 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
     }
 
     int newpyLoc, newpxLoc;
-    if (pxLoc < mapxMax && pxLoc <= (CamxMax-1)/2)
+    
+    // player x location adjustment for camera display
+    if (pxLoc < mapxMax && pxLoc <= halfCamxOffset)
     {
-        newpxLoc = pxLoc+1;
+        newpxLoc = pxLoc + 1; // 1 added due to ncurses border
     }
-    if (pxLoc < mapxMax && pxLoc >= (CamxMax-1)/2)
+    
+    if (pxLoc < mapxMax && pxLoc >= halfCamxOffset)
     {
-        newpxLoc = (CamxMax-1)/2;
-    }
-
-    if (pyLoc < mapyMax && pyLoc <= (CamyMax-1)/2)
-    {
-        newpyLoc = pyLoc+1;
-    }
-    if (pyLoc < mapyMax && pyLoc >= (CamyMax-1)/2)
-    {
-        newpyLoc = (CamyMax-1)/2;
+        newpxLoc = halfCamxOffset; // keeps the player at the center of the screen
     }
 
-    if (pxLoc < mapxMax && pxLoc >= mapxMax - (CamxMax-1)/2)
+    if (pxLoc < mapxMax && pxLoc >= mapxMax - halfCamxOffset)
     {
-        newpxLoc = pxLoc - (mapxMax - CamxMax + 1);
+        newpxLoc = pxLoc - (mapxMax - (CamxMax - 1)); 
+        // adjusts player's displayed position by offsetting it based on the maps edge and camera's max size
     }
-    if (pyLoc < mapyMax && pyLoc >= mapyMax - (CamyMax-1)/2)
+    
+
+    // player y location adjustment for camera display
+    if (pyLoc < mapyMax && pyLoc <= halfCamyOffset) 
     {
-        newpyLoc = pyLoc - (mapyMax - CamyMax + 1);
+        newpyLoc = pyLoc + 1;
+    }
+    
+    if (pyLoc < mapyMax && pyLoc >= halfCamyOffset)
+    {
+        newpyLoc = halfCamyOffset;
+    }
+    
+    if (pyLoc < mapyMax && pyLoc >= mapyMax - halfCamyOffset)
+    {
+        newpyLoc = pyLoc - (mapyMax - (CamyMax - 1));
     }
 
     mvwaddch(curwin, newpyLoc, newpxLoc, pchar);
