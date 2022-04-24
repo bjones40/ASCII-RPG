@@ -25,7 +25,8 @@ int main(int argc, char ** argv)
     noecho(); //hides key press input
     cbreak(); //allows exit on ctrl-c
     curs_set(0);
-
+    
+    
     //borders for windows
     int left, right, top, bottom, tlc, trc, blc, brc;
     left = right = '|';
@@ -52,17 +53,11 @@ int main(int argc, char ** argv)
     wrefresh(logwin);
     wrefresh(controlswin);
 
-    //displaying strings for controlswin
-    /*for (int i = 2; i < controlsyMax-4; i++)
-    {
-        mvwaddstr(controlswin, i, 3, "C-Controls Example");
-    }
-    wrefresh(controlswin);
-    */
     
     Terrain * map = new Terrain(playwin);
+    map->generatetiles();
     Player * p = new Player(playwin, 20, 60, '@', map);
-    //map->generatetiles();
+    //map->generatetiles(163, 51, stuff);
 
     Hero player = Hero("man",1,0,5,5,5,5,0,0,0);
     Monster enemy = Parse_Monster_Tables(player,normal_enemy);

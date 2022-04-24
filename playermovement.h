@@ -44,8 +44,8 @@ void Player::mvup()
     map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
     //mvwaddch(curwin, yLoc, xLoc, map_char);
     yLoc--;
-    if(yLoc < 1)
-        yLoc = 1;
+    if(yLoc < 2)
+        yLoc = 2;
 }
 
 void Player::mvdown()
@@ -66,8 +66,8 @@ void Player::mvleft()
     map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
     //mvwaddch(curwin, yLoc, xLoc, map_char);
     xLoc--;
-    if(xLoc < 1)
-        xLoc = 1;
+    if(xLoc < 2)
+        xLoc = 2;
 }
 
 void Player::mvright()

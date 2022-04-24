@@ -1,6 +1,14 @@
 #ifndef _TERRAIN_H_
 #define _TERRAIN_H_
 
+#define MAGENTA_PAIR 1
+#define BLUE_PAIR 2
+#define WHITE_PAIR 3
+#define CYAN_PAIR 4
+#define YELLOW_PAIR 5
+#define RED_PAIR 6
+#define GREEN_PAIR 7
+
 class Tile
 {
     public:
@@ -81,7 +89,7 @@ Terrain::Terrain(WINDOW * win)
     getmaxyx(curwin, CamyMax, CamxMax);
     //keypad(curwin, true);
     //Tile tilemap[xMax][yMax];
-    generatetiles();
+    //generatetiles();
 }
 
 
@@ -94,85 +102,69 @@ int Terrain::get_map_yMax()
     return mapyMax;
 }
 
-void Terrain::generatetiles()
+void Terrain::generatetiles()//int mapxSize, int mapySize, char map[][mapxSize])
 {
     //Tile tilemap[xMax][yMax];
-/*
-    char map[16][49] = {{"   AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"},
-                        {"                AAAAAAAAAAAAAAA                 "},
-                        {"AAAAAAAAAA    AAAAAAA          AAAAA  A      AAA"},
-                        {"AA     AA     AAAAAAAAAA     AAAAA        AA    "},
-                        {"                AAAAA  AAA    A   **  * *** **AA"},
-                        {"AAAAAAA  AA     AA  A   A     AAAA******* *  ***"},
-                        {"AAAA  AAA  AA   AAAAAA   AA  AA      **  *   **A"},
-                        {"AAA       ***** ^^ ^^^^ ** ^ *^*^*          AAAA"},
-                        {"AA ^^^*^*        ^**^*^            *^*        AA"},
-                        {"AAAA                ^^  ^  ^          ** ^   ^ A"},
-                        {"AAA             ^^   ^^ ** ^ *^             AAAA"},
-                        {"AA ^^            ^**^*^            *^*        AA"},
-                        {"AAAA                ^^  ^  ^          ** ^   ^ A"},
-                        {"AAA       *  **         ** ^ *^*^*          AAAA"},
-                        {"AA ^  *^*        ^  ^*^            *^*        AA"},
-                        {"AAAA                ^^  ^             ** ^   ^ A"}};
-*/
 
-    int columns = mapxMax = 163;
-    int rows = mapyMax = 51;
+    int columns = mapxMax = 164;
+    int rows = mapyMax = 52;
     char map[][columns] = 
     {
-    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
-    "|~~~~~~~~~~~~~~~#                                                                                                                                                 |",
-    "+~~~~~~~~~~~~~~~#############################################################################################################################################  cc +",
-    "|~~~~~~~~~~~~~~~#                                                                                                                                           #  cc |",
-    "+~~~~~~~~~~~~~~~#                                                                                                                                           #     +",
-    "|~~~~~~~~~~~~~~~#                                                                                                                                           #     |",
-    "+~~~~~~~~~~~~~~~###     #######################################################          ####                                                               #     +",
-    "|~~~~~~~~~~~~~~~~~#     #llllllllllllllllllllllllllllllllllllllllllllllllllllll          lll#                                                               #     |",
-    "+~~~~~~~~~~~~~~~~~#     #lcc        K         cc           KK         cc           cccccc  l#                                                               #     +",
-    "|~~~~~~~~~~~~~~~~~#     #llllllllllllllllll   cc           KK          c      K    cKccKc  l#                                                               #     |",
-    "+~~################     ##################l          cc                            cccKcc  l#                                                               #     +",
-    "|~~#                                     #l          cc         ccc         c              l#                               ^^^   ^^^   ^^^   ^^^           #     |",
-    "+~~#                                     #l  K                  cKc         c      K                                        ^^^   ^^^   ^^^   ^^^           #     +",
-    "|~~#    CCCCCCCCCC         vvvvvvvvvv    #l              K      ccc    KK  cc                                                                               #     |",
-    "+~ #    CCCCCCCCCC         vvvvvvvvvv    #l              K                 ccc         cc  l#                                                               #     +",
-    "|~ #    CCCCCCCCCC         vvvvvvvvvv    #lccc       c                K               ccc  l#                                                               #     |",
-    "+~ #                                     #lcKc        cc      ccc                     cccc l#                               ^^^   ^^^   ^^^   ^^^           #     +",
-    "|~ #    CCCCCCCCCC         vvvvvvvvvv    #lccc        cc      cKc       ccc          ccccc l#                               ^^^   ^^^   ^^^   ^^^           #     |",
-    "+~ #    CCCCCCCCCC         vvvvvvvvvv    #l      K            ccc       ccc                l#                                                               #     +",
-    "|  #    CCCCCCCCCC         vvvvvvvvvv    #llllllllllllllllllllllllllllllllllllllllllllllllll#                                                               #     |",
-    "+  #                                     ####################################################                               ^^^   ^^^   ^^^   ^^^           #     +",
-    "|  #                                                                                                                        ^^^   ^^^   ^^^   ^^^           #     |",
-    "+  #                                                                                                                                                        #     +",
-    "|  #                                                                                                                                                        #     |",
-    "+  #                                     #######################       ######################                               ^^^   ^^^   ^^^   ^^^           #     +",
-    "|  #                                     #llllccccclllcccccllll#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     |",
-    "+  #                                     #llcccKcccccccccccKcll#       #                    #                                                               #     +",
-    "|  #                                     #lcccKcccccccccccccccl#       #                    #                                                               #     |",
-    "+  #                                     #lccccccccccccKccccccl#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     +",
-    "|  #                                     #lcccccccccccccccccccl#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     |",
-    "+  #                                     #lcKccccccccccKKcccccl#       #                    #                                                     ################+",
-    "|  #                                     #lcccccccccKcccccccccl#       #                    #                                                                     |",
-    "+  #                                     #lccccKccccccccccccccl#       #                    #                                                                     +",
-    "|  #                                     #llcccccccccccccccccll#       #                    #                                                                     |",
-    "+  #                                     #lllccccccccccccKcclll#       #                    #                                                     ################+",
-    "|  #                                     #llllccccKccccccccllll#       #                    #                                                               #     |",
-    "+  #################     ##########/######lllllllccccccclllllll#       #                    #                                                               #     +",
-    "|                  #     #        # #llllll#######################   ###################    #                                                               #     |",
-    "+                  #     #        # #lcKccl#             #                  #          #    #                                                               #     +",
-    "|                  #     #        # #lKcKcl#                                #  $       #    #                                                               #     |",
-    "+                  #     #        # #lKcccl#             ####################          #    #                                                               #     +",
-    "|                  #     #        # #llllll#                   #            #          #    #      rrrrrrr                                   rrrrrrrrr      #     |",
-    "+#########         #     #        # ########                   #            ######     #    #    rrrrrrrrrrrr                            rrrrrrrrrrrrrrrrr  #     +",
-    "|        #         #     #        #                                                    #    ####rrrrrrrrrrrrrrrrrr###################rrrrrrrrrrrrrrrrrrrrr##r     |",
-    "+        ###########     #        ##########                   #                       #      rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr    +",
-    "|                        #                 #                   #                       #         rrrrrrrrrrrrrrrrrrrrrrr  rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr     |",
-    "+        #################                 #                   #                       #       rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr     +",
-    "|        #                                 #############################################    rrrrrrr   rrrrrrrrrrrrrrrr  rrrrrrrrrrrrrrrrrrrrrr  rrrrrrrrrrr       |",
-    "+#########                                                                                  rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr     +",
-    "|                                                                                   rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr|",
-    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"};
+    "                                                                                                                                                                    ",
+    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+    " |~~~~~~~~~~~~~~~#                                                                                                                                                 |",
+    " +~~~~~~~~~~~~~~~#############################################################################################################################################  cc +",
+    " |~~~~~~~~~~~~~~~#                                                                                                                                           #  cc |",
+    " +~~~~~~~~~~~~~~~#                                                                                                                                           #     +",
+    " |~~~~~~~~~~~~~~~#                                                                                                                                           #     |",
+    " +~~~~~~~~~~~~~~~###     #######################################################          ####                                                               #     +",
+    " |~~~~~~~~~~~~~~~~~#     #llllllllllllllllllllllllllllllllllllllllllllllllllllll          lll#                                                               #     |",
+    " +~~~~~~~~~~~~~~~~~#     #lcc        K         cc           KK         cc           cccccc  l#                                                               #     +",
+    " |~~~~~~~~~~~~~~~~~#     #llllllllllllllllll   cc           KK          c      K    cKccKc  l#                                                               #     |",
+    " +~~################     ##################l          cc                            cccKcc  l#                                                               #     +",
+    " |~~#                                     #l          cc         ccc         c              l#                               ^^^   ^^^   ^^^   ^^^           #     |",
+    " +~~#                                     #l  K                  cKc         c      K                                        ^^^   ^^^   ^^^   ^^^           #     +",
+    " |~~#    CCCCCCCCCC         vvvvvvvvvv    #l              K      ccc    KK  cc                                                                               #     |",
+    " +~ #    CCCCCCCCCC         vvvvvvvvvv    #l              K                 ccc         cc  l#                                                               #     +",
+    " |~ #    CCCCCCCCCC         vvvvvvvvvv    #lccc       c                K               ccc  l#                                                               #     |",
+    " +~ #                                     #lcKc        cc      ccc                     cccc l#                               ^^^   ^^^   ^^^   ^^^           #     +",
+    " |~ #    CCCCCCCCCC         vvvvvvvvvv    #lccc        cc      cKc       ccc          ccccc l#                               ^^^   ^^^   ^^^   ^^^           #     |",
+    " +~ #    CCCCCCCCCC         vvvvvvvvvv    #l      K            ccc       ccc                l#                                                               #     +",
+    " |  #    CCCCCCCCCC         vvvvvvvvvv    #llllllllllllllllllllllllllllllllllllllllllllllllll#                                                               #     |",
+    " +  #                                     ####################################################                               ^^^   ^^^   ^^^   ^^^           #     +",
+    " |  #                                                                                                                        ^^^   ^^^   ^^^   ^^^           #     |",
+    " +  #                                                                                                                                                        #     +",
+    " |  #                                                                                                                                                        #     |",
+    " +  #                                     #######################       ######################                               ^^^   ^^^   ^^^   ^^^           #     +",
+    " |  #                                     #llllccccclllcccccllll#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     |",
+    " +  #                                     #llcccKcccccccccccKcll#       #                    #                                                               #     +",
+    " |  #                                     #lcccKcccccccccccccccl#       #                    #                                                               #     |",
+    " +  #                                     #lccccccccccccKccccccl#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     +",
+    " |  #                                     #lcccccccccccccccccccl#       #                    #                               ^^^   ^^^   ^^^   ^^^           #     |",
+    " +  #                                     #lcKccccccccccKKcccccl#       #                    #                                                     ################+",
+    " |  #                                     #lcccccccccKcccccccccl#       #                    #                                                                     |",
+    " +  #                                     #lccccKccccccccccccccl#       #                    #                                                                     +",
+    " |  #                                     #llcccccccccccccccccll#       #                    #                                                                     |",
+    " +  #                                     #lllccccccccccccKcclll#       #                    #                                                     ################+",
+    " |  #                                     #llllccccKccccccccllll#       #                    #                                                               #     |",
+    " +  #################     ##########/######lllllllccccccclllllll#       #                    #                                                               #     +",
+    " |                  #     #        # #llllll#######################   ###################    #                                                               #     |",
+    " +                  #     #        # #lcKccl#             #                  #          #    #                                                               #     +",
+    " |                  #     #        # #lKcKcl#                                #  $       #    #                                                               #     |",
+    " +                  #     #        # #lKcccl#             ####################          #    #                                                               #     +",
+    " |                  #     #        # #llllll#                   #            #          #    #      rrrrrrr                                   rrrrrrrrr      #     |",
+    " +#########         #     #        # ########                   #            ######     #    #    rrrrrrrrrrrr                            rrrrrrrrrrrrrrrrr  #     +",
+    " |        #         #     #        #                                                    #    ####rrrrrrrrrrrrrrrrrr###################rrrrrrrrrrrrrrrrrrrrr##r     |",
+    " +        ###########     #        ##########                   #                       #      rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr    +",
+    " |                        #                 #                   #                       #         rrrrrrrrrrrrrrrrrrrrrrr  rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr     |",
+    " +        #################                 #                   #                       #       rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr     +",
+    " |        #                                 #############################################    rrrrrrr   rrrrrrrrrrrrrrrr  rrrrrrrrrrrrrrrrrrrrrr  rrrrrrrrrrr       |",
+    " +#########                                                                                  rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr     +",
+    " |                                                                                   rrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr|",
+    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"};
     
     // creating the map, setting tiles, and xLoc, and yLoc of each tile
+    
     for (int i = 0; i < mapyMax; i++)
     {
         for (int j = 0; j < mapxMax; j++)
@@ -183,7 +175,6 @@ void Terrain::generatetiles()
             
             if (tiles[j][i].get_tilechar() == '#')
                 tiles[j][i].set_traverse(0);
-            //mvwaddch(curwin, j, i, tiles[i][j].get_tilechar());
         }
     }
 }
@@ -193,6 +184,19 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
     int halfCamxOffset = (CamxMax-1)/2;
     int halfCamyOffset = (CamyMax-1)/2;
 
+    //initialize color pairs if can be displayed
+    if (has_colors())
+    {
+        start_color();
+        init_pair(MAGENTA_PAIR, COLOR_MAGENTA, COLOR_BLACK);
+        init_pair(BLUE_PAIR, COLOR_BLUE, COLOR_BLACK);
+        init_pair(WHITE_PAIR, COLOR_WHITE, COLOR_BLACK);
+        init_pair(CYAN_PAIR, COLOR_CYAN, COLOR_BLACK);
+        init_pair(YELLOW_PAIR, COLOR_YELLOW, COLOR_BLACK);
+        init_pair(RED_PAIR, COLOR_RED, COLOR_BLACK);
+        init_pair(GREEN_PAIR, COLOR_GREEN, COLOR_BLACK);
+    }
+    
     // camera for zoomed in view of map, with its own x and y max
     for (int i = 1; i < CamxMax-1; i++)
     {
@@ -204,11 +208,11 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
             // if player is far top-left of map
             if (pxLoc < mapxMax && pxLoc <= halfCamxOffset)
             {
-                displayX = i-1;
+                displayX = i;
             }
             if (pyLoc < mapyMax && pyLoc <= halfCamyOffset)
             {
-                displayY = j-1;
+                displayY = j;
             }
 
             // if player is anywhere in middle of map
@@ -231,7 +235,65 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
                 displayY = j + (mapyMax - (CamyMax - 1));
             }
 
-            mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+            
+            // turn on colors for specified characters if colors are possible
+            if (has_colors())
+            {
+                char displayedchar = tiles[displayX][displayY].get_tilechar();
+                switch (displayedchar)
+                {
+                    case 'c':
+                        wattron(curwin, COLOR_PAIR(MAGENTA_PAIR));
+                        mvwaddch(curwin, j, i, displayedchar);
+                        wattroff(curwin, COLOR_PAIR(MAGENTA_PAIR));
+                        break;
+                    case '+':
+                    case '-':
+                    case '|':
+                    case '/':
+                        wattron(curwin, COLOR_PAIR(BLUE_PAIR));
+                        mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        break;
+                    case '#':
+                    case '^':
+                        wattron(curwin, COLOR_PAIR(WHITE_PAIR));
+                        mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        break;
+                    case 'K':
+                        wattron(curwin, COLOR_PAIR(CYAN_PAIR));
+                        mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        break;
+                    case 'r':
+                    case 'v':
+                        wattron(curwin, COLOR_PAIR(YELLOW_PAIR));
+                        mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        break;
+                    case '$':
+                    case '~':
+                        wattron(curwin, COLOR_PAIR(RED_PAIR));
+                        mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        break;
+                    case 'l':
+                    case 'C':
+                        wattron(curwin, COLOR_PAIR(GREEN_PAIR));
+                        mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        break;
+                    default:
+                        mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+                        break;
+                }
+            }
+            else
+            {
+                mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+            }
+
         }
     }
 
@@ -240,7 +302,7 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
     // player x location adjustment for camera display
     if (pxLoc < mapxMax && pxLoc <= halfCamxOffset)
     {
-        newpxLoc = pxLoc + 1; // 1 added due to ncurses border
+        newpxLoc = pxLoc;// + 1; // 1 added due to ncurses border
     }
     
     if (pxLoc < mapxMax && pxLoc >= halfCamxOffset)
@@ -258,7 +320,7 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
     // player y location adjustment for camera display
     if (pyLoc < mapyMax && pyLoc <= halfCamyOffset) 
     {
-        newpyLoc = pyLoc + 1;
+        newpyLoc = pyLoc;// + 1;
     }
     
     if (pyLoc < mapyMax && pyLoc >= halfCamyOffset)
