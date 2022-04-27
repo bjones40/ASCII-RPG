@@ -30,7 +30,7 @@ namespace myScene
     };
 
 	Scene::Scene(){
-
+/*
 		WINDOW *main_menuwin,
 			   *playwin,
 			   *logwin,
@@ -52,7 +52,7 @@ namespace myScene
 		init_pair(1, COLOR_CYAN, COLOR_BLACK);
         mvchgat(0, 0, -1, A_BLINK, 1, NULL);
 		start_screen(main_menuwin,playwin,logwin, highlight, selection);
-		startCurses();
+		startCurses();*/
 		//n_list = 0;
 	}
 
@@ -68,6 +68,7 @@ namespace myScene
 		clear();
 		noecho();
 		cbreak();
+        curs_set(0);
 	}
 
 	void Scene::endCurses(){
