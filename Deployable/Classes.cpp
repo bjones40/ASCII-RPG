@@ -382,13 +382,13 @@ void Hero::Gain_Skill(Skill get){
 
 //Displays all of Hero's info as a string
 string Hero::Show_Info(){
-    string output = "Name: " + name +"\n";
-    output = output + "Level: " + to_string(level) + "\n";
-    output = output + "Exp: " + to_string(exp) + "\n";
-    output = output + "Gold: "+ to_string(gold_count) + "\n";
-    output = output + "Hp: " + to_string(tmp_hp) + "/" + to_string(hp) + "\n";
-    output = output + "Mp: " + to_string(tmp_mp) + "/" + to_string(mp) + "\n";
-    output = output + "Attack: " + to_string(attack) + "\n";
+    string output = "Name: " + name +"\t";
+    output = output + "Level: " + to_string(level) + "\n\t";
+    output = output + "Exp: " + to_string(exp) + "\t";
+    output = output + "Gold: "+ to_string(gold_count) + "\n\t";
+    output = output + "Hp: " + to_string(tmp_hp) + "/" + to_string(hp) + "\t";
+    output = output + "Mp: " + to_string(tmp_mp) + "/" + to_string(mp) + "\n\t";
+    output = output + "Attack: " + to_string(attack) + "\t";
     output = output + "Defense: " + to_string(defense) + "\n";
     return output;
 }

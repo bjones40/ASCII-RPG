@@ -19,27 +19,13 @@ char const *list[] = {
 
 int n_list = sizeof(list) / sizeof(char *);
 //New game menu print with highlight
-void print_menu(WINDOW *menu_win, int highlight){
-	int x, y, i;	
 
-	x = 2;
-	y = 2;
-	box(menu_win, 0, 0);
-	for(i = 0; i < n_list; ++i)
-	{	if(highlight == i + 1) 
-		{	wattron(menu_win, A_REVERSE); 
-			mvwprintw(menu_win, y, x, "%s", list[i]);
-			wattroff(menu_win, A_REVERSE);
-		}
-		else
-			mvwprintw(menu_win, y, x, "%s", list[i]);
-		++y;
-	}
-	wrefresh(menu_win);
-}
 
+void print_menu(WINDOW *menu_win, int highlight);
 void setup_playwindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3);
 void setup_inventorywindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3);
+void setup_battlewindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3);
+//void print_battle(HERO & player, MONSTER & enemy, WINDOW * setup1, WINDOW * setup2);
 
 int main(int argc, char ** argv) 
 {
@@ -52,21 +38,16 @@ int main(int argc, char ** argv)
 	bool new_game = 0;
 
     string movement_controls[6] = {"UP - Move Up", "DOWN - Move Down", "LEFT - Move Left", "RIGHT - Move Right", "E - Interact", "I - Inventory"};
+    string inventory_controls[6] = {"UP - Move Up", "DOWN - Move Down", "D - Delete Item", "E - Equip Item", "I - Close Inventory"};
     srand(time(NULL));
     int encounterchance = 0;
 
     //Ncurses start
-    /*initscr();
-    noecho(); //hides key press input
-    cbreak();*/ //allows exit on ctrl-c
     curs_set(0);
-
-	//Creating scene object
 	myScene::Scene scene;
 	int highlight = 1, selection = 0, s = 0;
 	scene.startCurses();
-    
-    
+     
     //borders for windows
     int left, right, top, bottom, tlc, trc, blc, brc;
     left = right = '|';
@@ -77,32 +58,29 @@ int main(int argc, char ** argv)
     WINDOW * playwin = newwin(40, 120, 0, 0); //Window for player movement and combat
     WINDOW * logwin = newwin(15, 120, 40, 0); //Window for exploration and combat logs
     WINDOW * controlswin = newwin(30, 25, 0, 120); //Window for displaying controls
-    WINDOW * inventorywin = newwin(30, 120, 6, 0); //Window for displaying inventory
+    WINDOW * inventorywin = newwin(34, 120, 6, 0); //Window for displaying inventory
     WINDOW * statwin = newwin(6, 120, 0, 0); //Window for displaying character stats
     WINDOW * battlewin = newwin(40, 120, 0, 0); //Window for displaying battle scene
     WINDOW * newgamewin = newwin(24, 80, 0, 0); //Window for displaying new game scene
 	
     //Get the max width and length of the windows
-    int playxMax, playyMax, logxMax, logyMax, controlsxMax, controlsyMax;//, invyMax, invxMax, statyMax, statxMax, battleyMax, battlexMax;
+    int playxMax, playyMax, logxMax, logyMax, controlsxMax, controlsyMax;
     getmaxyx(playwin, playyMax, playxMax);
     getmaxyx(logwin, logyMax, logxMax);
     getmaxyx(controlswin, controlsyMax, controlsxMax);
-    //getmaxyx(inventorywin, invyMax, invxMax);
-    //getmaxyx(statwin, statyMax, statxMax);
-    //getmaxyx(battlewin, battleyMax, battlexMax);
     
     
     if(new_game == 0)
 	{
         //New game menu attributes
-        mvprintw(0,0, "STONE SOUP");
+        refresh();
+        mvwaddstr(newgamewin, 1, 1, "STONE SOUP");
         keypad(newgamewin, TRUE);
         s = wgetch(newgamewin);
         wborder(newgamewin, left, right, top, bottom, tlc, trc, blc, brc);
-        refresh();
         wrefresh(newgamewin);
         mvchgat(0, 0, -1, A_BLINK, 1, NULL);
-        refresh();
+        //refresh();
         print_menu(newgamewin, highlight);
   
         switch(s)
@@ -113,7 +91,6 @@ int main(int argc, char ** argv)
                 else
                     --highlight;
 
-                //scene.main_menu(newgamewin, highlight);
                 print_menu(newgamewin, highlight);
                 break;
             case KEY_DOWN:
@@ -122,7 +99,6 @@ int main(int argc, char ** argv)
                 else 
                     ++highlight;
 
-                //scene.main_menu(menu_win, highlight);
                 print_menu(newgamewin, highlight);
                 break;
             case 10:
@@ -224,13 +200,18 @@ int main(int argc, char ** argv)
             {
                 //print_inventory(inventorywin)
 
-                //placeholder print
-                for(int i=0; i<27;i++){
-                    mvwprintw(inventorywin, i+2, 2, "Inventory list item");
-                    mvwprintw(controlswin, i+2, 2, "Key");
+                //Print controls
+                for (int i = 0; i < 6; i++)
+                {
+                    mvwaddstr(controlswin, 1+i, 1, inventory_controls[i].c_str());
                 }
-                wrefresh(inventorywin); 
                 wrefresh(controlswin);
+                //Print statwin
+                mvwaddstr(statwin, 2, 2, player.Show_Info().c_str());
+                wrefresh(statwin); 
+                //Print inventorywin
+                mvwaddstr(inventorywin, 2, 2, player.Inventory_Menu().c_str());
+                wrefresh(inventorywin); 
 
                 char inventory_select = wgetch(inventorywin);
                 if (inventory_select == 'i')
@@ -244,6 +225,9 @@ int main(int argc, char ** argv)
         }
         if (combat_state)
         {
+            setup_battlewindows(playwin, logwin, controlswin, statwin, battlewin, logwin);
+            keypad(battlewin, true);
+            
             if (encounterchance == 10)
                 enemy = Parse_Monster_Tables(player,rare_enemy);
             else
@@ -256,6 +240,7 @@ int main(int argc, char ** argv)
                     movement_state = 1;
                     combat_state = 0;
                     encounterchance = 0;
+                    //print_battle(player, enemy, logwin, battlewin);
                 }
                 else
                 {
@@ -281,6 +266,25 @@ int main(int argc, char ** argv)
     return 0;
 }
 
+void print_menu(WINDOW *menu_win, int highlight){
+	int x, y, i;	
+
+	x = 2;
+	y = 2;
+	box(menu_win, 0, 0);
+	for(i = 0; i < n_list; ++i)
+	{	if(highlight == i + 1) 
+		{	wattron(menu_win, A_REVERSE); 
+			mvwprintw(menu_win, y, x, "%s", list[i]);
+			wattroff(menu_win, A_REVERSE);
+		}
+		else
+			mvwprintw(menu_win, y, x, "%s", list[i]);
+		++y;
+	}
+	wrefresh(menu_win);
+}
+
 void setup_playwindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3)
 {
     int left, right, top, bottom, tlc, trc, blc, brc;
@@ -296,6 +300,7 @@ void setup_playwindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, 
     wborder(setup1, left, right, top, bottom, tlc, trc, blc, brc);
     wrefresh(setup1); 
     wborder(setup2, left, right, top, bottom, tlc, trc, blc, brc);
+    mvwaddstr(setup3, 1, 1, "Message Log");
     wrefresh(setup2); 
     wborder(setup3, left, right, top, bottom, tlc, trc, blc, brc);
     mvwaddstr(setup3, 1, 1, "Controls");
@@ -328,3 +333,31 @@ void setup_inventorywindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * clear
     refresh();
 }
 
+void setup_battlewindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3)
+{
+    int left, right, top, bottom, tlc, trc, blc, brc;
+    left = right = '|';
+    top = bottom = '-';
+    tlc = trc = blc = brc = '+';
+    
+    wclear(cleared1);
+    wclear(cleared2);
+    wclear(cleared3);
+    refresh();
+
+    wborder(setup1, left, right, top, bottom, tlc, trc, blc, brc);
+    mvwaddstr(setup1, 1, 1, "Character Stats");
+    wrefresh(setup1); 
+    wborder(setup2, left, right, top, bottom, tlc, trc, blc, brc);
+    mvwaddstr(setup2, 1, 1, "Battle");
+    wrefresh(setup2); 
+    wborder(setup3, left, right, top, bottom, tlc, trc, blc, brc);
+    mvwaddstr(setup3, 1, 1, "Controls");
+    wrefresh(setup3);
+    refresh();
+}
+
+/*void print_battle(HERO * player, MONSTER * enemy, WINDOW * setup1, WINDOW * setup2);
+{
+
+}*/
