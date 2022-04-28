@@ -9,7 +9,7 @@
 using namespace std;
 
 #define  ROWS 50 
-#define  COLUMNS 168
+#define  COLUMNS 130
 
 
 //#define StartingX 1
