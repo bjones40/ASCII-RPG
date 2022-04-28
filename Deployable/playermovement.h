@@ -14,6 +14,7 @@ class Player
         void mvright();
         int getmv();
         void display();
+        void setkeypad(bool condition);
 
     private:
         int xLoc, yLoc, xMax, yMax;
@@ -32,9 +33,13 @@ Player::Player(WINDOW * win, int y, int x, char c, Terrain * map)
     //getmaxyx(curwin, yMax, xMax);
     yMax = curmap->get_map_yMax();
     xMax = curmap->get_map_xMax();
-    keypad(curwin, true);
     character = c;
     display();
+}
+
+void Player::setkeypad(bool condition)
+{
+    keypad(curwin, condition);
 }
 
 void Player::mvup()
@@ -101,6 +106,9 @@ int Player::getmv()
         case KEY_RIGHT:
             mvright();
             choice = 1;
+            break;
+        case 'i':
+            choice = 2;
             break;
         default:
             break;
