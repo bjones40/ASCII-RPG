@@ -102,10 +102,10 @@ int Terrain::get_map_yMax()
     return mapyMax;
 }
 
-void Terrain::generatetiles(int mapid, int mapxSize, int mapySize)
+void Terrain::generatetiles(int mapid, int pstartX, int pstartY)
 {
-    mapxMax = mapxSize;
-    mapyMax = mapySize;
+    pstartX = pstartX;
+    pstartY = pstartY;
     char map[200][200];
 
 
@@ -115,8 +115,10 @@ void Terrain::generatetiles(int mapid, int mapxSize, int mapySize)
     {
         case 0:
             {
-            pstartX = 40;
-            pstartY = 50;
+            pstartX = 37;
+            pstartY = 31;
+            mapxMax = 126;
+            mapyMax = 42;
             
             char DessertDesert[200][200] = 
             {
@@ -171,6 +173,8 @@ void Terrain::generatetiles(int mapid, int mapxSize, int mapySize)
             {
             pstartX = 6;
             pstartY = 46;
+            mapxMax = 131;
+            mapyMax = 51;
 
             char DessertDesertVillage[200][200] =
             {
