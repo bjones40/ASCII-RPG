@@ -3,6 +3,8 @@
 #include <string>
 #include <cstdlib>
 #include <ctime>
+#include <unistd.h>
+#include <limits>
 #include "glue.h"
 #include "scene.h"
 #include "playermovement.h"
@@ -26,6 +28,7 @@ void setup_playwindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, 
 void setup_inventorywindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3);
 void setup_battlewindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3);
 //void print_battle(HERO & player, MONSTER & enemy, WINDOW * setup1, WINDOW * setup2);
+void waitforseconds(int seconds);
 
 int main(int argc, char ** argv) 
 {
@@ -141,6 +144,8 @@ int main(int argc, char ** argv)
     Hero player = Hero("man",1,0,5,5,5,5,0,0,0);
     Monster enemy = Parse_Monster_Tables(player,normal_enemy);
 
+    int stepcounter = 0;
+
 
     while (playing)
     {
@@ -165,17 +170,27 @@ int main(int argc, char ** argv)
 
                 if (player_select == 1)
                 {
-                    encounterchance = rand() % 100 + 1;
+                    stepcounter++;
+                    encounterchance = rand() % 500 + 1;
+                    
 
-                    if (encounterchance > 0 && encounterchance <= 10)
+                    if (stepcounter >= 5 && encounterchance > 0 && encounterchance <= 10)
                     {
+                        int seconds = 2;
+
                         movement_state = 0;
+
+                        while (seconds-- >= 1)
+                        {
+                            sleep(1);
+                        }
                         combat_state = 1;
 
                         for (int i = 0; i < 10; i++)
                         {
                             mvwaddstr(controlswin, 1+i, 1, "                  ");
                         }
+                        
                         wrefresh(controlswin);
                         refresh();
                     }
@@ -226,6 +241,7 @@ int main(int argc, char ** argv)
         if (combat_state)
         {
             setup_battlewindows(playwin, logwin, controlswin, statwin, battlewin, logwin);
+
             keypad(battlewin, true);
             
             if (encounterchance == 10)
@@ -240,6 +256,7 @@ int main(int argc, char ** argv)
                     movement_state = 1;
                     combat_state = 0;
                     encounterchance = 0;
+                    stepcounter = 0;
                     //print_battle(player, enemy, logwin, battlewin);
                 }
                 else
@@ -248,6 +265,7 @@ int main(int argc, char ** argv)
                     combat_state = 0;
                     death_state = 1;
                     encounterchance = 0;
+                    stepcounter = 0;
                 }
 
             }while(combat_state);
@@ -361,3 +379,4 @@ void setup_battlewindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3
 {
 
 }*/
+

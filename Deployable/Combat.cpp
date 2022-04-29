@@ -4,6 +4,8 @@
 #include <random>
 #include <vector>
 #include <ncurses.h>
+#include <unistd.h>
+
 using namespace std;
 Item taco = Item("Taco",1,1,0);
 
@@ -102,8 +104,7 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
     // display player_move to log window
     DisplayToLog(player_move, logwin);
     //DisplayToLog(player_move, battlewin);
-
-
+ 
     //cout << enemy.Get_Name() << " draws near!"  << endl;
     while(player.Get_tmp_hp() > 0 && enemy.Get_tmp_hp() > 0){
         chosen = false;
@@ -130,9 +131,10 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
 
                 DisplayToControls(move_menu, controlswin);
                 
+                //keypad(logwin, true);
+
                 keypad(logwin, true);
                 command = wgetch(logwin) - 48; // 0 starts at value 48 for ncurses, this offset makes 0 equal 0, 1 equal 1, etc.
-
         
                 //DisplayToLog(to_string(command), logwin);
                 proper_input = true;
@@ -152,6 +154,7 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
                 */
             }
             proper_input = false;
+
             if(command <= player.Get_Skill_Count() && command >= 0){
                 Skill & choice = player.Get_Target_Skill(command);
                 switch(choice.Get_Type()){
