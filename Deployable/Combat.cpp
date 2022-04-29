@@ -65,6 +65,34 @@ void DisplayToLog(string output, WINDOW * logwin)
     }
 }
 
+void DisplayToBattle(string output, WINDOW * battlewin)
+{
+    // display output to battle window
+    logarray[loginc] = output;
+
+    mvwaddstr(battlewin, 1+loginc, 1, logarray[loginc].c_str());
+    wrefresh(battlewin);
+    
+    loginc++;
+
+    if (loginc >= 12)
+    {
+        loginc = 12;
+
+        for (int i = 0; i < 13; i++)
+        {
+            mvwaddstr(battlewin, 1+i, 1, "                                                   ");
+        }
+
+        for (int i = 0; i < 13; i++)
+        {
+            logarray[i] = logarray[i+1];
+            mvwaddstr(battlewin, 1+i, 1, logarray[i].c_str());
+        }
+        wrefresh(battlewin);
+    }
+}
+
 void DisplayToControls(string output[10], WINDOW * controlswin)
 {
 
@@ -103,20 +131,20 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
     
     // display player_move to log window
     DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+    DisplayToBattle(player_move, battlewin);
  
     //cout << enemy.Get_Name() << " draws near!"  << endl;
     while(player.Get_tmp_hp() > 0 && enemy.Get_tmp_hp() > 0){
         chosen = false;
+        player_move = "HP: "+to_string(player.Get_tmp_hp())+" MP: "+to_string(player.Get_tmp_mp());
         //Player move <all cut out //player_move strings are for n-curses implimentation later
         while(!chosen){
             //Reject all but ints, can change later depending on n-curses menu design
             while(!proper_input){
-                player_move = "HP: "+to_string(player.Get_tmp_hp())+" MP: "+to_string(player.Get_tmp_mp());
                 //cout << "HP: " << player.Get_tmp_hp() << " MP: " << player.Get_tmp_mp() << endl;
 
-                DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                //DisplayToLog(player_move, logwin);
+                DisplayToBattle(player_move, battlewin);
                 
                 //cout << "Choose a move: \n";
 
@@ -161,15 +189,15 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
                     case phys_attack:
                         player_move = player.Get_Name()+" "+choice.Get_Flavor();
                         
-                        DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                        //DisplayToLog(player_move, logwin);
+                        DisplayToBattle(player_move, battlewin);
                         
                         //cout << player.Get_Name()<<" "<<choice.Get_Flavor() << endl;
                         calculation = max(int(player.Get_Attack()*choice.Get_Modifier()-enemy.Get_Defense()),0);
                         player_move = enemy.Get_Name()+ " receives "+to_string(calculation)+" damage!";
                         
-                        DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                        //DisplayToLog(player_move, logwin);
+                        DisplayToBattle(player_move, battlewin);
                         
                         //cout << enemy.Get_Name() << " receives " << calculation << " damage!" << endl;
                         enemy.Set_tmp_hp(enemy.Get_tmp_hp() - calculation);
@@ -180,16 +208,16 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
                         if(player.Get_tmp_mp() >= choice.Get_Cost()){
                             player_move = player.Get_Name()+" "+choice.Get_Flavor();
                 
-                            DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                            //DisplayToLog(player_move, logwin);
+                            DisplayToBattle(player_move, battlewin);
                             
                             
                             //cout << player.Get_Name()<<" "<<choice.Get_Flavor() << endl;
                             calculation = player.Get_Attack()*choice.Get_Modifier()-enemy.Get_Defense();
                             player_move = enemy.Get_Name()+" receives "+to_string(calculation)+" damage!";
                 
-                            DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                            //DisplayToLog(player_move, logwin);
+                            DisplayToBattle(player_move, battlewin);
                             
                             //cout << enemy.Get_Name() << " receives " << calculation << " damage!" << endl;
                             enemy.Set_tmp_hp(enemy.Get_tmp_hp() - calculation);
@@ -200,8 +228,8 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
                             player_move = "Not enough MP";
                             //cout << "Not enough MP" << endl;
                 
-                            DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                            //DisplayToLog(player_move, logwin);
+                            DisplayToBattle(player_move, battlewin);
                         }
                         break;
                 
@@ -210,30 +238,30 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
                             calculation = min((player.Get_HP()-player.Get_tmp_hp()),int(choice.Get_Modifier()));
                             player_move = player.Get_Name()+" "+choice.Get_Flavor()+" "+to_string(calculation)+" HP recovered!";
                 
-                            DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                            //DisplayToLog(player_move, logwin);
+                            DisplayToBattle(player_move, battlewin);
                             
                             //cout << player.Get_Name() << " " << choice.Get_Flavor()<< "\n" << calculation << "HP recovered!\n";
                             player.Set_tmp_hp(player.Get_tmp_hp()+calculation);
                 
-                            DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                            //DisplayToLog(player_move, logwin);
+                            DisplayToBattle(player_move, battlewin);
                             
                             chosen = true;
                         }
                         else if(player.Get_tmp_mp() <= choice.Get_Cost()){
                             player_move = "Not enough MP";
                 
-                            DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                            //DisplayToLog(player_move, logwin);
+                            DisplayToBattle(player_move, battlewin);
                             
                             //cout << "Not enough MP" << endl;
                         }
                         else{
                             player_move = "Hp is full";
                 
-                            DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                            //DisplayToLog(player_move, logwin);
+                            DisplayToBattle(player_move, battlewin);
                             
                             //cout << "Hp is full" << endl;
                         }
@@ -243,8 +271,7 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
             else{
                 //cout << "Incorrect selection" << endl;
 
-                DisplayToLog("Incorrect selection", logwin);
-    //DisplayToLog(player_move, battlewin);
+                //DisplayToLog("Incorrect selection", logwin);
             }
         }
         if(enemy.Get_tmp_hp() > 0){
@@ -255,14 +282,14 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
                     monster_move = enemy.Get_Name() + " " + monster_choice.Get_Flavor();
                     //cout << enemy.Get_Name() << " " << monster_choice.Get_Flavor() + "\n";
                 
-                    DisplayToLog(monster_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                    //DisplayToLog(monster_move, logwin);
+                    DisplayToBattle(monster_move, battlewin);
                     
                     calculation = max(int(enemy.Get_Attack()*monster_choice.Get_Modifier() - player.Get_Defense()),0);
                     monster_move = player.Get_Name() + " receives "+to_string(calculation)+ " damage!";
                 
-                    DisplayToLog(monster_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                    //DisplayToLog(monster_move, logwin);
+                    DisplayToLog(monster_move, battlewin);
                     
                     //cout << player.Get_Name() << " receives "<<to_string(calculation)<< " damage!\n";
                     player.Set_tmp_hp(player.Get_tmp_hp()-calculation);
@@ -270,13 +297,13 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
                 case magic_attack:
                     monster_move = enemy.Get_Name() + " " + monster_choice.Get_Flavor();
                     //cout << enemy.Get_Name() + " " << monster_choice.Get_Flavor() << "\n";
-                    DisplayToLog(monster_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                    //DisplayToLog(monster_move, logwin);
+                    DisplayToBattle(monster_move, battlewin);
                     
                     monster_move = player.Get_Name() + " receives " + to_string(monster_choice.Get_Modifier())+" damage!";
                     
-                    DisplayToLog(monster_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                    //DisplayToLog(monster_move, logwin);
+                    DisplayToBattle(monster_move, battlewin);
                     
                     //cout << player.Get_Name() << " receives " << to_string(monster_choice.Get_Modifier())<<" damage!\n";
                     player.Set_tmp_hp(player.Get_tmp_hp()-monster_choice.Get_Modifier());
@@ -285,8 +312,8 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
                     calculation = min((enemy.Get_HP()-enemy.Get_tmp_hp()),int(monster_choice.Get_Modifier()));
                     monster_move = enemy.Get_Name()+" "+monster_choice.Get_Flavor()+" "+to_string(calculation)+" HP recovered!";
                     
-                    DisplayToLog(monster_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+                    //DisplayToLog(monster_move, logwin);
+                    DisplayToBattle(monster_move, battlewin);
                     
                     //cout << enemy.Get_Name() << " " << monster_choice.Get_Flavor()<< "\n" << calculation << "HP recovered!\n";
                     enemy.Set_tmp_hp(enemy.Get_tmp_hp()+calculation);
@@ -299,8 +326,8 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
         player_move = player.Get_Name() + " has felled the " + enemy.Get_Name() + "!";
         //cout << player.Get_Name() << " has felled the " << enemy.Get_Name() << "!" << endl;
         
-        DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+        //DisplayToLog(player_move, logwin);
+        DisplayToBattle(player_move, battlewin);
         
         Rewards(player,enemy, logwin);
         return 1;
@@ -308,8 +335,8 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
     else{
         player_move = "Thou art dead";
         
-        DisplayToLog(player_move, logwin);
-    //DisplayToLog(player_move, battlewin);
+        //DisplayToLog(player_move, logwin);
+        DisplayToBattle(player_move, battlewin);
         
         return 0;
 

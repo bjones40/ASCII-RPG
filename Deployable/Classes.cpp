@@ -406,7 +406,7 @@ string Hero::Inventory_Menu(){
             if(inventory[i].Get_Type() == consumable){
                 output += " Amount: "+to_string(inventory[i].Get_Quantity());
             }
-            output += "     ";
+            output += "\n";
         }
         else{
             output += to_string(i)+": "+inventory[i].Get_Name();

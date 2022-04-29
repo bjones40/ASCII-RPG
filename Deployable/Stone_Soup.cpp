@@ -26,7 +26,7 @@ int n_list = sizeof(list) / sizeof(char *);
 void print_menu(WINDOW *menu_win, int highlight);
 void setup_playwindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3);
 void setup_inventorywindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3);
-void setup_battlewindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3);
+void setup_battlewindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3, WINDOW * setup4);
 //void print_battle(HERO & player, MONSTER & enemy, WINDOW * setup1, WINDOW * setup2);
 void waitforseconds(int seconds);
 
@@ -145,7 +145,18 @@ int main(int argc, char ** argv)
     Monster enemy = Parse_Monster_Tables(player,normal_enemy);
 
     int stepcounter = 0;
-
+    
+    //Demo player items/spells
+	Item taco = Item("Taco",1,1,consumable);
+    Item burrito = Item("Burrito",2,2,consumable);
+    Item sword = Item("Sword",10,10,weapon);
+    Item clothing = Item("Clothing",5,5,armor);
+    player.Gain_Item(sword);
+	//player.Use_Item(0); 
+    player.Gain_Item(clothing);
+    player.Gain_Item(taco);
+    player.Gain_Item(burrito);
+    player.Gain_Item(burrito);
 
     while (playing)
     {
@@ -213,8 +224,6 @@ int main(int argc, char ** argv)
 
             do
             {
-                //print_inventory(inventorywin)
-
                 //Print controls
                 for (int i = 0; i < 6; i++)
                 {
@@ -240,7 +249,8 @@ int main(int argc, char ** argv)
         }
         if (combat_state)
         {
-            setup_battlewindows(playwin, logwin, controlswin, statwin, battlewin, logwin);
+            //wresize(logwin, 55, 120);
+            setup_battlewindows(playwin, logwin, controlswin, statwin, battlewin, controlswin, logwin);
 
             keypad(battlewin, true);
             
@@ -269,6 +279,7 @@ int main(int argc, char ** argv)
                 }
 
             }while(combat_state);
+            //wresize(logwin, 15, 120);
         }
         if (death_state)
         {
@@ -351,7 +362,7 @@ void setup_inventorywindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * clear
     refresh();
 }
 
-void setup_battlewindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3)
+void setup_battlewindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3, WINDOW * setup1, WINDOW * setup2, WINDOW * setup3, WINDOW * setup4)
 {
     int left, right, top, bottom, tlc, trc, blc, brc;
     left = right = '|';
@@ -372,6 +383,9 @@ void setup_battlewindows(WINDOW * cleared1, WINDOW * cleared2, WINDOW * cleared3
     wborder(setup3, left, right, top, bottom, tlc, trc, blc, brc);
     mvwaddstr(setup3, 1, 1, "Controls");
     wrefresh(setup3);
+    wborder(setup4, left, right, top, bottom, tlc, trc, blc, brc);
+    mvwaddstr(setup4, 1, 1, "Message Log");
+    wrefresh(setup4);
     refresh();
 }
 
