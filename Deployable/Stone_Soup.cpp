@@ -141,7 +141,7 @@ int main(int argc, char ** argv)
     Player * p = new Player(playwin, 46, 6, '@', map);
     //map->generatetiles(163, 51, stuff);
 
-    Hero player = Hero("man",1,0,5,5,5,5,0,0,0);
+    Hero player = Hero("man",1,0,5,5,3,5,0,0,0);
     Monster enemy = Parse_Monster_Tables(player,normal_enemy);
 
     int stepcounter = 0;

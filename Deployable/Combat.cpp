@@ -9,7 +9,7 @@
 using namespace std;
 Item taco = Item("Taco",1,1,0);
 
-Monster Monster_Table[10][5] = {{Monster("slime",1,1,1,50,100,1,taco),Monster("slime2",1,1,1,50,100,1,taco),Monster("slime3",1,1,1,50,100,1,taco),Monster("slime4",1,1,1,50,100,1,taco),Monster("slime5",1,1,1,50,100,1,taco)}};
+Monster Monster_Table[10][5] = {{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}};
 Monster Rare_Monster_Table[10];
 Monster Boss_Monster_Table[10];
 
@@ -69,13 +69,15 @@ void DisplayToBattle(string output, WINDOW * battlewin)
 {
     // display output to battle window
     logarray[loginc] = output;
+    //int inc = 0;
+    //string batarray[40];
 
     mvwaddstr(battlewin, 1+loginc, 1, logarray[loginc].c_str());
     wrefresh(battlewin);
     
     loginc++;
 
-    if (loginc >= 12)
+    if (loginc >= 13)
     {
         loginc = 12;
 
@@ -136,7 +138,8 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
     //cout << enemy.Get_Name() << " draws near!"  << endl;
     while(player.Get_tmp_hp() > 0 && enemy.Get_tmp_hp() > 0){
         chosen = false;
-        player_move = "HP: "+to_string(player.Get_tmp_hp())+" MP: "+to_string(player.Get_tmp_mp());
+        player_move = "\nman HP: "+to_string(player.Get_tmp_hp())+" MP: "+to_string(player.Get_tmp_mp());
+        DisplayToBattle(player_move, battlewin);
         //Player move <all cut out //player_move strings are for n-curses implimentation later
         while(!chosen){
             //Reject all but ints, can change later depending on n-curses menu design
@@ -144,7 +147,6 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
                 //cout << "HP: " << player.Get_tmp_hp() << " MP: " << player.Get_tmp_mp() << endl;
 
                 //DisplayToLog(player_move, logwin);
-                DisplayToBattle(player_move, battlewin);
                 
                 //cout << "Choose a move: \n";
 
