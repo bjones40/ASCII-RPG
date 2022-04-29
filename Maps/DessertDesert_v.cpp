@@ -41,7 +41,7 @@ char MAP[][COLUMNS] =
 	"+  #                                     ####################################################   ^^^   ^^^   ^^^   ^^^   #     +",
 	"|  #                                                                                            ^^^   ^^^   ^^^   ^^^   #     |",
 	"+  #    SSSSSSSSSS         PPPPPPPPPP                                                                                   #     +",
-        "|  #    SSSSSSSSSS         PPPPPPPPPP                                                                                   #     |",
+    "|  #    SSSSSSSSSS         PPPPPPPPPP                                                                                   #     |",
 	"+  #    SSSSSSSSSS         PPPPPPPPPP    #######################       ######################   ^^^   ^^^   ^^^   ^^^   #     +",
 	"|  #                                     #llllccKKclllccKccllll#       #                    #   ^^^   ^^^   ^^^   ^^^   #     |",
 	"+  #    SSSSSSSSSS         PPPPPPPPPP    #llcccKccccKcKKcccKcll#       #                    #                           #     +",
