@@ -120,7 +120,7 @@ namespace myScene
 	void Scene::start_screen(WINDOW *main_menuwin,WINDOW *playwin,WINDOW *logwin, int highlight, int n_list){
 		/*int s;
 		refresh();
-		mvprintw(12, 40, "Stone Soup");
+		mvprintw(12, 40, "Boulder Stew");
 		
 		main_menu(main_menuwin, highlight, n_list);
 		s = wgetch(main_menuwin);

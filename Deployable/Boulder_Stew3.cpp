@@ -110,7 +110,7 @@ int main(int argc, char ** argv)
     if(new_game == 0)
 	{
         //New game menu attributes
-        mvprintw(0,0, "STONE SOUP");
+        mvprintw(0,0, "BOULDER STEW");
         keypad(newgamewin, TRUE);
         s = wgetch(newgamewin);
         wborder(newgamewin, left, right, top, bottom, tlc, trc, blc, brc);

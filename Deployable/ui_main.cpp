@@ -78,7 +78,7 @@ int main(){
     statwin = newwin(6, 165, 0, 0);
     
     keypad(menu_win, TRUE);
-    mvprintw(12, 40, "Stone Soup");
+    mvprintw(12, 40, "Boulder Stew");
     wborder(menu_win, 0, 0, 0, 0, 0, 0, 0, 0);
     wrefresh(menu_win); 
     curs_set(0);

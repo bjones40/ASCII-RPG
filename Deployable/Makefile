@@ -1,7 +1,7 @@
-all: Stone_Soup
+all: Boulder_Stew
 
-Stone_Soup: Stone_Soup.cpp Classes.cpp Combat.cpp
-	g++ -g -lncurses Stone_Soup.cpp Classes.cpp Combat.cpp -o Stone_Soup
+Boulder_Stew: Boulder_Stew.cpp Classes.cpp Combat.cpp
+	g++ -g -lncurses Boulder_Stew.cpp Classes.cpp Combat.cpp -o Boulder_Stew
 
 clean:
-	rm -f Stone_Soup
+	rm -f Boulder_Stew
