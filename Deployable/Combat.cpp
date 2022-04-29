@@ -9,7 +9,7 @@
 using namespace std;
 Item taco = Item("Taco",1,1,0);
 
-Monster Monster_Table[10][5] = {{Monster("slime",1,1,1,50,100,1,taco),Monster("slime2",1,1,1,50,100,1,taco)}};
+Monster Monster_Table[10][5] = {{Monster("slime",1,1,1,50,100,1,taco),Monster("slime2",1,1,1,50,100,1,taco),Monster("slime3",1,1,1,50,100,1,taco),Monster("slime4",1,1,1,50,100,1,taco),Monster("slime5",1,1,1,50,100,1,taco)}};
 Monster Rare_Monster_Table[10];
 Monster Boss_Monster_Table[10];
 
@@ -87,7 +87,7 @@ void Rewards(Hero & player,Monster & enemy, WINDOW * logwin){
     //cout << player.Get_Name() <<" receives:\n"<<to_string(enemy.Get_Exp_Drop())<<"exp\n"<<to_string(enemy.Get_Gold())<<"gold\n";
     //impliment random chance for item drops
 }
-bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlswin){
+bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlswin, WINDOW * battlewin){
     //Flags and utility data declarations
     srand(time(NULL));
     bool chosen = false;

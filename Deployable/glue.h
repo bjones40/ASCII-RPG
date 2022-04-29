@@ -180,7 +180,7 @@ class Store{
 
 //Functions from other files to make available to entire system
 void Hello_World();
-bool Combat_Loop(Hero &,Monster enemy, WINDOW * logwin, WINDOW * controlswin);
+bool Combat_Loop(Hero &,Monster enemy, WINDOW * logwin, WINDOW * controlswin, WINDOW * battlewin);
 void Rewards(Hero &,Monster &, WINDOW * logwin);
 Monster Parse_Monster_Tables(Hero,int);
 

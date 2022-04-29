@@ -63,7 +63,7 @@ int main(int argc, char ** argv)
     WINDOW * controlswin = newwin(30, 25, 0, 120); //Window for displaying controls
     WINDOW * inventorywin = newwin(34, 120, 6, 0); //Window for displaying inventory
     WINDOW * statwin = newwin(6, 120, 0, 0); //Window for displaying character stats
-    WINDOW * battlewin = newwin(40, 120, 0, 0); //Window for displaying battle scene
+    WINDOW * battlewin = newwin(55, 120, 0, 0); //Window for displaying battle scene
     WINDOW * newgamewin = newwin(24, 80, 0, 0); //Window for displaying new game scene
 	
     //Get the max width and length of the windows
@@ -251,7 +251,7 @@ int main(int argc, char ** argv)
             
             do
             {
-                if(Combat_Loop(player, enemy, logwin, controlswin))
+                if(Combat_Loop(player, enemy, logwin, controlswin, battlewin))
                 {
                     movement_state = 1;
                     combat_state = 0;
