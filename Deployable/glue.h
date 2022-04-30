@@ -8,7 +8,7 @@ using namespace std;
 enum Itypes{consumable,weapon,armor,key};
 //Differentiates ability types
 enum Stypes{phys_attack,magic_attack,healing,buff};
-//Location enumeration
+//Location enumeration, current location count: 17
 enum Maps{Dessert_Desert_Village, Dessert_Desert, Dessert_Desert_Dungeon, 
         Cabbage_Campo1,  Cabbage_Campo1_Dungeon,
         Cabbage_Campo2, Cabbage_Campo2_Dungeon,

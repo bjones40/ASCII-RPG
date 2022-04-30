@@ -9,6 +9,7 @@
 using namespace std;
 Item taco = Item("Taco",1,1,0);
 
+//There are 17 maps in total
 Monster Monster_Table[17][5] = {{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Dessert Village
 {Monster("Cabbage Slime",5,1,1,50,100,1,taco),Monster("Slime's Brother",5,1,1,50,100,1,taco),Monster("It's a slime",5,1,1,50,100,1,taco),Monster("OHNO SLIME",5,1,1,50,100,1,taco),Monster("OHNO bug",5,1,1,50,100,1,taco)}, //Dessert Desert
 {Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Dessert Dessert Dungeon
@@ -25,7 +26,7 @@ Monster Monster_Table[17][5] = {{Monster("slime",5,1,1,50,100,1,taco),Monster("s
 {Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Soup Sea2 Dungeon
 {Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}}; //Soup Sea3 Dungeon
 Monster Rare_Monster_Table[17] = {Monster("Tree Sentinel",100,40,20,1000,1000,0,taco)};
-Monster Boss_Monster_Table[10];
+Monster Boss_Monster_Table[17];
 
 //Usable on overworld to call up a monster to pass to the combat screen, use the enums to specify "table" in call!
 Monster Parse_Monster_Tables(Hero player,int table){
