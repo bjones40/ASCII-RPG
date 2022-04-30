@@ -142,7 +142,7 @@ int main(int argc, char ** argv)
     map->generatetiles(Dessert_Desert, newgamestarty, newgamestartx);
     
     Player * p = new Player(playwin, map->get_yplayer_start(), map->get_xplayer_start(), '@', map);
-    //map->generatetiles(163, 51, stuff);
+    
 
     Hero player = Hero("man",1,0,5,5,3,5,0,0,0);
     Monster enemy = Parse_Monster_Tables(player,normal_enemy);

@@ -180,7 +180,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
 
     switch (mapid)
     {
-        case 0:
+        case Dessert_Desert:
             {
             //pstartX = 37;
             //pstartY = 31;
@@ -237,7 +237,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             memcpy(map, DessertDesert, 200*200*sizeof(char));
             }
             break;
-        case 1:
+        case Dessert_Desert_Village:
             {
             //pstartX = 6;
             //pstartY = 46;
@@ -306,8 +306,56 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case 2:
             {
-            break;
+                mapxMax = 200;
+                mapyMax = CamyMax+1;
+
+                char DessertDesertDungeon[200][200] = 
+                {
+                    "                                                                                                                                                 ",
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                     ",
+                    " |*************************************************************************|                                                                     ",
+                    " +*************************************************************************+                                                                     ",
+                    " |**********************##############################################*****|                                                                     ",
+                    " +**********************#                         #                  #*****+                                                                     ",
+                    " |**********************#                                       T T  #*****|                                                                     ",
+                    " +**********************#                         #             T T  #*****+                                                                     ",
+                    " |**********************#                         #                  #*****|                                                                     ",
+                    " +**********************#                         #                  #*****+                                                                     ",
+                    " |**********************#                         #                  #*****|                                                                     ",
+                    " +**********************#                         #                  #*****+                                                                     ",
+                    " |**********************#                         #   ################*****|                                                                     ",
+                    " +**********************#                                      #     #*****+                                                                     ",
+                    " |**********************#                                      #  T  #*****|                                                                     ",
+                    " +**********************#                                            #*****+                                                                     ",
+                    " |**********************#                                      #     #*****|                                                                     ",
+                    " +**********************#####################    #####################*****+                                                                     ",
+                    " |**********************#                                  #         #*****|                                                                     ",
+                    " +**********************#                                  #      X  #*****+                                                                     ",
+                    " |**********************#                                            #*****|                                                                     ",
+                    " +**********************##############################################*****+                                                                     ",
+                    " |*************************************************************************|                                                                     ",
+                    " +*************************************************************************+                                                                     ",
+                    " |*************************************************************************|                                                                     ",
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                                     ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 ",
+                    "                                                                                                                                                 "
+                };
+
+                memcpy(map, DessertDesertDungeon, 200*200*sizeof(char));
             }
+            break;
         default:
             break;
     }
@@ -338,8 +386,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                         {
                             case 0:
                                 tiles[j][i].set_teleport_id(Dessert_Desert_Dungeon);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_startY(19);
+                                tiles[j][i].set_teleport_startX(64);
                                 currentportal++;
                                 break;
                             case 1:
@@ -359,19 +407,13 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                                 break;
                         }
                         break;
-                    case Dessert_Desert_Dungeon:
+                    case 2:
                         switch (currentportal)
                         {
                             case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                currentportal++;
-                                break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Dessert_Desert);
+                                tiles[j][i].set_teleport_startY(13);
+                                tiles[j][i].set_teleport_startX(61);
                                 break;
                         }
                         break;
