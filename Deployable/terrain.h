@@ -192,7 +192,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             {
                 "                                                                                                                                                           ",
                 " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                           ",
-                " |~~~~~~~~~~MMMMttttttttttttttt, ., . ,.,., ., ., ., ., ., .ttttttttttMMM~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " |~~~~~~~~~~MMMMtttttttttttXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXttttttttttMMM~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
                 " +~~~~~~~~~MMMttttttttttttttttttt., ., ., ,. , tttttttttttttttttttttttttMM~~~~~~~~~~~~~~~~~~~~~+                                                           ",
                 " |~~~~~~~MMMtttttttttttttttttttt,,, .. , . , ttttttttttttttttttttHHHHHHHHHMMMMM~~~~~~~~~~~~~~~~|                                                           ",
                 " +~~~~~~~~MMMHHHHHHHHHttttHHHHHt, ., ., . ,. ttttttttttttttttttttttttHHHHHMM~~~~~~~~~~~~~~~~~~~+                                                           ",
@@ -365,7 +365,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                 {
                     "                                                                                                                                                    ",
                     " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
-                    " |~~~~~~~~~~~MMMMMMMHHHHH,. ., . ,. , . , . . ., .ttttttt. ,. , ,. , .  ,.  ,. .tttttttttttHHMM|                                                    ",
+                    " |~~~~~~~~~~~MMMMMMMHHHHH,.XXXXXXXXXXXXXXXXXXXXX .ttttttt. ,. , ,. , .  ,.  ,. .tttttttttttHHMM|                                                    ",
                     " +~~~~~~~~~~MMMMMMMHHHH, ., . , .,., . , ., .. ,.ttttttttt., ., . ### ###. ,. ,. ttttttttttttHM+                                                    ", 
                     " |~~~~~~~MMMMMMMMHHHH,. ., ., ,. ., . ,. , ,,. ,ttttttttttt., ,.  #     # . ,, ,ttttttttttttttH|                                                    ",
                     " +~~~~~MMMMMMMMMHHHH, . ,. ,. ., ,. ., ,, ., ., ttttttttttt.,######     ######, .,tttttttttttHH+                                                    ",
@@ -375,22 +375,22 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +MMMMMMHHHHHHtttttttttt,. ., .ttttttttttttt,. .,.  ..ttt. ..#               #, ,. .ttttttt,. ,+                                                    ",
                     " |MMMMMMMHHHHHHHtttttttt, .,, ..ttttttttttt., ., .,.tttttt.,,#################.,.ttttttttt,.. ,|                                                    ",
                     " +~MMMMMMHHHHHHHHHHtttt,. ., . .ttttttttttt.,, . . .tttttt., . ,. ,., . ,. , ,ttttttttttt,. , .+                                                    ",
-                    " |~~MMMMMMMHHH,. ., . ,. ,.  . ,. ttttttt., ., ,., .,ttt.,. ., ., ., ., ., . .ttttttttttt,., . |                                                    ",
-                    " +~~MMMMMMHHHHHHH,. ., . ,.  .,,. ,. ,. . . , . ,  .,. , . .ttttttt,, ., . . ,ttttttttttt., ., +                                                    ",
-                    " |~MMMMMMMHHHHHHHHH, ., . ,., .,  ., . , ., . , . ,. ,. ,.ttttttttttt., , , ,. ttttttttt, ., . |                                                    ",
-                    " +~MMMMMMMHHHHHHH,., ,. ,. ,.  , . ..,  ., . ,. , ., . .,ttttttttttttt, ., . ,..ttttttt. ,,. .,+                                                    ",
-                    " |~~MMMMMMMMHHHHHHHHH,. ., . ,, ., ,. , .,. , . ,,  , .,.ttttttttttttt, ., . ,. ., . ,. ,. , . |                                                    ",
-                    " +~~~MMMMMMMMHHHHHH,. ., . ., ., . , ., ,. , ., . . , ., ttttttttttttt,. ., ., ., . , ., . ,. .+                                                    ",
-                    " |~~~MMMMMMMHHHHHHHHHHHHHH,,. ., . , . , , ., ., . ,. , . ttttttttttt.,. ,. . , ., . ,.. ,..  ,|                                                    ",
-                    " +~~~MMMMMMMMHHHHHHH,.. ., ., . ,. ,. . , .  ., . ,. , .. ,. ttttt,. ., ., . , ., , ., ., , .. +                                                    ",
-                    " |~~MMMMMMMMHHHHHHHHHHH,. ., ., ,., .., , . ,. , ., . , .,., ., , ., . ,. ,. ,. ,., . ., ,. . ,|                                                    ",
-                    " +~MMMMMMMMMMHHHHHHHH,., ., . ,. ,, .., . , ,. ,. ,. ,, .,.., , .., ,. ,. , . ,.  . , . ,. , ..+                                                    ",
-                    " |~MMMMMMMMMMHHHHHHH, ,. .,, ., ., ., ., ., . .,. ,.,. , ,.. , . ,. ., ,. ., . ,. ., .. , ., . |                                                    ",
-                    " +~~MMMMMMMMHHHHHHHHHHH,. ., . .,tttttttttt,. ., . ,. , . ,. , . ,, ., ., ,, , . . ,. .,. ,. ,.+                                                    ",
-                    " |~~~MMMMMMHHHHHHHHHHHH, ., ., .tttttttttttt. ,., ., ,. ., , , ,. , . ,. , ., ., .,., ., ., . .|                                                    ",
-                    " +~~~MMMMMMMHHHHHHHH.,. ., . ,tttttttttttttttt,., . ,. ,. ,., . ,tttttttttttttttttt,., ., .,. ,+                                                    ",
-                    " |~~~MMMMMMMHHHHHHHHHHH, ., .,tttttttttttttttt., . , ., . , .,ttttttttttttttttttttttttt,, ., . |                                                    ",
-                    " +~~~~MMMMMHHHHHHHH,. ,.  ,. ,tttttttttttttttt. .,  ., , . .ttttttttttttttttttttttttttttt., ., +                                                    ",
+                    " |~~MMMMMMMHHH,. ., . ,. ,.  . ,. ttttttt., ., ,., .,ttt.,. ., ., ., ., ., . .ttttttttttt,., .X|                                                    ",
+                    " +~~MMMMMMHHHHHHH,. ., . ,.  .,,. ,. ,. . . , . ,  .,. , . .ttttttt,, ., . . ,ttttttttttt., .,X+                                                    ",
+                    " |~MMMMMMMHHHHHHHHH, ., . ,., .,  ., . , ., . , . ,. ,. ,.ttttttttttt., , , ,. ttttttttt, ., .X|                                                    ",
+                    " +~MMMMMMMHHHHHHH,., ,. ,. ,.  , . ..,  ., . ,. , ., . .,ttttttttttttt, ., . ,..ttttttt. ,,. .X+                                                    ",
+                    " |~~MMMMMMMMHHHHHHHHH,. ., . ,, ., ,. , .,. , . ,,  , .,.ttttttttttttt, ., . ,. ., . ,. ,. , .X|                                                    ",
+                    " +~~~MMMMMMMMHHHHHH,. ., . ., ., . , ., ,. , ., . . , ., ttttttttttttt,. ., ., ., . , ., . ,. X+                                                    ",
+                    " |~~~MMMMMMMHHHHHHHHHHHHHH,,. ., . , . , , ., ., . ,. , . ttttttttttt.,. ,. . , ., . ,.. ,..  X|                                                    ",
+                    " +~~~MMMMMMMMHHHHHHH,.. ., ., . ,. ,. . , .  ., . ,. , .. ,. ttttt,. ., ., . , ., , ., ., , ..X+                                                    ",
+                    " |~~MMMMMMMMHHHHHHHHHHH,. ., ., ,., .., , . ,. , ., . , .,., ., , ., . ,. ,. ,. ,., . ., ,. . X|                                                    ",
+                    " +~MMMMMMMMMMHHHHHHHH,., ., . ,. ,, .., . , ,. ,. ,. ,, .,.., , .., ,. ,. , . ,.  . , . ,. , .X+                                                    ",
+                    " |~MMMMMMMMMMHHHHHHH, ,. .,, ., ., ., ., ., . .,. ,.,. , ,.. , . ,. ., ,. ., . ,. ., .. , ., .X|                                                    ",
+                    " +~~MMMMMMMMHHHHHHHHHHH,. ., . .,tttttttttt,. ., . ,. , . ,. , . ,, ., ., ,, , . . ,. .,. ,. ,X+                                                    ",
+                    " |~~~MMMMMMHHHHHHHHHHHH, ., ., .tttttttttttt. ,., ., ,. ., , , ,. , . ,. , ., ., .,., ., ., . X|                                                    ",
+                    " +~~~MMMMMMMHHHHHHHH.,. ., . ,tttttttttttttttt,., . ,. ,. ,., . ,tttttttttttttttttt,., ., .,. X+                                                    ",
+                    " |~~~MMMMMMMHHHHHHHHHHH, ., .,tttttttttttttttt., . , ., . , .,ttttttttttttttttttttttttt,, ., .X|                                                    ",
+                    " +~~~~MMMMMHHHHHHHH,. ,.  ,. ,tttttttttttttttt. .,  ., , . .ttttttttttttttttttttttttttttt., .,X+                                                    ",
                     " |~~MMMMMMMHHHHHHHHHHHHH, ,. ., tttttttttttt,. . ,, ., . ttttttttttttttttttttttttttttttttttt. .|                                                    ",
                     " +~MMMMMMMHHHHHHHHHHH., ., . ,.,  tttttttt. .,  ., ., ,.ttttttttttttttttttttttttttttttttttttt.,+                                                    ",
                     " |~MMMMMHHHHHHH,. ., . , ., ., ., ., .., ., ., . ,. , .,ttttttttttttttttttttttttttttttttttttt ,|                                                    ",
@@ -403,7 +403,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +~~~~~~MMMMMMHHHHHH., . ,. ., ., ,. ., ,ttttt ., . ,. , .,. ., ., ,.,. ., HHHMMMMMM~~~~~~~~~~~+                                                    ",
                     " |~~~~~~MMMMMHHHHHHHHHH., . , , . ,. ,. ,.ttt. ,. , ., . , ,. ,. ., ., .HHHHMMMMMM~~~~~~~~~~~~~|                                                    ",
                     " +~~~~~~~MMMMMHHHH, ., . ,.  ., . , . ., ,. .,., ., ., , ,..,., ., .HHHHHMMMMMM~~~~~~~~~~~~~~~~+                                                    ",   
-                    " |~~~~~~~MMMMHHHHHHHH,. ., . ,. , . ,. ,, .,., . ,. ,. ., ,.HHHMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~|                                                    ",
+                    " |~~~~~~~MMMMHHHHHHHH,XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX.HHHMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
                     "                                                                                                                                                    ",
                     "                                                                                                                                                    ",
@@ -451,7 +451,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +, .. , . ., ,. ,. ,. ,. .,x     x., . ,. , . ,., ., ., ,. ., ,. ., ., .,  ., ., ., ., .x     xxxxxxxxxxxxx, . , ., ., ., ., .+",
                     " |xxxxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx .x                 x ., .,., ., ., .,. |",
                     " +                                                                                    x. x     xxxxxxxxx   x., ., ., ,. ,. ,. .+",
-                    " |                                                                                    xxxx     x, ,. .,x   x. ,. ,. ., ., ,.., |",
+                    " | X                                                                                  xxxx     x, ,. .,x   x. ,. ,. ., ., ,.., |",
                     " +                                                                                             x , . . x   x,  , ., . ,, . .. ,+",
                     " |xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxx              x . , .### ###, . . , ., . ,. . |",
                     " +., ., ,. ., . . , . , . , ,. , , ., ., . , ,. ,. ., , ,x     x. , ., ., . , . x              x.,.  ,#00000#. , . , . ,. , ,. +",
@@ -465,7 +465,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +#00000000000000000# ,. . ,. , . .,, ., .. ,. ,. ,., . .x     x ,.. ,. ,. , ., x     x., ,. ,. ,. ,. ., .,. , . ,. . ,.,. , . +",
                     " |#00000000000000000#. ,. ,. ., . ,. .,. , ., . ,. , .,. x     x., . ,. . . , .,x     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|",
                     " +#00000000000000000######., . , . ,. ,. , . , . . ,. ., x     x. ,., . ,. ,. ,.x                                              +",
-                    " |#0000000000000000000000#., . , . ,. ., ., ., ., ., . .,x     x. ,.  . ,. ,.. ,x                                              |",
+                    " |#0000000000000000000000#., . , . ,. ., ., ., ., ., . .,x     x. ,.  . ,. ,.. ,x                                            X |",
                     " +#0000000000000000000000#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     x., . , ., ,. , .x                                              +",
                     " |#0000000000000000000000#                                     x., . ,. . , . . x     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|",
                     " +#0000000000000000000000                                      x ., . , ,.  , . x     x. ,. ,. ,. . , . ,. , ., . ,, . ,.  . , +",
@@ -533,7 +533,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |**#                  #************************################## #####***|                                                    ",
                     " +**#  s               #*****************************************# #*******+                                                    ",
                     " |**#                  #**************************************#### ####****|                                                    ",
-                    " +**####################**************************************#   s   #****+                                                    ",
+                    " +**####################**************************************#   X   #****+                                                    ",
                     " |************************************************************#########****|                                                    ",
                     " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
                     "                                                                                                                                ",
@@ -570,26 +570,26 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |HHH, tttttt,. , . .. ., . ttttttttttt ., ., ., , . ,,.  HHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMM~~~|                          ",
                     " +HH,.tttttttt ,. .., ., .,ttttttttttttt. , ., . , ., ., ,. ,. ,HHHHHHHHHHMMMMMMMMMMMMMMMMMMM~~+                          ",
                     " |,. .tttttttt., . ,. ,. ,.ttttttttttttt,, .ttttttt, ., , . .,  ., .HHHHHHHHHHHHHHHMMMMMMMMMMM~|                          ",
-                    " +. ,.  ttttt,. , ., . , ., ttttttttttt . ,ttttttttt. , ., ., ., . ,. .HHHHHHHHHHHHHHHMMMMMM~~~+                          ", 
-                    " |,. ., , t,. .. , ,. ., ., .tttttttt. , ttttttttttttt. , ., ., . , ., ., .HHHHHHHHHHHHHMMMMMM~|                          ",
-                    " +., . . , .., ., .,., . ,.  ,.tttt . . ,ttttttttttttt , .,. ., ., ., ,. .,.,HHHHHHHHHHHHMMMMM~+                          ",
-                    " |,. .,. ,. ,. tttttt., ., ,, . ,. ,. , . ttttttttttt, . . , . ,. , ., . HHHHHHHHHHHHHHHHHMMM~~|                          ",
-                    " +. ., ., ., tttttttttt ., ., ., ,. ,. ,. . ttttttt. , ., . ,.  ., , , ., .HHHHHHHHHHHHHHHHMM~~+                          ",
-                    " |,. . ,., ttttttttttttt . ., . ,. , . , ., . ,. , .. , .., . ,. ., ., ., ., .HHHHHHHHHHHHHHMM~|                          ",
-                    " +,. ., ,.ttttttttttttttt. ,., ., ttt, , ,. ., .,,. ., ., .,,. ,. ,., ., .,,. . ,HHHHHHHHHHHMM~+                          ",
-                    " |., . ,. ttttttttttttttt ,.. , .ttttt. ,. , ., . ,. ,.  ., . ,.ttt , . ,. ,. ,HHHHHHHHHHHHHHM~|                          ",
-                    " +, ., ., ,tttttttttttt,. , .., . ttt, ., ., .,  tttt,. , .,   ttttt.. . .. HHHHHHHHHHHHHHHHHHM+                          ",
-                    " |., ., ., ,tttttttttt ., . ., . , ., ., ., . , tttttt . ,. ,tttttttt., . , ,. ,. ,.HHHHHHHHHHM|                          ",
-                    " +,. .  ,. . .ttttt., . ,. , ., . ,. ,. , . ,. ,.tttt. ,  , ttttttttttt  ., . ,. HHHHHHHHHHHHHH+                          ",
-                    " |. ,. .,, . , , , ., ., ., . ,. ttt , . ,.  ., . tt  ,. , .ttttttttttttt , ., ., . ,. HHHHHHHH|                          ",
-                    " +. , .., ., ., . , ., ., .  , .ttttt. , . ., . ,  , .,. , . tttttttttt, .,. ,. ., .HHHHHHHHHHH+                          ",
-                    " |, ., . ,. . ,. ,. ,. , .,. ,.ttttttt . ,. .  . , . ,.  .. ,, ttttttt,. ,.  .HHHHHHHHHHHHHHHHH|                          ",
-                    " +., .,.ttt ., . , ., ., . ,. ,ttttttt ., . . . , . ., .,   , ., ., . , .,  , ., .HHHHHHHHHHHHM+                          ",
-                    " |,. .,ttttt ,. , ., ., . , ., .ttttt., .  . ,ttttttttttt, ., . ,. ,. . ,, . ,. ., . ,HHHHHHHHM|                          ",
-                    " +,. ,. ttt, . ,. ,. ,. , ., ., .ttt., . ,tttttttttttttttttttt  ., .  ,. , ., . ,. HHHHHHHHHHHM+                          ",
-                    " |., ., .,. ,. ,. , . ,. ,. , . , . ., tttttt.   .  .   , ttttttt ,. ,. ,. , . HHHHHHHHHHHHHHHM|                          ",
-                    " +. ., ., ., . ,. . ttttttt,. , ., ttttttt.  , .   ,   .   ,tttttttt.,., ,. .,., ,.HHHHHHHHHHHM+                          ",
-                    " |., ., .,. , . ,. ttttttttt., . ,tttttt      .### ### .     . ttttttt.  ., . . ., ,HHHHHHHHHM~|                          ",
+                    " +X ,.  ttttt,. , ., . , ., ttttttttttt . ,ttttttttt. , ., ., ., . ,. .HHHHHHHHHHHHHHHMMMMMM~~~+                          ", 
+                    " |X. ., , t,. .. , ,. ., ., .tttttttt. , ttttttttttttt. , ., ., . , ., ., .HHHHHHHHHHHHHMMMMMM~|                          ",
+                    " +X, . . , .., ., .,., . ,.  ,.tttt . . ,ttttttttttttt , .,. ., ., ., ,. .,.,HHHHHHHHHHHHMMMMM~+                          ",
+                    " |X. .,. ,. ,. tttttt., ., ,, . ,. ,. , . ttttttttttt, . . , . ,. , ., . HHHHHHHHHHHHHHHHHMMM~~|                          ",
+                    " +X ., ., ., tttttttttt ., ., ., ,. ,. ,. . ttttttt. , ., . ,.  ., , , ., .HHHHHHHHHHHHHHHHMM~~+                          ",
+                    " |X. . ,., ttttttttttttt . ., . ,. , . , ., . ,. , .. , .., . ,. ., ., ., ., .HHHHHHHHHHHHHHMM~|                          ",
+                    " +X. ., ,.ttttttttttttttt. ,., ., ttt, , ,. ., .,,. ., ., .,,. ,. ,., ., .,,. . ,HHHHHHHHHHHMM~+                          ",
+                    " |X, . ,. ttttttttttttttt ,.. , .ttttt. ,. , ., . ,. ,.  ., . ,.ttt , . ,. ,. ,HHHHHHHHHHHHHHM~|                          ",
+                    " +X ., ., ,tttttttttttt,. , .., . ttt, ., ., .,  tttt,. , .,   ttttt.. . .. HHHHHHHHHHHHHHHHHHM+                          ",
+                    " |X, ., ., ,tttttttttt ., . ., . , ., ., ., . , tttttt . ,. ,tttttttt., . , ,. ,. ,.HHHHHHHHHHM|                          ",
+                    " +X. .  ,. . .ttttt., . ,. , ., . ,. ,. , . ,. ,.tttt. ,  , ttttttttttt  ., . ,. HHHHHHHHHHHHHH+                          ",
+                    " |X ,. .,, . , , , ., ., ., . ,. ttt , . ,.  ., . tt  ,. , .ttttttttttttt , ., ., . ,. HHHHHHHH|                          ",
+                    " +X , .., ., ., . , ., ., .  , .ttttt. , . ., . ,  , .,. , . tttttttttt, .,. ,. ., .HHHHHHHHHHH+                          ",
+                    " |X ., . ,. . ,. ,. ,. , .,. ,.ttttttt . ,. .  . , . ,.  .. ,, ttttttt,. ,.  .HHHHHHHHHHHHHHHHH|                          ",
+                    " +X, .,.ttt ., . , ., ., . ,. ,ttttttt ., . . . , . ., .,   , ., ., . , .,  , ., .HHHHHHHHHHHHM+                          ",
+                    " |X. .,ttttt ,. , ., ., . , ., .ttttt., .  . ,ttttttttttt, ., . ,. ,. . ,, . ,. ., . ,HHHHHHHHM|                          ",
+                    " +X. ,. ttt, . ,. ,. ,. , ., ., .ttt., . ,tttttttttttttttttttt  ., .  ,. , ., . ,. HHHHHHHHHHHM+                          ",
+                    " |X, ., .,. ,. ,. , . ,. ,. , . , . ., tttttt.   .  .   , ttttttt ,. ,. ,. , . HHHHHHHHHHHHHHHM|                          ",
+                    " +X ., ., ., . ,. . ttttttt,. , ., ttttttt.  , .   ,   .   ,tttttttt.,., ,. .,., ,.HHHHHHHHHHHM+                          ",
+                    " |X, ., .,. , . ,. ttttttttt., . ,tttttt      .### ### .     . ttttttt.  ., . . ., ,HHHHHHHHHM~|                          ",
                     " +., . ,. . , . ,.ttttttttttt, ttttttt   .  ,  #     #,     ,   ,tttttt , ., .HHHHHHHHHHHHHMM~~+                          ",
                     " |H., . ,., . , .,tttttttttt ttttttt.     ######     ###### .  .,  .tttttHHHHHHHHHHHHHHHHMMM~~~|                          ",
                     " +HH, tttt , .,. , tttttttt ttttttt .    ,#               #     ,  ,   tttttHHHHHHHHHHHMMMMMM~~+                          ",
@@ -686,14 +686,14 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +MMMMM######     ######MMMMMMMMMMMMMMMMMMHHHH. ,. .,,HHHHMMMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH+                                                    ",    
                     " |MMMMM#               #MMMMMMMMMMMMMMMMMMMMMHHHH. ,, ..HHHMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH|                                                    ", 
                     " +MMMMM#       X       #MMMMMMMMMMMMMMMMMMMMMMMMHHHH, ., ,HHMMHHHHHHHHHHHHHHHHHHHHHHHHH. ., ., +                                                    ", 
-                    " |MMMMM#               #MMMMMMMMMMMMMMMMMMMMMMMMMMMMHHH. ,..HHHHHHHHHHHHHHHH,,. . , ., ., ., .,|                                                    ", 
-                    " +MMMMM#               #MMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHH, . ,HHHHH. ttttt ., ,. ., ., ., ,. .,+                                                    ", 
-                    " |MMMMM#################MMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHH, ., , . ,ttttttt., ., ,. ., ., ,. ,.|                                                    ", 
-                    " +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHHH.. , ., .,ttttttt, ., . , .,., ., ,. +                                                    ", 
-                    " |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHH,,. . , . ,..ttttt,. ., ,. ,. ,. . ,. ,|                                                    ", 
-                    " +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHH. ,. ., ., ., ., , .,., ., ,. .,  ., ., .+                                                    ", 
-                    " |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHH. ttttt ., ,.,. .,., ., ,. ., . ,ttttt. ., ,.|                                                    ", 
-                    " +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHH, .,ttttttt ,. ., .,,. ., ,. ., ., ttttttt,, . .+                                                    ", 
+                    " |MMMMM#               #MMMMMMMMMMMMMMMMMMMMMMMMMMMMHHH. ,..HHHHHHHHHHHHHHHH,,. . , ., ., ., .X|                                                    ", 
+                    " +MMMMM#               #MMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHH, . ,HHHHH. ttttt ., ,. ., ., ., ,. .X+                                                    ", 
+                    " |MMMMM#################MMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHH, ., , . ,ttttttt., ., ,. ., ., ,. ,X|                                                    ", 
+                    " +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHHH.. , ., .,ttttttt, ., . , .,., ., ,.X+                                                    ", 
+                    " |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHH,,. . , . ,..ttttt,. ., ,. ,. ,. . ,. X|                                                    ", 
+                    " +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHH. ,. ., ., ., ., , .,., ., ,. .,  ., ., X+                                                    ", 
+                    " |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHH. ttttt ., ,.,. .,., ., ,. ., . ,ttttt. ., ,X|                                                    ", 
+                    " +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHH, .,ttttttt ,. ., .,,. ., ,. ., ., ttttttt,, . X+                                                    ", 
                     " |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHH. ., .,ttttttt.,., ., ., ., . , , . , ttttttt., ..,|                                                    ", 
                     " +MMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHH, ,. ., ., ttttt. ,.,  .,., ., ., ,. ., .,ttttt. ..HHH+                                                    ", 
                     " |MMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHH, ., ., ., .,., .,  ., ., . ., ., ., ., ,. ,. ,. ,.,HHHHM|                                                    ", 
@@ -714,7 +714,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +MMHHHHHHHHHHH, .,. ,. ,. , .HHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+                                                    ", 
                     " |MHHHHHHHHHH. , ., , .,  .,,HHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|                                                    ", 
                     " +HHHHHHHHHH. .,, .  , ., .,HHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+                                                    ", 
-                    " |HHHHHHHH, ,. .,, ., ,. .,HHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|                                                    ", 
+                    " |HHHHHHHH, ,. XXXXXXXXX .,HHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|                                                    ", 
                     " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
                     "                                                                                                                                                    ",
                     "                                                                                                                                                    ",
@@ -770,7 +770,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |., ., ., . ,. , . ,. , ..x         x., ,. ., ,. .#0000000000000000000000000#. , ., ,. ., x         x ., ., ., ., ., . . ,. . |",
                     " +xxxxxxxxxxxxxxxxxxxxxxxxxx         x., ., ,. . , #0000000000000000000000000#., ., , . ,. x         xxxxxxxxxxxxxxxxxxxxxxxxxx+",
                     " |                                   x., ,. ,. ., .#0000000000000000000000000#. ,. ,. ., . x                                   |",
-                    " +                                   x .,. , ,.. .,#0000000000000000000000000#., ., ,. ., .x                                   +",
+                    " + X                                 x .,. , ,.. .,#0000000000000000000000000#., ., ,. ., .x                                 X +",
                     " |                                   x. ,,. ,. . . #0000000000000000000000000#., ., .,  .,.x                                   |",
                     " +xxxxxxxxxxxxxxxxxxxxxxxxxx         x., ,. ., .,  #0000000000000000000000000#., ., ., . ,.x         xxxxxxxxxxxxxxxxxxxxxxxxxx+",
                     " |., ,. , . ,, . , ,.. , .,x         x. , .,. . ,,.#0000000000000000000000000#,. ,. ., . ,.x         x. , ., ,. ., ., ., ., ,..|",
@@ -823,7 +823,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |*##   ##                       ##   ##     ##     ##   ##        ##   ##*|                                                    ",
                     " +*##   ##              ######   ##                      ############   ##*+                                                    ",
                     " |*##   ##         ##            ##############  #########       ####   ##*|                                                    ",
-                    " +*##   ##         ## s          ##                              ####   ##*+                                                    ", 
+                    " +*##   ##         ## X          ##                              ####   ##*+                                                    ", 
                     " |*##   ##         ##            ##############  #########       ####   ##*|                                                    ",
                     " +*## T ##         ###########   ##                     #############   ##*+                                                    ",
                     " |*###########     ##                ##          ##     ##              ##*|                                                    ",
@@ -868,19 +868,19 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |HHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~~~~~~~~|                                                    ",
                     " +HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~~~~~~~~+                                                    ",
                     " |HHHHHHHHHHHHtttttHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~#########|                                                    ",
-                    " +HHHHHHHHHHHtttttttHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMM ., ,. ., ,. ####wwwwwwww+                                                    ",
-                    " |HHHHHHHHHHHtttttttHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMM. ,. , . . , ,.     wwwwwwww|                                                    ", 
-                    " +HHHHHHHHHHHHtttttHHHHHHHHHHHHHHHtttttHHHHHHHHHHHHMMMMMMMMMMMMMM., ,.  ,. ., ,. ,.####wwwwwwww+                                                    ",    
+                    " +HHHHHHHHHHHtttttttHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMM ., ,. ., ,. ####wwwwwwwX+                                                    ",
+                    " |HHHHHHHHHHHtttttttHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMM. ,. , . . , ,.     wwwwwwwX|                                                    ", 
+                    " +HHHHHHHHHHHHtttttHHHHHHHHHHHHHHHtttttHHHHHHHHHHHHMMMMMMMMMMMMMM., ,.  ,. ., ,. ,.####wwwwwwwX+                                                    ",    
                     " |t t t t t t t t  t t t tHHHHHHHtttttttHHHHHHHHHHHHHHMMMMMMMMMM., ,.  . ,. .,.MMMMMM~#########|                                                    ", 
                     " +.. . , ., ,. .,. .,., ,.ttttHHHtttttttHHHHHHHHHHHHHHHHHHMMttttttt., . . , .MMMMM~~~~~~~~~~~~~+                                                    ", 
-                    " |. ,. , ,.  ., ., ., ., ., .,tttttttttHHHHHHHHHHHHHHHHHHHHttttttttt., ., ,.MMMM~~~~~~~~~~~~~~~|                                                    ", 
-                    " +. ,., ., . ,. ., . ,. ., ., .,.,ttt t t  t t t t t t t t ttttttttt ,. .,MMM~~~~~~~~~~~~~~~~~~+                                                    ", 
-                    " |., ,. ., ,. ,. . , .,,. ., ,. ., ,., .,. ,. ,., ., ., .,,.tttttttHHMMMMMMMMMMM~~~~~~~~~~~~~~~|                                                    ", 
-                    " +., ., ,. ., ., ,. . ,., . ,., . , ., ., . ,. , ., . , ., , .tHHHHHHHHHMMMMMMMMMMMMM~~~~~~~~~~+                                                    ", 
-                    " |. ,., ,. ,. ., ., ., ., . . , ., . , ., ,. ., ., . , ., ,. . .tHHHHHHHHHMMMMMMMMMMMMMMMMM~~~~|                                                    ", 
-                    " +., ., ., ,. ., .  .,. ,. , ., ., . .,. ., ,. , ., ,.,. . ., ,tHHHHHHHHHHHHHMMMMMMMMMMMMMMMM~~+                                                    ", 
-                    " |., ., . , . ., , ., . , ,.. , .,t t t t t t t  t t t tt t,. ,.,tHHHHHHHHHHHHHMMMMMMMMMMMMMMM~|                                                    ", 
-                    " + ,. , ., ., ,.  ., ., ,. ,..tttttHHHHHHHHHHHHHHHHHtttttHtt.,  ,tHHHHHHHHHHHHHHHMMMMMMMMMMMMMM+                                                    ", 
+                    " |X ,. , ,.  ., ., ., ., ., .,tttttttttHHHHHHHHHHHHHHHHHHHHttttttttt., ., ,.MMMM~~~~~~~~~~~~~~~|                                                    ", 
+                    " +X ,., ., . ,. ., . ,. ., ., .,.,ttt t t  t t t t t t t t ttttttttt ,. .,MMM~~~~~~~~~~~~~~~~~~+                                                    ", 
+                    " |X, ,. ., ,. ,. . , .,,. ., ,. ., ,., .,. ,. ,., ., ., .,,.tttttttHHMMMMMMMMMMM~~~~~~~~~~~~~~~|                                                    ", 
+                    " +X, ., ,. ., ., ,. . ,., . ,., . , ., ., . ,. , ., . , ., , .tHHHHHHHHHMMMMMMMMMMMMM~~~~~~~~~~+                                                    ", 
+                    " |X ,., ,. ,. ., ., ., ., . . , ., . , ., ,. ., ., . , ., ,. . .tHHHHHHHHHMMMMMMMMMMMMMMMMM~~~~|                                                    ", 
+                    " +X, ., ., ,. ., .  .,. ,. , ., ., . .,. ., ,. , ., ,.,. . ., ,tHHHHHHHHHHHHHMMMMMMMMMMMMMMMM~~+                                                    ", 
+                    " |X, ., . , . ., , ., . , ,.. , .,t t t t t t t  t t t tt t,. ,.,tHHHHHHHHHHHHHMMMMMMMMMMMMMMM~|                                                    ", 
+                    " +X,. , ., ., ,.  ., ., ,. ,..tttttHHHHHHHHHHHHHHHHHtttttHtt.,  ,tHHHHHHHHHHHHHHHMMMMMMMMMMMMMM+                                                    ", 
                     " |, ,. ., ,., ,.,. , . . ,ttttttHHHHHHHHHHHHHHHHHHHtttttttHt, ., .,tHHHHHHHHHHHHHHHMMMMMMMMMMMM|                                                    ", 
                     " +t t t t t  t t t t t t tHHHHHHHHHHHHHHHHHHHHHHHHHtttttttHHt., . .tHHHHHHHHHHHtttttMMMMMMMMMMM+                                                    ", 
                     " |HHHHHHHtttttHHHHHHHHHHtttttHHHHHHHHHHHHHHHHHHHHHHHtttttHHHt. ., ..ttttttHHHHtttttttHMMMMMMMMM|                                                    ", 
@@ -989,9 +989,9 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
                     " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +####################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
-                    " |wwwwwwwwwwwwwwwwwww#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
-                    " +wwwwwwwwwwwwwwwwwww#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
-                    " |wwwwwwwwwwwwwwwwwww#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
+                    " |Xwwwwwwwwwwwwwwwwwww~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
+                    " +Xwwwwwwwwwwwwwwwwwww~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
+                    " |Xwwwwwwwwwwwwwwwwwww~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +####################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
                     " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
@@ -1069,7 +1069,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |*****##############     ###################   ###   ###   ##########*****|                                                    ",
                     " +*****##############     ###################   ###   ###   ##########*****+                                                    ",
                     " |*****#                  ###                   ###   ###           ##*****|                                                    ",
-                    " +*****#   ##########     ###  s                ###   ###           ##*****+                                                    ",
+                    " +*****#   ##########     ###  X                ###   ###           ##*****+                                                    ",
                     " |*****#   ##########     ###                   ### T ###           ##*****|                                                    ",
                     " +*****#                     #########################################*****+                                                    ",
                     " |*****#   ###    ###        #########################################*****|                                                    ",
@@ -1232,30 +1232,26 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     case Dessert_Desert:
                         switch (currentportal)
                         {
-                            case 0:
-                                tiles[j][i].set_teleport_id(Dessert_Desert_Dungeon);
-                                tiles[j][i].set_teleport_startY(19);
-                                tiles[j][i].set_teleport_startX(64);
-                                currentportal++;
-                                break;
-                            case 1:
+                            case 33:
                                 tiles[j][i].set_teleport_id(Dessert_Desert_Village);
                                 tiles[j][i].set_teleport_startY(33);
-                                tiles[j][i].set_teleport_startX(123);
+                                tiles[j][i].set_teleport_startX(124);
+                                currentportal++;
+                                break;
+                            case 34:
+                                tiles[j][i].set_teleport_id(Dessert_Desert_Dungeon);
+                                tiles[j][i].set_teleport_startY(19);
+                                tiles[j][i].set_teleport_startX(65);
+                                break;
+                            default:
+                                tiles[j][i].set_teleport_id(Cabbage_Campo1);
+                                tiles[j][i].set_teleport_startY(39);
+                                tiles[j][i].set_teleport_startX(41);
+                                currentportal++;
                                 break;
                         }
                         break;
                     case Dessert_Desert_Village:
-                        switch (currentportal)
-                        {
-                            case 0:
-                                tiles[j][i].set_teleport_id(Dessert_Desert);
-                                tiles[j][i].set_teleport_startY(31);
-                                tiles[j][i].set_teleport_startX(37);
-                                break;
-                        }
-                        break;
-                    case Dessert_Desert_Dungeon:
                         switch (currentportal)
                         {
                             case 0:
@@ -1265,19 +1261,42 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                                 break;
                         }
                         break;
-                    case Cabbage_Campo1:
+                    case Dessert_Desert_Dungeon:
                         switch (currentportal)
                         {
                             case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Dessert_Desert);
+                                tiles[j][i].set_teleport_startY(31);
+                                tiles[j][i].set_teleport_startX(37);
+                                break;
+                        }
+                        break;
+                    case Cabbage_Campo1:
+                        switch (currentportal)
+                        {
+                            case 0 ... 20:
+                                tiles[j][i].set_teleport_id(Carrot_Canyon1);
+                                tiles[j][i].set_teleport_startY(39);
+                                tiles[j][i].set_teleport_startX(19);
                                 currentportal++;
                                 break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                            case 21:
+                                tiles[j][i].set_teleport_id(Cabbage_Campo1_Village);
+                                tiles[j][i].set_teleport_startY(20);
+                                tiles[j][i].set_teleport_startX(4);
+                                currentportal++;
+                                break;
+                            case 22 ... 37:
+                                tiles[j][i].set_teleport_id(Cabbage_Campo2);
+                                tiles[j][i].set_teleport_startY(18);
+                                tiles[j][i].set_teleport_startX(3);
+                                currentportal++;
+                                break;
+                            default:
+                                tiles[j][i].set_teleport_id(Dessert_Desert);
+                                tiles[j][i].set_teleport_startY(3);
+                                tiles[j][i].set_teleport_startX(39);
+                                currentportal++;
                                 break;
                         }
                         break;
@@ -1285,15 +1304,15 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                         switch (currentportal)
                         {
                             case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Cabbage_Campo1);
+                                tiles[j][i].set_teleport_startY(6);
+                                tiles[j][i].set_teleport_startX(69);
                                 currentportal++;
                                 break;
                             case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Cabbage_Campo1);
+                                tiles[j][i].set_teleport_startY(6);
+                                tiles[j][i].set_teleport_startX(69);
                                 break;
                         }
                         break;
@@ -1301,47 +1320,25 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                         switch (currentportal)
                         {
                             case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                currentportal++;
-                                break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Cabbage_Campo2);
+                                tiles[j][i].set_teleport_startY(29);
+                                tiles[j][i].set_teleport_startX(50);
                                 break;
                         }
                         break;
                     case Cabbage_Campo2:
                         switch (currentportal)
                         {
-                            case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                            case 20:
+                                tiles[j][i].set_teleport_id(Cabbage_Campo1_Dungeon);
+                                tiles[j][i].set_teleport_startY(22);
+                                tiles[j][i].set_teleport_startX(66);
+                                break;
+                            default:
+                                tiles[j][i].set_teleport_id(Cabbage_Campo1);
+                                tiles[j][i].set_teleport_startY(20);
+                                tiles[j][i].set_teleport_startX(93);
                                 currentportal++;
-                                break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                break;
-                        }
-                        break;
-                    case Cabbage_Campo2_Dungeon:
-                        switch (currentportal)
-                        {
-                            case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                currentportal++;
-                                break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
                                 break;
                         }
                         break;
@@ -1349,15 +1346,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                         switch (currentportal)
                         {
                             case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Carrot_Canyon1_Dungeon);
+                                tiles[j][i].set_teleport_startY(15);
+                                tiles[j][i].set_teleport_startX(23);
                                 currentportal++;
                                 break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                            case 1 ... 8:
+                                tiles[j][i].set_teleport_id(Carrot_Canyon2);
+                                tiles[j][i].set_teleport_startY(15);
+                                tiles[j][i].set_teleport_startX(3);
+                                currentportal++;
+                                break;
+                            default:
+                                tiles[j][i].set_teleport_id(Cabbage_Campo1);
+                                tiles[j][i].set_teleport_startY(3);
+                                tiles[j][i].set_teleport_startX(37);
                                 break;
                         }
                         break;
@@ -1365,15 +1368,15 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                         switch (currentportal)
                         {
                             case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Carrot_Canyon2);
+                                tiles[j][i].set_teleport_startY(31);
+                                tiles[j][i].set_teleport_startX(83);
                                 currentportal++;
                                 break;
                             case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Carrot_Canyon2);
+                                tiles[j][i].set_teleport_startY(31);
+                                tiles[j][i].set_teleport_startX(83);
                                 break;
                         }
                         break;
@@ -1381,63 +1384,47 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                         switch (currentportal)
                         {
                             case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                currentportal++;
-                                break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Carrot_Canyon1);
+                                tiles[j][i].set_teleport_startY(10);
+                                tiles[j][i].set_teleport_startX(15);
                                 break;
                         }
                         break;
                     case Carrot_Canyon2:
                         switch (currentportal)
                         {
-                            case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                            case 0 ... 2:
+                                tiles[j][i].set_teleport_id(Soup_Sea1);
+                                tiles[j][i].set_teleport_startY(7);
+                                tiles[j][i].set_teleport_startX(3);
                                 currentportal++;
                                 break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                break;
-                        }
-                        break;
-                    case Carrot_Canyon2_Dungeon:
-                        switch (currentportal)
-                        {
-                            case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                            case 3 ... 10:
+                                tiles[j][i].set_teleport_id(Carrot_Canyon1);
+                                tiles[j][i].set_teleport_startY(16);
+                                tiles[j][i].set_teleport_startX(93);
                                 currentportal++;
                                 break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                            case 11:
+                                tiles[j][i].set_teleport_id(Carrot_Canyon1_Village);
+                                tiles[j][i].set_teleport_startY(27);
+                                tiles[j][i].set_teleport_startX(4);
                                 break;
                         }
                         break;
                     case Soup_Sea1:
                         switch (currentportal)
                         {
-                            case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                            case 0 ... 2:
+                                tiles[j][i].set_teleport_id(Carrot_Canyon2);
+                                tiles[j][i].set_teleport_startY(8);
+                                tiles[j][i].set_teleport_startX(93);
                                 currentportal++;
                                 break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                            case 3:
+                                tiles[j][i].set_teleport_id(Soup_Sea1_Dungeon);
+                                tiles[j][i].set_teleport_startY(17);
+                                tiles[j][i].set_teleport_startX(32);
                                 break;
                         }
                         break;
@@ -1445,49 +1432,16 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                         switch (currentportal)
                         {
                             case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                currentportal++;
-                                break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_id(Soup_Sea1);
+                                tiles[j][i].set_teleport_startY(24);
+                                tiles[j][i].set_teleport_startX(48);
                                 break;
                         }
                         break;
+                    case Cabbage_Campo2_Dungeon:
+                    case Carrot_Canyon2_Dungeon:
                     case Soup_Sea2_Dungeon:
-                        switch (currentportal)
-                        {
-                            case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                currentportal++;
-                                break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                break;
-                        }
-                        break;
                     case Soup_Sea3_Dungeon:
-                        switch (currentportal)
-                        {
-                            case 0:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                currentportal++;
-                                break;
-                            case 1:
-                                tiles[j][i].set_teleport_id(1);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
-                                break;
-                        }
                         break;
                 }
             }
