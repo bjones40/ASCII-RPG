@@ -189,11 +189,11 @@ int main(int argc, char ** argv)
 
                     switch (currentmap)
                     {
-                        case Dessert_Desert_Village:
-                        case Cabbage_Campo1_Village:
-                        case Carrot_Canyon1_Village:
-                            encounterchance = 0;
-                            break;
+                        //case Dessert_Desert_Village:
+                        //case Cabbage_Campo1_Village:
+                        //case Carrot_Canyon1_Village:
+                        //    encounterchance = 0;
+                        //    break;
                         default:
                             encounterchance = rand() % 500 + 1;
                             break;

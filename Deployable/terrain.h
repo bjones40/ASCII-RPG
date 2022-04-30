@@ -366,14 +366,53 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 42;
-/*
+
                 char CabbageCampo1[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|~~~~~~~~~~~MMMMMMMHHHHH,. ., . ,. , . , . . ., .ttttttt. ,. , ,. , .  ,.  ,. .tttttttttttHHMM|",
+                    "+~~~~~~~~~~MMMMMMMHHHH, ., . , .,., . , ., .. ,.ttttttttt., ., . ### ###. ,. ,. ttttttttttttHM+", 
+                    "|~~~~~~~MMMMMMMMHHHH,. ., ., ,. ., . ,. , ,,. ,ttttttttttt., ,.  #     # . ,, ,ttttttttttttttH|",
+                    "+~~~~~MMMMMMMMMHHHH, . ,. ,. ., ,. ., ,, ., ., ttttttttttt.,######     ######, .,tttttttttttHH+",
+                    "|~~~MMMMMMMMMHHHHHH,. ., . ,. ,. , ., . , . ,, ttttttttttt,,#               #., .ttttttt. , . |",
+                    "+~~MMMMMMMHHHHHHtttttt,. ., . ,, .tttttt., . . .ttttttttt, ,#       X       # ., ,.ttttt,. ,. +", 
+                    "|~MMMMMHHHHHHHHttttttttt, , .  .ttttttttt,. , . , ttttt., ,.#               # .,. tttt. .. ., |",
+                    "+MMMMMMHHHHHHtttttttttt,. ., .ttttttttttttt,. .,.  ..ttt. ..#               #, ,. .ttttttt,. ,+",
+                    "|MMMMMMMHHHHHHHtttttttt, .,, ..ttttttttttt., ., .,.tttttt.,,#################.,.ttttttttt,.. ,|",
+                    "+~MMMMMMHHHHHHHHHHtttt,. ., . .ttttttttttt.,, . . .tttttt., . ,. ,., . ,. , ,ttttttttttt,. , .+",
+                    "|~~MMMMMMMHHH,. ., . ,. ,.  . ,. ttttttt., ., ,., .,ttt.,. ., ., ., ., ., . .ttttttttttt,., . |",
+                    "+~~MMMMMMHHHHHHH,. ., . ,.  .,,. ,. ,. . . , . ,  .,. , . .ttttttt,, ., . . ,ttttttttttt., ., +",
+                    "|~MMMMMMMHHHHHHHHH, ., . ,., .,  ., . , ., . , . ,. ,. ,.ttttttttttt., , , ,. ttttttttt, ., . |",
+                    "+~MMMMMMMHHHHHHH,., ,. ,. ,.  , . ..,  ., . ,. , ., . .,ttttttttttttt, ., . ,..ttttttt. ,,. .,+",
+                    "|~~MMMMMMMMHHHHHHHHH,. ., . ,, ., ,. , .,. , . ,,  , .,.ttttttttttttt, ., . ,. ., . ,. ,. , . |",
+                    "+~~~MMMMMMMMHHHHHH,. ., . ., ., . , ., ,. , ., . . , ., ttttttttttttt,. ., ., ., . , ., . ,. .+",
+                    "|~~~MMMMMMMHHHHHHHHHHHHHH,,. ., . , . , , ., ., . ,. , . ttttttttttt.,. ,. . , ., . ,.. ,..  ,|",
+                    "+~~~MMMMMMMMHHHHHHH,.. ., ., . ,. ,. . , .  ., . ,. , .. ,. ttttt,. ., ., . , ., , ., ., , .. +",
+                    "|~~MMMMMMMMHHHHHHHHHHH,. ., ., ,., .., , . ,. , ., . , .,., ., , ., . ,. ,. ,. ,., . ., ,. . ,|",
+                    "+~MMMMMMMMMMHHHHHHHH,., ., . ,. ,, .., . , ,. ,. ,. ,, .,.., , .., ,. ,. , . ,.  . , . ,. , ..+",
+                    "|~MMMMMMMMMMHHHHHHH, ,. .,, ., ., ., ., ., . .,. ,.,. , ,.. , . ,. ., ,. ., . ,. ., .. , ., . |",
+                    "+~~MMMMMMMMHHHHHHHHHHH,. ., . .,tttttttttt,. ., . ,. , . ,. , . ,, ., ., ,, , . . ,. .,. ,. ,.+",
+                    "|~~~MMMMMMHHHHHHHHHHHH, ., ., .tttttttttttt. ,., ., ,. ., , , ,. , . ,. , ., ., .,., ., ., . .|",
+                    "+~~~MMMMMMMHHHHHHHH.,. ., . ,tttttttttttttttt,., . ,. ,. ,., . ,tttttttttttttttttt,., ., .,. ,+",
+                    "|~~~MMMMMMMHHHHHHHHHHH, ., .,tttttttttttttttt., . , ., . , .,ttttttttttttttttttttttttt,, ., . |",
+                    "+~~~~MMMMMHHHHHHHH,. ,.  ,. ,tttttttttttttttt. .,  ., , . .ttttttttttttttttttttttttttttt., ., +",
+                    "|~~MMMMMMMHHHHHHHHHHHHH, ,. ., tttttttttttt,. . ,, ., . ttttttttttttttttttttttttttttttttttt. .|",
+                    "+~MMMMMMMHHHHHHHHHHH., ., . ,.,  tttttttt. .,  ., ., ,.ttttttttttttttttttttttttttttttttttttt.,+",
+                    "|~MMMMMHHHHHHH,. ., . , ., ., ., ., .., ., ., . ,. , .,ttttttttttttttttttttttttttttttttttttt ,|",
+                    "+MMMMMMHHHHHHHHHHHHH, ., ., ,. ., , . , ., ., . ,., ., ttttttttttttttttttttttttttttttttttttt. +",
+                    "|~MMMMMMHHHHHHHH., ., . ,,. ., ,. ,  ., ., ., ., . ,. , ,ttttttttttttttttttttttttttttttHHMMMMM|",
+                    "+~~MMMMMMHHHHHHHHH, . ,. . ,. ,. ,, .tttttttt., ., . ,, ,.tttttttttttttttttttttttttHHHMMMMMM~~+",
+                    "|~~~MMMMMMHHHHHHHHH,. ., ,. , . ,.,ttttttttttt,. ., ., ., ,.tttttttttttttttttHHHHMMMMMMMM~~~~~|",
+                    "+~~~~~MMMMMHHHHHHHHHHH,., ., ., ., .ttttttttttt, ., . , , ., .,ttttttttttHHHHMMMMMMMMM~~~~~~~~+",
+                    "|~~~~~MMMMMHHHH,.,. ., . ,. , . . . ,ttttttttt., . ., .  . , ., ,tttttttttHHHMMMMMMM~~~~~~~~~~|",
+                    "+~~~~~~MMMMMMHHHHHH., . ,. ., ., ,. ., ,ttttt ., . ,. , .,. ., ., ,.,. ., HHHMMMMMM~~~~~~~~~~~+",
+                    "|~~~~~~MMMMMHHHHHHHHHH., . , , . ,. ,. ,.ttt. ,. , ., . , ,. ,. ., ., .HHHHMMMMMM~~~~~~~~~~~~~|",
+                    "+~~~~~~~MMMMMHHHH, ., . ,.  ., . , . ., ,. .,., ., ., , ,..,., ., .HHHHHMMMMMM~~~~~~~~~~~~~~~~+",   
+                    "|~~~~~~~MMMMHHHHHHHH,. ., . ,. , . ,. ,, .,., . ,. ,. ., ,.HHHMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~|",
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, CabbageCampo1, 200*200*sizeof(char));
-*/
+                memcpy(map, CabbageCampo1, 200*200*sizeof(char));
             }
             break;
         case Cabbage_Campo1_Village:
@@ -386,14 +425,64 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 52;
-/*
+
                 char CabbageCampo1Village[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|., ,. ., . , ################################# ., ,. ., ., ., ,.. , ., ., ., ,  ., ., .,. , ., ., . .,. ., . ,. ,. , ., . . ,|",
+                    "+., ,  . ,. .,#0000000000000000000000000000000# , ,, . ,  ., , . , . ,.  ,, . ., ,.., , .,  , ., .,  ., . , .,  .,  .,  ., . ,+",
+                    "| ., ., ,. .,,#0000000000000000000000000000000# ., ., ., ,.  ,. ., xxxxxxxxxxxxxxxxxxxxxxxxxxxx. . , ., . ,,#############. , .|",
+                    "+,. ., ., .  .#0000000000000000000000000000000# ., . ., . , ,. ., ,x                          x, , . , . , .#00000000000# . ,,+",
+                    "| ., ., ., .  #0000000000000000000000000000000# ., ., ., ,. . , ., x   xxxxxxxxxxxxxxxxxx     x. , .,  . , .#00000000000# ., .|",
+                    "+. , ., .,, . #0000000000000000000000000000000# . , ., . , ,.  , .,x   x.  , . , . ,. .,x     xxxxxxxxxx. , #00000000000# . . +",
+                    "|. , ,. ., .,.############000000000############ ., ., ,. ,. , ., .,x   x ,. , ,. ., ., .x              x. , ####00000#### ,. .|",
+                    "+., ., ,. ,. . ,., ., ., #000000000# .,  . ,. ., , . ,. ., .,  ,. ### ###  ., ,. ,.  ., x     xxxxxxx  x ., . .#00000# ., . , +",
+                    "|., ., , . , . , ., ,. , #000000000#.,  ., ., ., ., ., ., ., ., . #00000# ., , .  , . , x     x, . ,x  x., ., .### ###. , . , |",
+                    "+., ., . , .  . ,. ,. ., ####   #### ., , . , ., .,  ., . ,. . ####00000#### ., ., ., . x     x.,  .x  x. , ., .x   x, ., . .,+",
+                    "|,. . , ., , . , . ,. ., . x     x. , ., . ,. . . , . ,. ,. , .#00000000000#. , . ., . ,x     x ., .x  xxxxxxxxxx   x .,  .,. |",
+                    "+. , , . , ., . ,.  ., , .,x     x ., ., . ,. , ., . ,. , . , .#00000000000#. , . ,. ., x     x. ,. x               x , ., . .+",
+                    "|. ,. ,. , ,. . ,. ,. ,. . x     x ,. ., . ,. , ., ., ., . ,.. #00000000000# ., . , ,. ,x     x ., .xxxxxxxxxxxxxxxxx., ., ., |",
+                    "+., . , ,. ,. ., .,. , .,  x     x ., ., . , ., ., ., ., . , . #############., ,. ,. ., x     x, ., ,., ., . ,. , ., . ., ., .+", 
+                    "|., ., . , ., ., ., ., ., ,x     x.,  ., ., , . . , . , . , .  . .,  ., , ,. ., .,,.  .,x     x., ., ., .,  ., ., ., ., ., ., |",
+                    "+, .. , . ., ,. ,. ,. ,. .,x     x., . ,. , . ,., ., ., ,. ., ,. ., ., .,  ., ., ., ., .x     xxxxxxxxxxxxx, . , ., ., ., ., .+",
+                    "|xxxxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx .x                 x ., .,., ., ., .,. |",
+                    "+                                                                                    x. x     xxxxxxxxx   x., ., ., ,. ,. ,. .+",
+                    "|                                                                                    xxxx     x, ,. .,x   x. ,. ,. ., ., ,.., |",
+                    "+                                                                                             x , . . x   x,  , ., . ,, . .. ,+",
+                    "|xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxx              x . , .### ###, . . , ., . ,. . |",
+                    "+., ., ,. ., . . , . , . , ,. , , ., ., . , ,. ,. ., , ,x     x. , ., ., . , . x              x.,.  ,#00000#. , . , . ,. , ,. +",
+                    "|., ,. ., , . ., ,. ., ., ,. ,. ., . ,. , ., ., ., ., .,x     x.,  ,. ., .,  . x     xxxxxxxxxx . ####00000#### ., . . , ., ,.|",
+                    "+,. ,. ,. ,. ,. ,. . , ,. , . , . ., ., .  ,, ., ,. , . x     x., . ,, . , ., .x     x , . , ., . #00000000000# . , ., ,. .  ,+",
+                    "|. , ., . ,. ., ., ,. ,. , ., ., ,. .,., ,. ., ., ,. , .x     x. ,,. , ., ,. , x     x. ,  . .,  .#00000000000# ,. ., ., , . .|",
+                    "+. ,. , ., . ., ., ., ,. ., . , , . ., . , ., .,  ., ., x     x., , ,. ,. ., . x     x , ,. . .,, #00000000000#., ,. . . , ,. +",
+                    "|. , ., . ., . ,. ,.  ,. , .,., ., . ,. . ., ., ., . , .x     x. ,, ., ., ,. . x     x., ., . . , #############., . , . , . .,|",
+                    "+###################.. ,., . ,. , ., ., .,. ., . ,., .  x     x. ,. , ,.  ,.. ,x     x ,., , ., , . , . ,,. ,. . ,., ,., . , .+",
+                    "|#00000000000000000# .,. , ., . ,. .,. , ., ., . , .,  ,x     x .,. ,. , ., ., x     x,  ., . ,. , . ,. . . ., .  ,., . ,.  ..|",
+                    "+#00000000000000000# ,. . ,. , . .,, ., .. ,. ,. ,., . .x     x ,.. ,. ,. , ., x     x., ,. ,. ,. ,. ., .,. , . ,. . ,.,. , . +",
+                    "|#00000000000000000#. ,. ,. ., . ,. .,. , ., . ,. , .,. x     x., . ,. . . , .,x     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|",
+                    "+#00000000000000000######., . , . ,. ,. , . , . . ,. ., x     x. ,., . ,. ,. ,.x                                              +",
+                    "|#0000000000000000000000#., . , . ,. ., ., ., ., ., . .,x     x. ,.  . ,. ,.. ,x                                              |",
+                    "+#0000000000000000000000#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx     x., . , ., ,. , .x                                              +",
+                    "|#0000000000000000000000#                                     x., . ,. . , . . x     xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx|",
+                    "+#0000000000000000000000                                      x ., . , ,.  , . x     x. ,. ,. ,. . , . ,. , ., . ,, . ,.  . , +",
+                    "|#0000000000000000000000#                                     x ., ,., ., . ,. x     x, , . , . ,. , . ,., .. ,. . , ., . . , |",
+                    "+#0000000000000000000000#xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ., ,. ., ,. ,  x     x ., . , ., ,. , . ,. ,, .,. . , .., .,  +",
+                    "|#0000000000000000000000#. ,, ., . , ., , . . ,. , . , ,. ,. , .,. , .,.,. ,. .x     x , ,. . , ., . . ,. , . ,,. , ., . . , .|",
+                    "+#00000000000000000###### . ., ., ., ., . ,. .  , ,. , ., , ., . ,,  , . ,., ####   #### ., , ., ., .,. ,. , ,  ., . ,.  , . ,+",
+                    "|#00000000000000000#,. ., . , . , , ., . ,. , . ., , .,., .,. , . , ., . , ..#000000000# ., ., . , . ., . ,. , ., . . , ., ., |",
+                    "+#00000000000000000#. , ., ., ., , . ,. .  ,.., ., . ,. ,., ., . ., .,  ,. . #000000000#. ,.  ., ,. .,. ,. . , ,. , . ,.  . ,.+",
+                    "|#00000000000000000# ., ,. .,  . ,. ., ., ., ., ., .,., ., . , .. ############000000000############., , ., ., ,. ,. ., .  . ,.|",
+                    "+################### ., ., , ., . ,. ,.  ,. ., ,. ,. ., . ,. , ., #0000000000000000000000000000000# ., ,. .,. ,  ,. , .,  ., ,+",
+                    "|., ,. ., ,. . , ., ., . ,. , ., , .,.. ,. ., ., ., . ,. , ., ., .#0000000000000000000000000000000#. , ., . .,  .,.  ., .,  .,|",
+                    "+ . , . , . , ,. , . ,. , ., ., ., ., ., .,. ,. ,, ., ,. ., ,. .,.#0000000000000000000000000000000# .,. ,,. , . , . ,. ., .. .+",
+                    "|. , ., ., ., ,.. ,. ,., . ,. . , ,. ,. , ,. , ., . ,. . , ., ., .#0000000000000000000000000000000#. ,. ,., ., . ,. , ., ., . |",
+                    "+ ., .,., . ,. ,. ,. , ,. ,. . ,. , . , , ., . , ,.., ,. . ,. .,. #0000000000000000000000000000000#. , ., . , . ,., .. , .,  .+",
+                    "|., ., ., , .,., . ,.., ., , . , ., .,. ,. ,. ., . , , . ,. ,. , .#################################. , ., ., ,. , ., . ., ., .|", 
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, CabbageCampo1Village, 200*200*sizeof(char));
-*/
+                memcpy(map, CabbageCampo1Village, 200*200*sizeof(char));
+
             }
             break;
         case Cabbage_Campo1_Dungeon:
@@ -406,14 +495,38 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 26;
-/*
+
                 char CabbageCampo1Dungeon[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|********************************########################################*|",
+                    "+**########################******#                                      #*+",
+                    "|**#                      #******#                                      #*|",
+                    "+**#                      #******####################                   #*+",
+                    "|**#                      #*************************#                   #*|",
+                    "+**#                      ######################****#                   #*+",
+                    "|**#                      #                    #****########### #########*|",
+                    "+**#                      #                    #**************# #*********+",
+                    "|**#                                           #**************# #*********|",
+                    "+**#                      #                    ################ #######***+",
+                    "|**########### ############                    #                      #***|",
+                    "+************# #**********#                    #                      #***+",
+                    "|************# #**********#                                           #***|",
+                    "+************# #**********#                    #                      #***+",
+                    "|**########### ########***#                    #                      #***|",
+                    "+**#                  #***######################                      #***+",
+                    "|**#                  #************************#                      #***|",
+                    "+**#                  #************************#                      #***+",
+                    "|**#                  #************************################## #####***|",
+                    "+**#  s               #*****************************************# #*******+",
+                    "|**#                  #**************************************#### ####****|",
+                    "+**####################**************************************#   s   #****+",
+                    "|************************************************************#########****|",
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, CabbageCampo1Dungeon, 200*200*sizeof(char));
-*/
+                memcpy(map, CabbageCampo1Dungeon, 200*200*sizeof(char));
+
             }
             break;
         case Cabbage_Campo2:
@@ -426,14 +539,54 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 42;
-/*
+
                 char CabbageCampo2[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|MMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~|",
+                    "+MMMHHHttttHHHHHHHHHHHHHHHHHtttttttttHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~+", 
+                    "|HHH, tttttt,. , . .. ., . ttttttttttt ., ., ., , . ,,.  HHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMM~~~|",
+                    "+HH,.tttttttt ,. .., ., .,ttttttttttttt. , ., . , ., ., ,. ,. ,HHHHHHHHHHMMMMMMMMMMMMMMMMMMM~~+",
+                    "|,. .tttttttt., . ,. ,. ,.ttttttttttttt,, .ttttttt, ., , . .,  ., .HHHHHHHHHHHHHHHMMMMMMMMMMM~|",
+                    "+. ,.  ttttt,. , ., . , ., ttttttttttt . ,ttttttttt. , ., ., ., . ,. .HHHHHHHHHHHHHHHMMMMMM~~~+", 
+                    "|,. ., , t,. .. , ,. ., ., .tttttttt. , ttttttttttttt. , ., ., . , ., ., .HHHHHHHHHHHHHMMMMMM~|",
+                    "+., . . , .., ., .,., . ,.  ,.tttt . . ,ttttttttttttt , .,. ., ., ., ,. .,.,HHHHHHHHHHHHMMMMM~+",
+                    "|,. .,. ,. ,. tttttt., ., ,, . ,. ,. , . ttttttttttt, . . , . ,. , ., . HHHHHHHHHHHHHHHHHMMM~~|",
+                    "+. ., ., ., tttttttttt ., ., ., ,. ,. ,. . ttttttt. , ., . ,.  ., , , ., .HHHHHHHHHHHHHHHHMM~~+",
+                    "|,. . ,., ttttttttttttt . ., . ,. , . , ., . ,. , .. , .., . ,. ., ., ., ., .HHHHHHHHHHHHHHMM~|",
+                    "+,. ., ,.ttttttttttttttt. ,., ., ttt, , ,. ., .,,. ., ., .,,. ,. ,., ., .,,. . ,HHHHHHHHHHHMM~+",
+                    "|., . ,. ttttttttttttttt ,.. , .ttttt. ,. , ., . ,. ,.  ., . ,.ttt , . ,. ,. ,HHHHHHHHHHHHHHM~|",
+                    "+, ., ., ,tttttttttttt,. , .., . ttt, ., ., .,  tttt,. , .,   ttttt.. . .. HHHHHHHHHHHHHHHHHHM+",
+                    "|., ., ., ,tttttttttt ., . ., . , ., ., ., . , tttttt . ,. ,tttttttt., . , ,. ,. ,.HHHHHHHHHHM|",
+                    "+,. .  ,. . .ttttt., . ,. , ., . ,. ,. , . ,. ,.tttt. ,  , ttttttttttt  ., . ,. HHHHHHHHHHHHHH+",
+                    "|. ,. .,, . , , , ., ., ., . ,. ttt , . ,.  ., . tt  ,. , .ttttttttttttt , ., ., . ,. HHHHHHHH|",
+                    "+. , .., ., ., . , ., ., .  , .ttttt. , . ., . ,  , .,. , . tttttttttt, .,. ,. ., .HHHHHHHHHHH+",
+                    "|, ., . ,. . ,. ,. ,. , .,. ,.ttttttt . ,. .  . , . ,.  .. ,, ttttttt,. ,.  .HHHHHHHHHHHHHHHHH|",
+                    "+., .,.ttt ., . , ., ., . ,. ,ttttttt ., . . . , . ., .,   , ., ., . , .,  , ., .HHHHHHHHHHHHM+",
+                    "|,. .,ttttt ,. , ., ., . , ., .ttttt., .  . ,ttttttttttt, ., . ,. ,. . ,, . ,. ., . ,HHHHHHHHM|",
+                    "+,. ,. ttt, . ,. ,. ,. , ., ., .ttt., . ,tttttttttttttttttttt  ., .  ,. , ., . ,. HHHHHHHHHHHM+",
+                    "|., ., .,. ,. ,. , . ,. ,. , . , . ., tttttt.   .  .   , ttttttt ,. ,. ,. , . HHHHHHHHHHHHHHHM|",
+                    "+. ., ., ., . ,. . ttttttt,. , ., ttttttt.  , .   ,   .   ,tttttttt.,., ,. .,., ,.HHHHHHHHHHHM+",
+                    "|., ., .,. , . ,. ttttttttt., . ,tttttt      .### ### .     . ttttttt.  ., . . ., ,HHHHHHHHHM~|",
+                    "+., . ,. . , . ,.ttttttttttt, ttttttt   .  ,  #     #,     ,   ,tttttt , ., .HHHHHHHHHHHHHMM~~+",
+                    "|H., . ,., . , .,tttttttttt ttttttt.     ######     ###### .  .,  .tttttHHHHHHHHHHHHHHHHMMM~~~|",
+                    "+HH, tttt , .,. , tttttttt ttttttt .    ,#               #     ,  ,   tttttHHHHHHHHHHHMMMMMM~~+",
+                    "|MHHHtttttt. ,. ,. tttttt,ttttttt   ,  . #       X       #    ,   , .HHHHHHHHHHHHHHHHMMMMMMMM~|",
+                    "+~MMHHHttttt,.  ., ,. . .,ttttttt,       #               #,     , HHHHHHHHHHHHHHHHHMMMMMMMMMM~+",
+                    "|~~MMMMHtttt ,. , ., ., . ttttttt.  ,   .#               # ,  ,    . ,  HHHHHHHHHHMMMMMMMMM~~~|",
+                    "+~~~MMMMHHt ,. , . ,. , .ttttttt,    .  .#################     . ,. , HHHHHHHHHHHMMMMMMMMMMM~~+",
+                    "|~~~~MMMMMHH., . , .,. ,.ttttttt,        ,      .   ,     ,  .. .HHHHHHHHHHHHHMMMMMMMMMMMMMMM~|",
+                    "+~~~~~~~MMMHHH. ,. , ., .ttttttt, .  .      .  , .       ,. , HHHHHHHHHHHHHHMMMMMMMMMMMMMMM~~~+",
+                    "|~~~~~~~~~~MMHHHH.,. ,. ,ttttttt ., .   ,  . . ,   .  .HHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMM~~|",
+                    "+~~~~~~~~~~~~MMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMM~~~~+",   
+                    "|~~~~~~~~~~~~~~~MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, CabbageCampo2, 200*200*sizeof(char));
-*/
+                memcpy(map, CabbageCampo2, 200*200*sizeof(char));
+
             }
             break;
         case Cabbage_Campo2_Dungeon:
@@ -446,14 +599,38 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 26;
-/*
+
                 char CabbageCampo2Dungeon[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|**#######################************************************************|",
+                    "+**#                     #*********####################################***+",
+                    "|**#                     ######****#                                  #***|",
+                    "+**#                          #****#                                  #***+",
+                    "|**#                     #### #****#                                  #***|",
+                    "+**##### #################**# #****#                                  #***+",
+                    "|******# #******************# #****#                                  #***|",
+                    "+******# #################**# #****#                                  #***+",
+                    "|******#                 #**# ######                                  #***|",
+                    "+******################# #**#                                         #***+",
+                    "|**********************# #**########                                  #***|",
+                    "+**###################*# #*********#                                  #***+",
+                    "|**#                 #*# #*********#                                  #***|",
+                    "+**#                 ### #*********########################## #########***+",
+                    "|**#                     #**********************************# #***********|",
+                    "+**#                 #####***#####################**********# #***********+",
+                    "|**#                 #*******#                   #**********# #***********|",
+                    "+**#                 #****####                   ############ ###########*+",
+                    "|**#                 #****#                                             #*|",
+                    "+**#  s              #****#                                             #*+",
+                    "|**#                 #****#                                             #*|",
+                    "+**###################****#                                             #*+",
+                    "|*************************###############################################*|",
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, CabbageCampo2Dungeon, 200*200*sizeof(char));
-*/
+                memcpy(map, CabbageCampo2Dungeon, 200*200*sizeof(char));
+
             }
             break;
         case Carrot_Canyon1:
@@ -466,14 +643,54 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 42;
-/*
+
                 char CarrotCanyon1[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|",     
+                    "+MMMMMMMMMMMMMMMMM, .. ,MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHH+",
+                    "|MMMMMMMMMMMMMM.. ,., ., , . .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHHHHH|",
+                    "+MMMMMMMMMMMM, .,.MMMMMMMMM.  . .MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHHHHHH+",
+                    "|MMMMMMMMMMM. ,.,MMMMMMMMMMMMMM,  ., ,HHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHHHHHHHHHH|",
+                    "+MMMMMMMMMM### ###MMMMMMMMMMMMMMHHHH, ., ,HHHHHHHHHHMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHHHHHHHHHHHHH+",
+                    "|MMMMMMMMMM#     #MMMMMMMMMMMMMMMMMMHHHHH. ,. . .,,HHHMMMMMMMMMMMMMMMMHHHHHHHHHHHHHHHHHHHHHHHH|", 
+                    "+MMMMM######     ######MMMMMMMMMMMMMMMMMMHHHH. ,. .,,HHHHMMMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH+",    
+                    "|MMMMM#               #MMMMMMMMMMMMMMMMMMMMMHHHH. ,, ..HHHMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH|", 
+                    "+MMMMM#       X       #MMMMMMMMMMMMMMMMMMMMMMMMHHHH, ., ,HHMMHHHHHHHHHHHHHHHHHHHHHHHHH. ., ., +", 
+                    "|MMMMM#               #MMMMMMMMMMMMMMMMMMMMMMMMMMMMHHH. ,..HHHHHHHHHHHHHHHH,,. . , ., ., ., .,|", 
+                    "+MMMMM#               #MMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHH, . ,HHHHH. ttttt ., ,. ., ., ., ,. .,+", 
+                    "|MMMMM#################MMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHH, ., , . ,ttttttt., ., ,. ., ., ,. ,.|", 
+                    "+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHHH.. , ., .,ttttttt, ., . , .,., ., ,. +", 
+                    "|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHH,,. . , . ,..ttttt,. ., ,. ,. ,. . ,. ,|", 
+                    "+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHH. ,. ., ., ., ., , .,., ., ,. .,  ., ., .+", 
+                    "|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHH. ttttt ., ,.,. .,., ., ,. ., . ,ttttt. ., ,.|", 
+                    "+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHH, .,ttttttt ,. ., .,,. ., ,. ., ., ttttttt,, . .+", 
+                    "|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHH. ., .,ttttttt.,., ., ., ., . , , . , ttttttt., ..,|", 
+                    "+MMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHH, ,. ., ., ttttt. ,.,  .,., ., ., ,. ., .,ttttt. ..HHH+", 
+                    "|MMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHH, ., ., ., .,., .,  ., ., . ., ., ., ., ,. ,. ,. ,.,HHHHM|", 
+                    "+MMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHH., . ,. , .,. , . , .. , ., ., ,. .,. ,. , ., ., ,..,HHHHHMM+", 
+                    "|MMMMMMMMMMMMMMMMMMMMMHHHHHHHHHH., ttttt , ., ,, . , ., ,. .,.,. , .,. , ., .,.,  .,.HHHHHMMMM|", 
+                    "+MMMMMMMMMMMMMMMMMMMMHHHHHHHHHH,  ttttttt, , . ,. .,, ., ., ttttt,. ,. , ., ., . ,HHHHHHHMMMMM+", 
+                    "|MMMMMMMMMMMMMMMMMHHHHHHHHHHHH.., ttttttt , ,. . , ,., . ,.ttttttt,., ., ., ..HHHHHHHHMMMMMMMM|", 
+                    "+MMMMMMMMMMMMMMHHHHHHHHHHHHHHH, ., ttttt., ., ,. ., ., ., ,ttttttt .,,  ..HHHHHHHHHHHMMMMMMMMM+", 
+                    "|MMMMMMMMMMHHHHHHHHHHHHHHHHHHH ,., ., ., . , , ., ,. ,. ., .ttttt,.HHHHHHHHHHHHHHHHMMMMMMMMMMM|", 
+                    "+MMMMMMMMHHHHHHHHHHHHHHHHHHHHH.., , ., .,., ,. . ,. ,, ., ,HHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMM+", 
+                    "|MMMMMMMHHHHHHHHHHHHHHHHHHHH,., ,. ., ., ,. , ., ., .HHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMM|", 
+                    "+MMMMMMHHHHHHHHHHHHHHHHHH.., ., .,. , . ., . ,,HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMM+", 
+                    "|MMMMMHHHHHHHHHHHHHHHHH,.,  ,.. , .. , ..HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMM|", 
+                    "+MMMMMHHHHHHHHHHHHH. ., ,. ,.,. . ,. ,HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMM+", 
+                    "|MMMMHHHHHHHHHHH,., ., ,. .,.,  .,.HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMM|", 
+                    "+MMMHHHHHHHHHH. ., ., . , . ,. ..HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+", 
+                    "|MMMHHHHHHHHHH., ., ., ., ,.. .HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|", 
+                    "+MMHHHHHHHHHHH, .,. ,. ,. , .HHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+", 
+                    "|MHHHHHHHHHH. , ., , .,  .,,HHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|", 
+                    "+HHHHHHHHHH. .,, .  , ., .,HHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+", 
+                    "|HHHHHHHH, ,. .,, ., ,. .,HHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|", 
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, CarrotCanyon1, 200*200*sizeof(char));
-*/
+                memcpy(map, CarrotCanyon1, 200*200*sizeof(char));
+
             }
             break;
         case Carrot_Canyon1_Village:
@@ -486,14 +703,63 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 52;
-/*
+
                 char CarrotCanyon1Village[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|., ., . ,. , ., ., ., . , ., .,. ,. , ., ., . ., ., . ,., . , ., ., ., ., . ,. , ., ., ., ., ., . , ., ., . ., . ,. ,. , ., .|",
+                    "+. ,., . ,. , ., ., ., ., ,. ., . . , ., ., . , ., ., .,., ., ,. ., ., .,. ,. , ., ., ., ., ., ., . ,. , ., ., ., . ,. ., . . +",
+                    "|., ., ., ., , .. , ., ,..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ., ., ., . , ., ., . , .|",
+                    "+. , ,. .,. , ., ., . , .,x                                                                         x., , ., ., ., ., . ,, .  +",
+                    "|., ., ., ,. ., . , ,. ., x                                                                         x. ,,. . , . , ., ., . ,. |",
+                    "+. ,. ,, . , ., ., . ,. .,x                                                                         x ., ,. ,. . ,. , ., ,. .,+",
+                    "|., ., ,. . ,, .. , ., . ,x         xxxxxxxxxxxxxxxxxxxxxxxxx     xxxxxxxxxxxxxxxxxxxxxxxxx         x. ,,. . , . ,. ., ,. ,.. |",
+                    "+, . , ., . , ,. , ., ., ,x         x., ,. . ,. , ., , . , .x     x,. ., ,. ., ., . . , .,x         x ., ., ., ,. ., . , .,  .+",
+                    "|., ,. . ,,.  ., ., ,. ., x         x., ., ,. . , ,. ,. .,. x     x., ,. ,. ,. ,. .,  . ,.x         x., ., ., ., ,. ., . , ., |",
+                    "+., ,. ., . , . ,. , .,. ,x         x., ,. ., ,. ., ., ,. ,.x     x., ., ., ., . ,. ., . ,x         x., , ., ,. ., ., ., ., . +",
+                    "|., ., . ,. ,, ., . , ., .x         x., ., ., ., ., ,. ., ..x     x. , ., ., ., ,  ., .,.,x         x. ,., ,. ., ,. ., ,. ,. .|",
+                    "+. ,. , ., ., ., ., . , .,x         x., ,. ., ,. ,. , .,.  .x     x,.., ,. ,. ,. ,. .,  .,x         x., . ,,. ., ., ,. ., .,. +",
+                    "|. ,. ,. ,. , ., ,. ., ,. x         x., ., .,  ,. ., . . , .x     x., ., ,. ,. ,. ,. .,  .x         x. ,. ,,. ., . , ., ., .,.|",
+                    "+., . ,,. ., ,. . ,. , ., x         x., ., ., ., ., ,. ,. .,x     x., ,. ., ., ,. ., ,.. ,x         x., ., . ,. ,. , ., ,. ,. +", 
+                    "|., . , ., . , ., .,,.  .,x         x. ,,.  , . ,. .,,. ,., x     x,. ., ., ,. ,. ., ,.  ,x         x., ,. ., ., ., ., ,. ., .|",
+                    "+., ., ., . , ., ., ., . ,x         x,. ,. ,. ., ,. ,. ., . x     x., ,. ,. ., ,. ,. .,  .x         x. , ., . , ., ., ,.. , .,+",
+                    "|., . ,. , ., ., ., ,. ,. x         x., ,. ,. ,.  ,. ,. ,.. x     x., , ., ,. ., . , .,,..x         x., ,. . ,. , ,. ., ,. .,.|",
+                    "+., . ,. ,., . ,. , ., ,..x         x., ., ,. ,. ., ,. ######## ########., ,. ., , . ,. . x         x., , ., , ., . , . ,. , ,+",
+                    "|., . , ,. , ., ,. , ., . x         x,. ,. ., ., . ., ,#000000000000000#., ,. . , ., .,.. x         x., , ., ., ., ., . , ,.. |",
+                    "+. ,. ,., . ,. , ., , . ,.x         x., ,. , , ., ,. .,#000000000000000#., ., , . , ., . ,x         x., ., ., ., ,. .,, . ,,. +",
+                    "|., ., ., . , ., ,. , ., .x         x., ,. . , ., ,. .,#000000000000000#., ,. . , .  ,.  .x         x., ., ., ., . , ., ., .,.|",
+                    "+., ., , . , ., .,.  ., .,x         x., ,. . , .,.######000000000000000######., , . ,. , ,x         x., .,., .,. , ., ., ., .,+",
+                    "|., ., ., . ,. , . ,. , ..x         x., ,. ., ,. .#0000000000000000000000000#. , ., ,. ., x         x ., ., ., ., ., . . ,. . |",
+                    "+xxxxxxxxxxxxxxxxxxxxxxxxxx         x., ., ,. . , #0000000000000000000000000#., ., , . ,. x         xxxxxxxxxxxxxxxxxxxxxxxxxx+",
+                    "|                                   x., ,. ,. ., .#0000000000000000000000000#. ,. ,. ., . x                                   |",
+                    "+                                   x .,. , ,.. .,#0000000000000000000000000#., ., ,. ., .x                                   +",
+                    "|                                   x. ,,. ,. . . #0000000000000000000000000#., ., .,  .,.x                                   |",
+                    "+xxxxxxxxxxxxxxxxxxxxxxxxxx         x., ,. ., .,  #0000000000000000000000000#., ., ., . ,.x         xxxxxxxxxxxxxxxxxxxxxxxxxx+",
+                    "|., ,. , . ,, . , ,.. , .,x         x. , .,. . ,,.#0000000000000000000000000#,. ,. ., . ,.x         x. , ., ,. ., ., ., ., ,..|",
+                    "+. , .,,. . ,, . ,. ,. ,.,x         x. ,,.  ., ,. ###########################. ,,. ., ,. .x         x. , ,.. , ,. ., , .,  ., +",
+                    "| ., ., ., ., . ,. ,. , ..x         x., ,. . ,, . , ., .,  ., ., ,. ,. ,. ,. ,. ,. ,. ,. .x         x ., ,. ., , ,. ,. ., ,.. |",
+                    "+ ., ., , . , . ,. , ., .,x         x., ,. ., ., ,. , .  ,., . ., ,. ., ., ,. ,. ,. ,. ,. x         x ,.,  ,. ,. ,. ,. ,. .,. +",
+                    "|., ., ,. . ,. , ., . ,. ,x         x. ,,.  ., , ., . ,. ., .,  ., ,. ., ,. ., ,. ., . , .x         x. , , ,. ,.., , ., ., ,..|",
+                    "+., ., ., ., ,. . , ., , .x         x., ,. . ,. ., ., . , . , .,.  , ., ., .,., .,. ,.,  .x         x ,. ., ,. ., ., ., ., ,. +",
+                    "|,. , ., ,. ., ., ., , .. x         x .,., . , ., ., ., , . , ., , . ,,. ,  ,.. , .,, .. ,x         x., , . , ., ,. ,. ,. ,. ,|",
+                    "+., ., . ,. , ., ., ., ,. x         x., ,. ., ., . ., ., ., . ,, . ,,. ., . , . ,. ,. ,. .x         x,. .,,. ,. ,. ., ., ., . +",
+                    "|., ., . ,. , ., ,. ., .,.x         x. ,,  .,,. ., ,. .,, ., ,. ., ., ,. ., , .., ., . ,. x         x., ,. , ,. ., , .,., ., ,|",
+                    "+., , . ,. , ., ., ,. ., .x         x., , . , ., ,. ,. ., ,.., , .,  ,.,  ,.,. ,. ,. ., . x         x ,.,. . , ., ,. ., . , .,+",
+                    "|. ,.,  ., ., ., ., ., ., x         x., ,. . , , .,,. ., ,.., ., ., ., ., ., ., ., ., ,. ,x         x., ,. . , ., , .,  , ,. ,|",
+                    "+. ,. , ., ., ., ., . , . x         x ., ., ,. ., ., ., ., .,. , .,. ., ., ., . ,., , .., x         x,. ,. ,. ., ,. ., , ., , +",
+                    "|., ,. ,. ,. . . , ., ... x         x. ,., ., ., ., . , ., ., ., ., ., ., ., ., ,. ., ., .x         x., ,. ,. ,. ,. ,. ,. ,. ,|",
+                    "+., ,. ., ., ., . , ., ., x         x,. ., ,. ,. ,. ,. ., ,., . , . ,.. , ,.. , ,.. , ., .x         x,. . ., . , ., , ., ,. . +",
+                    "|., ., , ., , . , ,. .,. ,x         xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx         x, . , . , ,.  ,., . ., . |",
+                    "+., , . , ., ,. ,. ,. ., ,x                                                                         x., ,. ., ,. , . ,. . ,. .+",
+                    "|., ,. , . , ., ,. ,. ,. ,x                                                                         x., ,. ., ,. . , ., ., ,. |",
+                    "+., ,.  ., ., ., ., ., ., x                                                                         x, ., ., ., ., ., ., ,. ,.+",
+                    "|., ., ., . , ., ., ., . ,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ., ., ,. ,. ,. ., ,. ,. |",
+                    "+ ., ,. ., ,. ., ., ,. ,. ,. ., ,. ,. ,. ., . , . , ., ., .,., ., ., ., ,. ., ,. ., ., ., . ,. ., ,. ., ,. ,. , ,.. , ,.. ,,. +",
+                    "|. ., ., .. , . ,. ., ,. ,. ,. ., ., , ., , ,. ,. ,.  ., ., . , , ., ., ., . ,., . ,.,  ., . ., ., ,. ,. ,. ,. ., . ,. ,. ,, .|", 
                 };
 
-                memxpy(map, CarrotCanyon1Village, 200*200*sizeof(char));
-*/
+                memcpy(map, CarrotCanyon1Village, 200*200*sizeof(char));
+
             }
             break;
         case Carrot_Canyon1_Dungeon:
@@ -506,14 +772,38 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 26;
-/*
+
                 char CarrotCanyon1Dungeon[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|*************************************************************************|",
+                    "+*#######################################################################*+",
+                    "|*##                        ##   ##  T T T         ##        ##        ##*|",
+                    "+*##   ##################   ##   ##         ##     ##   ##   ##   ##   ##*+",
+                    "|*##   ##              ##        ##  ##     ##     ##   ##   ##   ##   ##*|",
+                    "+*##   ##              ##   ##       ##     ##     ##   ##   ##   ##   ##*+",
+                    "|*##   ##                   ##   ####################   ##   ##   ##   ##*|",
+                    "+*##           #######      ##       ##     ##     ##   ##   ##   ##   ##*+",
+                    "|*##   ##########   ##      ##       ##     ##     ##   ##   ##   ##   ##*|",
+                    "+*##   ##           ##############   ##     ##     ##   ##   ##   ##   ##*+",
+                    "|*##   ##                       ##   ##     ##     ##   ##        ##   ##*|",
+                    "+*##   ##              ######   ##                      ############   ##*+",
+                    "|*##   ##         ##            ##############  #########       ####   ##*|",
+                    "+*##   ##         ## s          ##                              ####   ##*+", 
+                    "|*##   ##         ##            ##############  #########       ####   ##*|",
+                    "+*## T ##         ###########   ##                     #############   ##*+",
+                    "|*###########     ##                ##          ##     ##              ##*|",
+                    "+*##       ###########################          ##     ##              ##*+",
+                    "|*##      ##    ##                      ########################//#######*|",
+                    "+*##  s   ##    #########################  ##            ##            ##*+",
+                    "|*##                                              ##            ##     ##*|",
+                    "+*#######################################################################*+",
+                    "|*************************************************************************|",
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, CarrotCanyon1Dungeon, 200*200*sizeof(char));
-*/
+                memcpy(map, CarrotCanyon1Dungeon, 200*200*sizeof(char));
+
             }
             break;
         case Carrot_Canyon2:
@@ -526,14 +816,54 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 42;
-/*
+
                 char CarrotCanyon2[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~~~~~~~~~~~~|",     
+                    "+HHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~~~~~~~~~+",
+                    "|HHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~~~~~~~~|",
+                    "+HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~~~~~~~~+",
+                    "|HHHHHHHHHHHHtttttHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~#########|",
+                    "+HHHHHHHHHHHtttttttHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMM ., ,. ., ,. ####wwwwwwww+",
+                    "|HHHHHHHHHHHtttttttHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMM. ,. , . . , ,.     wwwwwwww|", 
+                    "+HHHHHHHHHHHHtttttHHHHHHHHHHHHHHHtttttHHHHHHHHHHHHMMMMMMMMMMMMMM., ,.  ,. ., ,. ,.####wwwwwwww+",    
+                    "|t t t t t t t t  t t t tHHHHHHHtttttttHHHHHHHHHHHHHHMMMMMMMMMM., ,.  . ,. .,.MMMMMM~#########|", 
+                    "+.. . , ., ,. .,. .,., ,.ttttHHHtttttttHHHHHHHHHHHHHHHHHHMMttttttt., . . , .MMMMM~~~~~~~~~~~~~+", 
+                    "|. ,. , ,.  ., ., ., ., ., .,tttttttttHHHHHHHHHHHHHHHHHHHHttttttttt., ., ,.MMMM~~~~~~~~~~~~~~~|", 
+                    "+. ,., ., . ,. ., . ,. ., ., .,.,ttt t t  t t t t t t t t ttttttttt ,. .,MMM~~~~~~~~~~~~~~~~~~+", 
+                    "|., ,. ., ,. ,. . , .,,. ., ,. ., ,., .,. ,. ,., ., ., .,,.tttttttHHMMMMMMMMMMM~~~~~~~~~~~~~~~|", 
+                    "+., ., ,. ., ., ,. . ,., . ,., . , ., ., . ,. , ., . , ., , .tHHHHHHHHHMMMMMMMMMMMMM~~~~~~~~~~+", 
+                    "|. ,., ,. ,. ., ., ., ., . . , ., . , ., ,. ., ., . , ., ,. . .tHHHHHHHHHMMMMMMMMMMMMMMMMM~~~~|", 
+                    "+., ., ., ,. ., .  .,. ,. , ., ., . .,. ., ,. , ., ,.,. . ., ,tHHHHHHHHHHHHHMMMMMMMMMMMMMMMM~~+", 
+                    "|., ., . , . ., , ., . , ,.. , .,t t t t t t t  t t t tt t,. ,.,tHHHHHHHHHHHHHMMMMMMMMMMMMMMM~|", 
+                    "+ ,. , ., ., ,.  ., ., ,. ,..tttttHHHHHHHHHHHHHHHHHtttttHtt.,  ,tHHHHHHHHHHHHHHHMMMMMMMMMMMMMM+", 
+                    "|, ,. ., ,., ,.,. , . . ,ttttttHHHHHHHHHHHHHHHHHHHtttttttHt, ., .,tHHHHHHHHHHHHHHHMMMMMMMMMMMM|", 
+                    "+t t t t t  t t t t t t tHHHHHHHHHHHHHHHHHHHHHHHHHtttttttHHt., . .tHHHHHHHHHHHtttttMMMMMMMMMMM+", 
+                    "|HHHHHHHtttttHHHHHHHHHHtttttHHHHHHHHHHHHHHHHHHHHHHHtttttHHHt. ., ..ttttttHHHHtttttttHMMMMMMMMM|", 
+                    "+HMHHHHtttttttHHHHHHHtttttttttHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHt., ., .  .,,tttHtttttttHHMMMMMMMM+", 
+                    "|HHMHHHtttttttHHHHHHHtttttttttHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHt, ., .,, . ,. .,ttttttHHHHHMMMMMM|", 
+                    "+HHMMHHHtttttHHHHHHHHHHtttttHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHtt.., . ,. . , .,.tHHHHHHHHHMMMMM+", 
+                    "|HHHMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMHHHMttttttt, ., , ., .,.,tHHHHHHMMMM|", 
+                    "+HHHHMMMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMHtttttHHMMMtttttt.., ,, . .ttHHHHMMM+", 
+                    "|MHHHHHHMMMMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMHtttttttHMMMMMMMMMMMMM### ###HHHHHHMM|", 
+                    "+MMHHHHHHHHHMMMMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMHtttttttHMMMMMMMMMMMMM#     #HHHHHHHM+", 
+                    "|MMMMMHHHHHHHHHHMMMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMHtttttHMMMMMMMMM######     ######HHM|", 
+                    "+MMMMMMMMHHHHHHHHHHHMMMMMMHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMHHHHHMMMMMMMMMM#               #HHM+", 
+                    "|MMMMMMMMMMMMHHHHHHHHHHMMMMMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH#       X       #HHM|", 
+                    "+MMMMMMMMMMMMMMMMHHHHHHHMMMMMMMMMMHHHHHHHHHHHHHHHMMMMMHHHHHHHHHHHHHHHHHHHH#               #HHM+", 
+                    "|MMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHH#               #HMM|", 
+                    "+MMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHH#################MMM+", 
+                    "|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHHHHHHHHHHHHMMMM|", 
+                    "+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMHHHHHMMMMMMM+", 
+                    "|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|", 
+                    "+MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+", 
+                    "|MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|", 
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, CarrotCanyon2, 200*200*sizeof(char));
-*/
+                memcpy(map, CarrotCanyon2, 200*200*sizeof(char));
+                
             }
             break;
         case Carrot_Canyon2_Dungeon:
@@ -546,14 +876,38 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 26;
-/*
+
                 char CarrotCanyon2Dungeon[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",
+                    "+**#####################################################################**+",
+                    "|**##                                                                 ##**|",
+                    "+**##  s                                                           T  ##**+",
+                    "|**##                                                                 ##**|",
+                    "+**#####################################################################**+", 
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, CarrotCanyon2Dungeon, 200*200*sizeof(char));
-*/
+                memcpy(map, CarrotCanyon2Dungeon, 200*200*sizeof(char));
+
             }
             break;
         case Soup_Sea1:
@@ -566,14 +920,54 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 42;
-/*
+
                 char SoupSea1[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+####################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|wwwwwwwwwwwwwwwwwww#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+wwwwwwwwwwwwwwwwwww#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|wwwwwwwwwwwwwwwwwww#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+####################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMM   MMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMM   MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMMM   MMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMM ., ,. ,. ., .MMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMM ., ,. ,. ,. ,. ,. MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMM,. .,  ..,### ### ,. ,. ,. MMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMM. , ., ,. ,.#     #,. .,. , . MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMM. , .,######     ######., ,. MMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMM. , . #               #,. ,.MMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMM ,.. .#       X       #., . MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMM. , .,#               #., . ,MMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMM. , . #               #., ,.MMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMM. , #################. ,MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMM,. ,  . ,  ., ., MMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMMM,  ., ., MMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
+                    "|~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, SoupSea1, 200*200*sizeof(char));
-*/
+                memcpy(map, SoupSea1, 200*200*sizeof(char));
+
             }
             break;
         case Soup_Sea1_Dungeon:
@@ -586,14 +980,38 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 26;
-/*
+
                 char SoupSeaDungeon1[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*****###############################################################*****|",
+                    "+*****#             ######               ###                        #*****+",
+                    "|*****#  s          ######                                          #*****|",
+                    "+*****#                                  ###   ######     ###########*****+",
+                    "|*****#     ########                     ###   ######     ###########*****|",
+                    "+*****#     ########     ###################   ###                  #*****+",
+                    "|*****#     ###                          ###   ###                  #*****|",
+                    "+*****#     ###                          ###   #############        #*****+",
+                    "|*****#                                  ###   #############        #*****|",
+                    "+*****#                                  ###   ###                  #*****+",
+                    "|*****##############     ###################   ###   ###   ##########*****|",
+                    "+*****##############     ###################   ###   ###   ##########*****+",
+                    "|*****#                  ###                   ###   ###           ##*****|",
+                    "+*****#   ##########     ###  s                ###   ###           ##*****+",
+                    "|*****#   ##########     ###                   ### T ###           ##*****|",
+                    "+*****#                     #########################################*****+",
+                    "|*****#   ###    ###        #########################################*****|",
+                    "+*****#   ###    ###                                             T  #*****+",
+                    "|*****###############################################################*****|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",   
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, SoupSeaDungeon1, 200*200*sizeof(char));
-*/
+                memcpy(map, SoupSeaDungeon1, 200*200*sizeof(char));
+
             }
             break;
         case Soup_Sea2_Dungeon:
@@ -606,14 +1024,38 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 26;
-/*
+
                 char SoupSea2Dungeon[200][200] = 
                 {
-
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "|*************************************************************************|",
+                    "+*************************************************************************+",
+                    "|*****###############################################################*****|",
+                    "+*****#     ##      ##       ##                              ##     #*****+",
+                    "|*****#  2  ##      ##   4   ##     ######                   ##  3  #*****|",
+                    "+*****#             ##       ##     ######                          #*****+",
+                    "|*****########      ## ########     ###        ######################*****|",
+                    "+*****########      ## ########     ###        ######################*****+",
+                    "|*****#             ##           #########                    ##   ##*****|",
+                    "+*****#             ##   #########################            ## T ##*****+",
+                    "|*****#                  ########## 3   ##########            ##   ##*****|",
+                    "+*****################   ##########     ##########            ##   ##*****+",
+                    "|*****################   ##########   T ##########     #########   ##*****|",
+                    "+*****################   #########################     #########   ##*****+",
+                    "|*****##############             #########                         ##*****|",
+                    "+*****##############   ###          ###         ########     ########*****+",
+                    "|*****##############   ###          ###         ########     ########*****|",
+                    "+*****#          ###   ###       ######            ##               #*****+",
+                    "|*****#  1  ##   ###   ###       ######            ##        ##  2  #*****|",
+                    "+*****#     ##         ###                         ##        ##     #*****+",
+                    "|*****###############################################################*****|",
+                    "+*************************************************************************+",
+                    "|*************************************************************************|",   
+                    "+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, SoupSea2Dungeon, 200*200*sizeof(char));
-*/
+                memcpy(map, SoupSea2Dungeon, 200*200*sizeof(char));
+
             }
             break;
         case Soup_Sea3_Dungeon:
@@ -626,14 +1068,39 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     mapyMax = 200;
                 else
                     mapyMax = 26;
-/*
+
                 char SoupSea3Dungeon[200][200] = 
                 {
-
+                    "                                                                           ",
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    " |*************************************************************************|",
+                    " +*************************************************************************+",
+                    " |*****###############################################################*****|",
+                    " +*****## s ##             #       #     #           #     #        ##*****+",
+                    " |*****##   ##  ######  #  ######  #  #  #  #  ####  #  #  #   ##   ##*****|",
+                    " +*****##   ##  #    #  #          #  #  #  #     #  #  #      ##   ##*****+",
+                    " |*****##   ##  #  # #  ############  #  #  ####  #  ######    ##   ##*****|",
+                    " +*****##   ##  #  # #                #        #  #            ##   ##*****+",
+                    " |*****##   ##  #  # ########  #  #####  ####  ##################   ##*****|",
+                    " +*****##   ##  #  #        #  #      #     #  #    #          ##   ##*****+",
+                    " |*****##   ##  #  #######  #  #####  ####  #  # #  #  ######  ##   ##*****|",
+                    " +*****##   ##     #        #      #     #  #  ###  #  #    #  ##   ##*****+",
+                    " |*****##   ##############  #  ##  ####  #  #       #  #  # #  ##   ##*****|",
+                    " +*****##   ##          ##  #   #     #  #  #########  #  # #  ##   ##*****+",
+                    " |*****##   ##          ##  #  #####  #  #             #  # #  ##   ##*****|",
+                    " +*****##   ##          #####  #####  #  ###############  # #  ##   ##*****+",
+                    " |*****##   ##          /      #####  #                   #T#  ##   ##*****|",
+                    " +*****##   #####################################################   ##*****+",
+                    " |*****##                                                           ##*****|",
+                    " +*****###############################################################*****+",
+                    " |*****###############################################################*****|",
+                    " +*************************************************************************+",
+                    " |*************************************************************************|",   
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
-                memxpy(map, SoupSea3Dungeon, 200*200*sizeof(char));
-*/
+                memcpy(map, SoupSea3Dungeon, 200*200*sizeof(char));
+
             }
             break;
         default:
