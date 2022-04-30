@@ -184,7 +184,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             {
             //pstartX = 37;
             //pstartY = 31;
-            mapxMax = 125;//126;
+            mapxMax = 126;
             mapyMax = 42;
             totalportals = 2;
 
@@ -358,14 +358,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Cabbage_Campo1:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 101;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 42;
+                mapxMax = CamxMax;
+                mapyMax = 45;
 
                 char CabbageCampo1[200][200] = 
                 {
@@ -410,7 +404,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |~~~~~~MMMMMHHHHHHHHHH., . , , . ,. ,. ,.ttt. ,. , ., . , ,. ,. ., ., .HHHHMMMMMM~~~~~~~~~~~~~|                                                    ",
                     " +~~~~~~~MMMMMHHHH, ., . ,.  ., . , . ., ,. .,., ., ., , ,..,., ., .HHHHHMMMMMM~~~~~~~~~~~~~~~~+                                                    ",   
                     " |~~~~~~~MMMMHHHHHHHH,. ., . ,. , . ,. ,, .,., . ,. ,. ., ,.HHHMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~|                                                    ",
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    "
                 };
 
                 memcpy(map, CabbageCampo1, 200*200*sizeof(char));
@@ -418,14 +426,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Cabbage_Campo1_Village:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 121;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 52;
+                mapxMax = 128;
+                mapyMax = 52;
 
                 char CabbageCampo1Village[200][200] = 
                 {
@@ -480,7 +482,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |. , ., ., ., ,.. ,. ,., . ,. . , ,. ,. , ,. , ., . ,. . , ., ., .#0000000000000000000000000000000#. ,. ,., ., . ,. , ., ., . |",
                     " + ., .,., . ,. ,. ,. , ,. ,. . ,. , . , , ., . , ,.., ,. . ,. .,. #0000000000000000000000000000000#. , ., . , . ,., .. , .,  .+",
                     " |., ., ., , .,., . ,.., ., , . , ., .,. ,. ,. ., . , , . ,. ,. , .#################################. , ., ., ,. , ., . ., ., .|", 
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                "
                 };
 
                 memcpy(map, CabbageCampo1Village, 200*200*sizeof(char));
@@ -489,14 +505,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Cabbage_Campo1_Dungeon:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 77;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 26;
+                mapxMax = CamxMax;//77;
+                mapyMax = CamyMax;//26;
 
                 char CabbageCampo1Dungeon[200][200] = 
                 {
@@ -525,7 +535,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |**#                  #**************************************#### ####****|                                                    ",
                     " +**####################**************************************#   s   #****+                                                    ",
                     " |************************************************************#########****|                                                    ",
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                "
                 };
 
                 memcpy(map, CabbageCampo1Dungeon, 200*200*sizeof(char));
@@ -534,75 +558,66 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Cabbage_Campo2:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 101;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 42;
+                mapxMax = CamxMax;
+                mapyMax = 43;
 
                 char CabbageCampo2[200][200] = 
                 {
-                    "                                                                                                                                                    ",
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
-                    " |MMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~|                                                    ",
-                    " +MMMHHHttttHHHHHHHHHHHHHHHHHtttttttttHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~+                                                    ", 
-                    " |HHH, tttttt,. , . .. ., . ttttttttttt ., ., ., , . ,,.  HHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMM~~~|                                                    ",
-                    " +HH,.tttttttt ,. .., ., .,ttttttttttttt. , ., . , ., ., ,. ,. ,HHHHHHHHHHMMMMMMMMMMMMMMMMMMM~~+                                                    ",
-                    " |,. .tttttttt., . ,. ,. ,.ttttttttttttt,, .ttttttt, ., , . .,  ., .HHHHHHHHHHHHHHHMMMMMMMMMMM~|                                                    ",
-                    " +. ,.  ttttt,. , ., . , ., ttttttttttt . ,ttttttttt. , ., ., ., . ,. .HHHHHHHHHHHHHHHMMMMMM~~~+                                                    ", 
-                    " |,. ., , t,. .. , ,. ., ., .tttttttt. , ttttttttttttt. , ., ., . , ., ., .HHHHHHHHHHHHHMMMMMM~|                                                    ",
-                    " +., . . , .., ., .,., . ,.  ,.tttt . . ,ttttttttttttt , .,. ., ., ., ,. .,.,HHHHHHHHHHHHMMMMM~+                                                    ",
-                    " |,. .,. ,. ,. tttttt., ., ,, . ,. ,. , . ttttttttttt, . . , . ,. , ., . HHHHHHHHHHHHHHHHHMMM~~|                                                    ",
-                    " +. ., ., ., tttttttttt ., ., ., ,. ,. ,. . ttttttt. , ., . ,.  ., , , ., .HHHHHHHHHHHHHHHHMM~~+                                                    ",
-                    " |,. . ,., ttttttttttttt . ., . ,. , . , ., . ,. , .. , .., . ,. ., ., ., ., .HHHHHHHHHHHHHHMM~|                                                    ",
-                    " +,. ., ,.ttttttttttttttt. ,., ., ttt, , ,. ., .,,. ., ., .,,. ,. ,., ., .,,. . ,HHHHHHHHHHHMM~+                                                    ",
-                    " |., . ,. ttttttttttttttt ,.. , .ttttt. ,. , ., . ,. ,.  ., . ,.ttt , . ,. ,. ,HHHHHHHHHHHHHHM~|                                                    ",
-                    " +, ., ., ,tttttttttttt,. , .., . ttt, ., ., .,  tttt,. , .,   ttttt.. . .. HHHHHHHHHHHHHHHHHHM+                                                    ",
-                    " |., ., ., ,tttttttttt ., . ., . , ., ., ., . , tttttt . ,. ,tttttttt., . , ,. ,. ,.HHHHHHHHHHM|                                                    ",
-                    " +,. .  ,. . .ttttt., . ,. , ., . ,. ,. , . ,. ,.tttt. ,  , ttttttttttt  ., . ,. HHHHHHHHHHHHHH+                                                    ",
-                    " |. ,. .,, . , , , ., ., ., . ,. ttt , . ,.  ., . tt  ,. , .ttttttttttttt , ., ., . ,. HHHHHHHH|                                                    ",
-                    " +. , .., ., ., . , ., ., .  , .ttttt. , . ., . ,  , .,. , . tttttttttt, .,. ,. ., .HHHHHHHHHHH+                                                    ",
-                    " |, ., . ,. . ,. ,. ,. , .,. ,.ttttttt . ,. .  . , . ,.  .. ,, ttttttt,. ,.  .HHHHHHHHHHHHHHHHH|                                                    ",
-                    " +., .,.ttt ., . , ., ., . ,. ,ttttttt ., . . . , . ., .,   , ., ., . , .,  , ., .HHHHHHHHHHHHM+                                                    ",
-                    " |,. .,ttttt ,. , ., ., . , ., .ttttt., .  . ,ttttttttttt, ., . ,. ,. . ,, . ,. ., . ,HHHHHHHHM|                                                    ",
-                    " +,. ,. ttt, . ,. ,. ,. , ., ., .ttt., . ,tttttttttttttttttttt  ., .  ,. , ., . ,. HHHHHHHHHHHM+                                                    ",
-                    " |., ., .,. ,. ,. , . ,. ,. , . , . ., tttttt.   .  .   , ttttttt ,. ,. ,. , . HHHHHHHHHHHHHHHM|                                                    ",
-                    " +. ., ., ., . ,. . ttttttt,. , ., ttttttt.  , .   ,   .   ,tttttttt.,., ,. .,., ,.HHHHHHHHHHHM+                                                    ",
-                    " |., ., .,. , . ,. ttttttttt., . ,tttttt      .### ### .     . ttttttt.  ., . . ., ,HHHHHHHHHM~|                                                    ",
-                    " +., . ,. . , . ,.ttttttttttt, ttttttt   .  ,  #     #,     ,   ,tttttt , ., .HHHHHHHHHHHHHMM~~+                                                    ",
-                    " |H., . ,., . , .,tttttttttt ttttttt.     ######     ###### .  .,  .tttttHHHHHHHHHHHHHHHHMMM~~~|                                                    ",
-                    " +HH, tttt , .,. , tttttttt ttttttt .    ,#               #     ,  ,   tttttHHHHHHHHHHHMMMMMM~~+                                                    ",
-                    " |MHHHtttttt. ,. ,. tttttt,ttttttt   ,  . #       X       #    ,   , .HHHHHHHHHHHHHHHHMMMMMMMM~|                                                    ",
-                    " +~MMHHHttttt,.  ., ,. . .,ttttttt,       #               #,     , HHHHHHHHHHHHHHHHHMMMMMMMMMM~+                                                    ",
-                    " |~~MMMMHtttt ,. , ., ., . ttttttt.  ,   .#               # ,  ,    . ,  HHHHHHHHHHMMMMMMMMM~~~|                                                    ",
-                    " +~~~MMMMHHt ,. , . ,. , .ttttttt,    .  .#################     . ,. , HHHHHHHHHHHMMMMMMMMMMM~~+                                                    ",
-                    " |~~~~MMMMMHH., . , .,. ,.ttttttt,        ,      .   ,     ,  .. .HHHHHHHHHHHHHMMMMMMMMMMMMMMM~|                                                    ",
-                    " +~~~~~~~MMMHHH. ,. , ., .ttttttt, .  .      .  , .       ,. , HHHHHHHHHHHHHHMMMMMMMMMMMMMMM~~~+                                                    ",
-                    " |~~~~~~~~~~MMHHHH.,. ,. ,ttttttt ., .   ,  . . ,   .  .HHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMM~~|                                                    ",
-                    " +~~~~~~~~~~~~MMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMM~~~~+                                                    ",   
-                    " |~~~~~~~~~~~~~~~MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~|                                                    ",
-                    " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
-                    " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    " 
-                };
-
-                memcpy(map, CabbageCampo2, 200*200*sizeof(char));
-
-            }
-            break;
-        case Cabbage_Campo2_Dungeon:
-            {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 77;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 26;
+                    "                                                                                                                          ",
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                          ",
+                    " |MMMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~|                          ",
+                    " +MMMHHHttttHHHHHHHHHHHHHHHHHtttttttttHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~+                          ", 
+                    " |HHH, tttttt,. , . .. ., . ttttttttttt ., ., ., , . ,,.  HHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMM~~~|                          ",
+                    " +HH,.tttttttt ,. .., ., .,ttttttttttttt. , ., . , ., ., ,. ,. ,HHHHHHHHHHMMMMMMMMMMMMMMMMMMM~~+                          ",
+                    " |,. .tttttttt., . ,. ,. ,.ttttttttttttt,, .ttttttt, ., , . .,  ., .HHHHHHHHHHHHHHHMMMMMMMMMMM~|                          ",
+                    " +. ,.  ttttt,. , ., . , ., ttttttttttt . ,ttttttttt. , ., ., ., . ,. .HHHHHHHHHHHHHHHMMMMMM~~~+                          ", 
+                    " |,. ., , t,. .. , ,. ., ., .tttttttt. , ttttttttttttt. , ., ., . , ., ., .HHHHHHHHHHHHHMMMMMM~|                          ",
+                    " +., . . , .., ., .,., . ,.  ,.tttt . . ,ttttttttttttt , .,. ., ., ., ,. .,.,HHHHHHHHHHHHMMMMM~+                          ",
+                    " |,. .,. ,. ,. tttttt., ., ,, . ,. ,. , . ttttttttttt, . . , . ,. , ., . HHHHHHHHHHHHHHHHHMMM~~|                          ",
+                    " +. ., ., ., tttttttttt ., ., ., ,. ,. ,. . ttttttt. , ., . ,.  ., , , ., .HHHHHHHHHHHHHHHHMM~~+                          ",
+                    " |,. . ,., ttttttttttttt . ., . ,. , . , ., . ,. , .. , .., . ,. ., ., ., ., .HHHHHHHHHHHHHHMM~|                          ",
+                    " +,. ., ,.ttttttttttttttt. ,., ., ttt, , ,. ., .,,. ., ., .,,. ,. ,., ., .,,. . ,HHHHHHHHHHHMM~+                          ",
+                    " |., . ,. ttttttttttttttt ,.. , .ttttt. ,. , ., . ,. ,.  ., . ,.ttt , . ,. ,. ,HHHHHHHHHHHHHHM~|                          ",
+                    " +, ., ., ,tttttttttttt,. , .., . ttt, ., ., .,  tttt,. , .,   ttttt.. . .. HHHHHHHHHHHHHHHHHHM+                          ",
+                    " |., ., ., ,tttttttttt ., . ., . , ., ., ., . , tttttt . ,. ,tttttttt., . , ,. ,. ,.HHHHHHHHHHM|                          ",
+                    " +,. .  ,. . .ttttt., . ,. , ., . ,. ,. , . ,. ,.tttt. ,  , ttttttttttt  ., . ,. HHHHHHHHHHHHHH+                          ",
+                    " |. ,. .,, . , , , ., ., ., . ,. ttt , . ,.  ., . tt  ,. , .ttttttttttttt , ., ., . ,. HHHHHHHH|                          ",
+                    " +. , .., ., ., . , ., ., .  , .ttttt. , . ., . ,  , .,. , . tttttttttt, .,. ,. ., .HHHHHHHHHHH+                          ",
+                    " |, ., . ,. . ,. ,. ,. , .,. ,.ttttttt . ,. .  . , . ,.  .. ,, ttttttt,. ,.  .HHHHHHHHHHHHHHHHH|                          ",
+                    " +., .,.ttt ., . , ., ., . ,. ,ttttttt ., . . . , . ., .,   , ., ., . , .,  , ., .HHHHHHHHHHHHM+                          ",
+                    " |,. .,ttttt ,. , ., ., . , ., .ttttt., .  . ,ttttttttttt, ., . ,. ,. . ,, . ,. ., . ,HHHHHHHHM|                          ",
+                    " +,. ,. ttt, . ,. ,. ,. , ., ., .ttt., . ,tttttttttttttttttttt  ., .  ,. , ., . ,. HHHHHHHHHHHM+                          ",
+                    " |., ., .,. ,. ,. , . ,. ,. , . , . ., tttttt.   .  .   , ttttttt ,. ,. ,. , . HHHHHHHHHHHHHHHM|                          ",
+                    " +. ., ., ., . ,. . ttttttt,. , ., ttttttt.  , .   ,   .   ,tttttttt.,., ,. .,., ,.HHHHHHHHHHHM+                          ",
+                    " |., ., .,. , . ,. ttttttttt., . ,tttttt      .### ### .     . ttttttt.  ., . . ., ,HHHHHHHHHM~|                          ",
+                    " +., . ,. . , . ,.ttttttttttt, ttttttt   .  ,  #     #,     ,   ,tttttt , ., .HHHHHHHHHHHHHMM~~+                          ",
+                    " |H., . ,., . , .,tttttttttt ttttttt.     ######     ###### .  .,  .tttttHHHHHHHHHHHHHHHHMMM~~~|                          ",
+                    " +HH, tttt , .,. , tttttttt ttttttt .    ,#               #     ,  ,   tttttHHHHHHHHHHHMMMMMM~~+                          ",
+                    " |MHHHtttttt. ,. ,. tttttt,ttttttt   ,  . #       X       #    ,   , .HHHHHHHHHHHHHHHHMMMMMMMM~|                          ",
+                    " +~MMHHHttttt,.  ., ,. . .,ttttttt,       #               #,     , HHHHHHHHHHHHHHHHHMMMMMMMMMM~+                          ",
+                    " |~~MMMMHtttt ,. , ., ., . ttttttt.  ,   .#               # ,  ,    . ,  HHHHHHHHHHMMMMMMMMM~~~|                          ",
+                    " +~~~MMMMHHt ,. , . ,. , .ttttttt,    .  .#################     . ,. , HHHHHHHHHHHMMMMMMMMMMM~~+                          ",
+                    " |~~~~MMMMMHH., . , .,. ,.ttttttt,        ,      .   ,     ,  .. .HHHHHHHHHHHHHMMMMMMMMMMMMMMM~|                          ",
+                    " +~~~~~~~MMMHHH. ,. , ., .ttttttt, .  .      .  , .       ,. , HHHHHHHHHHHHHHMMMMMMMMMMMMMMM~~~+                          ",
+                    " |~~~~~~~~~~MMHHHH.,. ,. ,ttttttt ., .   ,  . . ,   .  .HHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMM~~|                          ",
+                    " +~~~~~~~~~~~~MMMHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMM~~~~+                          ",              
+                    " |~~~~~~~~~~~~~~~MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM~~~|                          ",
+                    " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                          ",
+                    " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                          ",
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                          ",                                         
+                    "                                                                                                                          ",
+                    "                                                                                                                          ",
+                    "                                                                                                                          ",
+                };                                                                                                                                                                                                   
+                                                                                                                                                                                                                     
+                memcpy(map, CabbageCampo2, 200*200*sizeof(char));                                                                                                                                                    
+                                                                                                                                                                                                                     
+            }                                                                                                                                                                                                        
+            break;                                                                                                                                                                                                   
+        case Cabbage_Campo2_Dungeon:                                                                                                                                                                                 
+            {                                                                                                                                                                                                        
+                mapxMax = CamxMax;
+                mapyMax = CamyMax;
 
                 char CabbageCampo2Dungeon[200][200] = 
                 {
@@ -631,7 +646,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |**#                 #****#                                             #*|                                                    ",
                     " +**###################****#                                             #*+                                                    ",
                     " |*************************###############################################*|                                                    ",
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                "
                 };
 
                 memcpy(map, CabbageCampo2Dungeon, 200*200*sizeof(char));
@@ -640,14 +669,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Carrot_Canyon1:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 101;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 42;
+                mapxMax = CamxMax;
+                mapyMax = 42;
 
                 char CarrotCanyon1[200][200] = 
                 {
@@ -692,7 +715,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |MHHHHHHHHHH. , ., , .,  .,,HHHHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|                                                    ", 
                     " +HHHHHHHHHH. .,, .  , ., .,HHHHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+                                                    ", 
                     " |HHHHHHHH, ,. .,, ., ,. .,HHHHHHHHHHHHHHHHHHHHHHHHMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|                                                    ", 
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    "
                 };
 
                 memcpy(map, CarrotCanyon1, 200*200*sizeof(char));
@@ -701,14 +738,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Carrot_Canyon1_Village:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 131;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 52;
+                mapxMax = 128;
+                mapyMax = 52;
 
                 char CarrotCanyon1Village[200][200] = 
                 {
@@ -762,7 +793,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +., ,.  ., ., ., ., ., ., x                                                                         x, ., ., ., ., ., ., ,. ,.+",
                     " |., ., ., . , ., ., ., . ,xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx ., ., ,. ,. ,. ., ,. ,. |",
                     " + ., ,. ., ,. ., ., ,. ,. ,. ., ,. ,. ,. ., . , . , ., ., .,., ., ., ., ,. ., ,. ., ., ., . ,. ., ,. ., ,. ,. , ,.. , ,.. ,,. +",
-                    " |. ., ., .. , . ,. ., ,. ,. ,. ., ., , ., , ,. ,. ,.  ., ., . , , ., ., ., . ,., . ,.,  ., . ., ., ,. ,. ,. ,. ., . ,. ,. ,, .|", 
+                    " |. ., ., .. , . ,. ., ,. ,. ,. ., ., , ., , ,. ,. ,.  ., ., . , , ., ., ., . ,., . ,.,  ., . ., ., ,. ,. ,. ,. ., . ,. ,. ,, .|",
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
                 };
 
                 memcpy(map, CarrotCanyon1Village, 200*200*sizeof(char));
@@ -771,14 +803,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Carrot_Canyon1_Dungeon:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 77;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 26;
+                mapxMax = CamxMax;
+                mapyMax = CamyMax;
 
                 char CarrotCanyon1Dungeon[200][200] = 
                 {
@@ -807,7 +833,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |*##                                              ##            ##     ##*|                                                    ",
                     " +*#######################################################################*+                                                    ",
                     " |*************************************************************************|                                                    ",
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                "
                 };
 
                 memcpy(map, CarrotCanyon1Dungeon, 200*200*sizeof(char));
@@ -816,14 +856,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Carrot_Canyon2:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 101;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 42;
+                mapxMax = CamxMax;
+                mapyMax = 42;
 
                 char CarrotCanyon2[200][200] = 
                 {
@@ -868,7 +902,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|                                                    ", 
                     " +MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM+                                                    ", 
                     " |MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM|                                                    ", 
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    "
                 };
 
                 memcpy(map, CarrotCanyon2, 200*200*sizeof(char));
@@ -877,14 +925,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Carrot_Canyon2_Dungeon:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 77;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 26;
+                mapxMax = CamxMax;
+                mapyMax = CamyMax;
 
                 char CarrotCanyon2Dungeon[200][200] = 
                 {
@@ -913,7 +955,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |*************************************************************************|                                                    ",
                     " +*************************************************************************+                                                    ",
                     " |*************************************************************************|                                                    ",
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                "
                 };
 
                 memcpy(map, CarrotCanyon2Dungeon, 200*200*sizeof(char));
@@ -922,14 +978,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Soup_Sea1:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 101;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 42;
+                mapxMax = CamxMax;
+                mapyMax = 43;
 
                 char SoupSea1[200][200] = 
                 {
@@ -943,7 +993,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +wwwwwwwwwwwwwwwwwww#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
                     " |wwwwwwwwwwwwwwwwwww#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +####################~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
-                    " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
+                    " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
                     " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
@@ -953,7 +1003,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMM   MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
                     " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMMM   MMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMM ., ,. ,. ., .MMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
-                    " ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMM ., ,. ,. ,. ,. ,. MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
+                    " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMM ., ,. ,. ,. ,. ,. MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMM,. .,  ..,### ### ,. ,. ,. MMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
                     " |~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMM. , ., ,. ,.#     #,. .,. , . MMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMM. , .,######     ######., ,. MMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
@@ -974,7 +1024,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
                     " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                    ",
                     " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                    ",
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    ",
+                    "                                                                                                                                                    "
                 };
 
                 memcpy(map, SoupSea1, 200*200*sizeof(char));
@@ -983,14 +1047,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Soup_Sea1_Dungeon:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 77;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 26;
+                mapxMax = CamxMax;
+                mapyMax = CamyMax;
 
                 char SoupSeaDungeon1[200][200] = 
                 {
@@ -1019,7 +1077,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |*****###############################################################*****|                                                    ",
                     " +*************************************************************************+                                                    ",
                     " |*************************************************************************|                                                    ",   
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                "
                 };
 
                 memcpy(map, SoupSeaDungeon1, 200*200*sizeof(char));
@@ -1028,14 +1100,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Soup_Sea2_Dungeon:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 77;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 26;
+                mapxMax = CamxMax;
+                mapyMax = CamyMax;
 
                 char SoupSea2Dungeon[200][200] = 
                 {
@@ -1064,7 +1130,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |*****###############################################################*****|                                                    ",
                     " +*************************************************************************+                                                    ",
                     " |*************************************************************************|                                                    ",   
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                "
                 };
 
                 memcpy(map, SoupSea2Dungeon, 200*200*sizeof(char));
@@ -1073,14 +1153,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Soup_Sea3_Dungeon:
             {
-                if (mapxMax < CamxMax)
-                    mapxMax = 200;
-                else
-                    mapxMax = 77;
-                if (mapyMax < CamyMax)
-                    mapyMax = 200;
-                else
-                    mapyMax = 26;
+                mapxMax = CamxMax;
+                mapyMax = CamyMax;
 
                 char SoupSea3Dungeon[200][200] = 
                 {
@@ -1109,7 +1183,21 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " |*****###############################################################*****|                                                    ",
                     " +*************************************************************************+                                                    ",
                     " |*************************************************************************|                                                    ",                                                       
-                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    "
+                    " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                    ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                ",
+                    "                                                                                                                                "
                 };
 
                 memcpy(map, SoupSea3Dungeon, 200*200*sizeof(char));

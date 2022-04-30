@@ -141,7 +141,7 @@ int main(int argc, char ** argv)
     int newgamestarty = 46;
     map->generatetiles(Dessert_Desert_Village, newgamestarty, newgamestartx); 
 
-    Hero player = Hero("man",1,0,5,5,3,5,newgamestartx,newgamestarty,Dessert_Desert);
+    Hero player = Hero("man",1,0,5,5,3,5,newgamestartx,newgamestarty,Dessert_Desert_Village);
     Monster enemy = Parse_Monster_Tables(player,normal_enemy);
     
     Player * p = new Player(playwin, map->get_yplayer_start(), map->get_xplayer_start(), '@', map, &player);
@@ -196,6 +196,7 @@ int main(int argc, char ** argv)
                         //    break;
                         default:
                             encounterchance = rand() % 500 + 1;
+                            //encounterchance = 0;
                             break;
                     }
                     
