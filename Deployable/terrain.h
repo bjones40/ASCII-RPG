@@ -19,10 +19,16 @@ class Tile
         bool get_has_enemy();
         bool get_has_npc();
         bool get_has_item();
+        int get_teleport_id();
+        int get_teleport_startX();
+        int get_teleport_startY();
 
         //setters
         void set_traverse(bool value);
         void set_tilechar(char tilechar);
+        void set_teleport_id(int id);
+        void set_teleport_startX(int xlocation);
+        void set_teleport_startY(int ylocation);
         
 
         int xLoc, yLoc;
@@ -34,6 +40,10 @@ class Tile
         bool has_enemy;
         bool can_traverse;
 
+        int teleportid;
+        int teleportx;
+        int teleporty;
+
 };
 
 Tile::Tile()
@@ -44,6 +54,33 @@ Tile::Tile()
     can_traverse = 1;
     maintile = '$';
 }
+
+int Tile::get_teleport_id()
+{
+    return teleportid;
+}
+int Tile::get_teleport_startX()
+{
+    return teleportx;
+}
+int Tile::get_teleport_startY()
+{
+    return teleporty;
+}
+
+void Tile::set_teleport_id(int id)
+{
+    teleportid = id;
+}
+void Tile::set_teleport_startX(int xlocation)
+{
+    teleportx = xlocation;
+}
+void Tile::set_teleport_startY(int ylocation)
+{
+    teleporty = ylocation;
+}
+
 
 char Tile::get_tilechar()
 {
@@ -72,15 +109,23 @@ class Terrain
 
         Tile tiles[200][200];
 
-        void generatetiles(int mapid, int mapxSize, int mapySize);
+        void generatetiles(int mapid, int pstartX, int pstartY);
         void cleanmap();
         void displayCamera(int pyLoc, int pxLoc, char pchar);
         int get_map_xMax();
         int get_map_yMax();
-        int pstartX, pstartY;
+        
+        int get_xplayer_start();
+        int get_yplayer_start();
+        void set_xplayer_start(int newstartX);
+        void set_yplayer_start(int newstartY);
+
+        int portals[10];
+    
     private:
         WINDOW * curwin;
         int mapxMax, mapyMax, CamxMax, CamyMax;
+        int pstartX, pstartY;
 };
 
 Terrain::Terrain(WINDOW * win)
@@ -90,6 +135,23 @@ Terrain::Terrain(WINDOW * win)
     //keypad(curwin, true);
     //Tile tilemap[xMax][yMax];
     //generatetiles();
+}
+
+int Terrain::get_xplayer_start()
+{
+    return pstartX;
+}
+int Terrain::get_yplayer_start()
+{
+    return pstartY;
+}
+void Terrain::set_xplayer_start(int newstartX)
+{
+    pstartX = newstartX;
+}
+void Terrain::set_yplayer_start(int newstartY)
+{
+    pstartY = newstartY;
 }
 
 
@@ -102,10 +164,11 @@ int Terrain::get_map_yMax()
     return mapyMax;
 }
 
-void Terrain::generatetiles(int mapid, int pstartX, int pstartY)
+void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
 {
-    pstartX = pstartX;
-    pstartY = pstartY;
+    set_xplayer_start(pstartXparam);
+    set_yplayer_start(pstartYparam);
+    
     char map[200][200];
 
 
@@ -115,8 +178,8 @@ void Terrain::generatetiles(int mapid, int pstartX, int pstartY)
     {
         case 0:
             {
-            pstartX = 37;
-            pstartY = 31;
+            //pstartX = 37;
+            //pstartY = 31;
             mapxMax = 126;
             mapyMax = 42;
             
@@ -171,10 +234,10 @@ void Terrain::generatetiles(int mapid, int pstartX, int pstartY)
             break;
         case 1:
             {
-            pstartX = 6;
-            pstartY = 46;
-            mapxMax = 131;
-            mapyMax = 51;
+            //pstartX = 6;
+            //pstartY = 46;
+            mapxMax = 128;
+            mapyMax = 52;
 
             char DessertDesertVillage[200][200] =
             {
@@ -211,7 +274,7 @@ void Terrain::generatetiles(int mapid, int pstartX, int pstartY)
                 " |  #                                     #lcKccccKcccKccccKKKcl#       #                    #   ^^^   ^^^   ^^^   ^^^   #     |",
                 " +  #                                     #lcKcccccKKcccKKcccccl#       #                    #                           ######+",
                 " |  #################     ##########/######lcccccccccKcccccccccl#       #                    #                                 |",
-                " +                  #     #        # #lccKKlccccKccccccKKKKccccl#       #                    #                                 +",
+                " +                  #     #        # #lccKKlccccKccccccKKKKccccl#       #                    #                               X +",
                 " |                  #     #        # #lcKccllcKcccccKKcccccccKll#       #                    #                                 |",
                 " +                  #     #        # #lcccclllcccKcccccKccKcclll#       #                    #                           ######+",
                 " |                  #     #        # #lKKcKllllccccKccccccccllll#       #                    #                           #     |",
@@ -260,6 +323,8 @@ void Terrain::generatetiles(int mapid, int pstartX, int pstartY)
             
             if (temptile == '#' || temptile == '+' || temptile == '-' || temptile == '|')
                 tiles[j][i].set_traverse(0);
+            else if (temptile == 'X')
+                tiles[j][i].get_teleport_id();
         }
     }
 }

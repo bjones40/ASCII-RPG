@@ -137,8 +137,8 @@ int main(int argc, char ** argv)
     }//End newgamewin 	
     
     Terrain * map = new Terrain(playwin);
-    map->generatetiles(0, 126, 42);
-    Player * p = new Player(playwin, map->pstartY, map->pstartX, '@', map);
+    map->generatetiles(0, 31, 37);
+    Player * p = new Player(playwin, map->get_yplayer_start(), map->get_xplayer_start(), '@', map);
     //map->generatetiles(163, 51, stuff);
 
     Hero player = Hero("man",1,0,5,5,3,5,0,0,0);
