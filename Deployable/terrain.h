@@ -8,6 +8,8 @@
 #define YELLOW_PAIR 5
 #define RED_PAIR 6
 #define GREEN_PAIR 7
+#define BLACK_PAIR 8
+#define WGREEN_PAIR 9
 
 class Tile
 {
@@ -1224,7 +1226,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
 
             char temptile = tiles[j][i].get_tilechar();
             
-            if (temptile == '#' || temptile == '+' || temptile == '-' || temptile == '|')
+            if (temptile == '#' || temptile == '+' || temptile == '-' || temptile == '|' || temptile == 'M')
                 tiles[j][i].set_traverse(0);
             else if (temptile == 'X')
             {
@@ -1550,6 +1552,8 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
         init_pair(YELLOW_PAIR, COLOR_YELLOW, COLOR_BLACK);
         init_pair(RED_PAIR, COLOR_RED, COLOR_BLACK);
         init_pair(GREEN_PAIR, COLOR_GREEN, COLOR_BLACK);
+        init_pair(BLACK_PAIR, COLOR_BLACK, COLOR_WHITE);
+        init_pair(WGREEN_PAIR, COLOR_WHITE, COLOR_GREEN);
     }
     
     // camera for zoomed in view of map, with its own x and y max
@@ -1614,30 +1618,41 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
                     case '^':
                         wattron(curwin, COLOR_PAIR(WHITE_PAIR));
                         mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
-                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        wattroff(curwin, COLOR_PAIR(WHITE_PAIR));
                         break;
                     case 'K':
+                    case 'M':
                         wattron(curwin, COLOR_PAIR(CYAN_PAIR));
                         mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
-                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        wattroff(curwin, COLOR_PAIR(CYAN_PAIR));
                         break;
                     case 'r':
                     case 'v':
+                    case 'H':
                         wattron(curwin, COLOR_PAIR(YELLOW_PAIR));
                         mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
-                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        wattroff(curwin, COLOR_PAIR(YELLOW_PAIR));
                         break;
                     case '$':
                     case '~':
                         wattron(curwin, COLOR_PAIR(RED_PAIR));
                         mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
-                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        wattroff(curwin, COLOR_PAIR(RED_PAIR));
                         break;
                     case 'l':
                     case 'C':
+                    case 't':
+                    case '.':
+                    case ',':
                         wattron(curwin, COLOR_PAIR(GREEN_PAIR));
                         mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
-                        wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
+                        wattroff(curwin, COLOR_PAIR(GREEN_PAIR));
+                        break;
+                    case 'X':
+                    case 's':
+                        wattron(curwin, COLOR_PAIR(WGREEN_PAIR));
+                        mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
+                        wattroff(curwin, COLOR_PAIR(WGREEN_PAIR));
                         break;
                     default:
                         mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
