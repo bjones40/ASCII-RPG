@@ -1610,6 +1610,7 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
                     case '-':
                     case '|':
                     case '/':
+                    case '0':
                         wattron(curwin, COLOR_PAIR(BLUE_PAIR));
                         mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
                         wattroff(curwin, COLOR_PAIR(BLUE_PAIR));
@@ -1622,6 +1623,7 @@ void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
                         break;
                     case 'K':
                     case 'M':
+                    case 'k':
                         wattron(curwin, COLOR_PAIR(CYAN_PAIR));
                         mvwaddch(curwin, j, i, tiles[displayX][displayY].get_tilechar());
                         wattroff(curwin, COLOR_PAIR(CYAN_PAIR));
