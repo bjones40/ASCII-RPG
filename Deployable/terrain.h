@@ -304,7 +304,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             memcpy(map, DessertDesertVillage, 200*200*sizeof(char));
             }
             break;
-        case 2:
+        case Dessert_Desert_Dungeon:
             {
                 mapxMax = 200;
                 mapyMax = CamyMax+1;
@@ -407,7 +407,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                                 break;
                         }
                         break;
-                    case 2:
+                    case Dessert_Desert_Dungeon:
                         switch (currentportal)
                         {
                             case 0:

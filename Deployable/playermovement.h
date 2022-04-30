@@ -6,7 +6,7 @@
 class Player
 {
     public:
-        Player(WINDOW * win, int y, int x, char c, Terrain * map);
+        Player(WINDOW * win, int y, int x, char c, Terrain * map, Hero * playerparam);
 
         void mvup();
         void mvdown();
@@ -22,12 +22,14 @@ class Player
         char map_char;
         WINDOW * curwin;
         Terrain * curmap;
+        Hero * player;
 };
 
-Player::Player(WINDOW * win, int y, int x, char c, Terrain * map)
+Player::Player(WINDOW * win, int y, int x, char c, Terrain * map, Hero * playerparam)
 {
     curwin = win;
     curmap = map;
+    player = playerparam;
     yLoc = y;
     xLoc = x;
     //getmaxyx(curwin, yMax, xMax);
@@ -54,15 +56,16 @@ void Player::mvup()
         yLoc = nextmap->get_yplayer_start();
         yMax = nextmap->get_map_yMax();
         xMax = nextmap->get_map_xMax();
+        player->Update_Location(xLoc, yLoc, nextmap->get_map_id());
         curmap = nextmap;
         return;
 
     }
-    map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
-    //mvwaddch(curwin, yLoc, xLoc, map_char);
     yLoc--;
     if(yLoc < 2)
         yLoc = 2;
+
+    player->Update_Location(xLoc, yLoc, curmap->get_map_id());
 }
 
 void Player::mvdown()
@@ -77,15 +80,15 @@ void Player::mvdown()
         yLoc = nextmap->get_yplayer_start();
         yMax = nextmap->get_map_yMax();
         xMax = nextmap->get_map_xMax();
+        player->Update_Location(xLoc, yLoc, nextmap->get_map_id());
         curmap = nextmap;
         return;
 
     }
-    map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
-    //mvwaddch(curwin, yLoc, xLoc, map_char);
     yLoc++;
     if(yLoc > yMax - 2)
         yLoc = yMax - 2;
+    player->Update_Location(xLoc, yLoc, curmap->get_map_id());
 }
 
 void Player::mvleft()
@@ -100,15 +103,15 @@ void Player::mvleft()
         yLoc = nextmap->get_yplayer_start();
         yMax = nextmap->get_map_yMax();
         xMax = nextmap->get_map_xMax();
+        player->Update_Location(xLoc, yLoc, nextmap->get_map_id());
         curmap = nextmap;
         return;
 
     }
-    map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
-    //mvwaddch(curwin, yLoc, xLoc, map_char);
     xLoc--;
     if(xLoc < 2)
         xLoc = 2;
+    player->Update_Location(xLoc, yLoc, curmap->get_map_id());
 }
 
 void Player::mvright()
@@ -123,15 +126,15 @@ void Player::mvright()
         yLoc = nextmap->get_yplayer_start();
         yMax = nextmap->get_map_yMax();
         xMax = nextmap->get_map_xMax();
+        player->Update_Location(xLoc, yLoc, nextmap->get_map_id());
         curmap = nextmap;
         return;
 
     }
-    map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
-    //mvwaddch(curwin, yLoc, xLoc, map_char);
     xLoc++;
     if(xLoc > xMax - 2)
         xLoc = xMax - 2;
+    player->Update_Location(xLoc, yLoc, curmap->get_map_id());
 }
 
 int Player::getmv()

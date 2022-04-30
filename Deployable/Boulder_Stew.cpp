@@ -139,13 +139,12 @@ int main(int argc, char ** argv)
     Terrain * map = new Terrain(playwin);
     int newgamestartx = 37;
     int newgamestarty = 31;
-    map->generatetiles(Dessert_Desert, newgamestarty, newgamestartx);
-    
-    Player * p = new Player(playwin, map->get_yplayer_start(), map->get_xplayer_start(), '@', map);
-    
+    map->generatetiles(Dessert_Desert, newgamestarty, newgamestartx); 
 
-    Hero player = Hero("man",1,0,5,5,3,5,0,0,0);
+    Hero player = Hero("man",1,0,5,5,3,5,newgamestartx,newgamestarty,Dessert_Desert);
     Monster enemy = Parse_Monster_Tables(player,normal_enemy);
+    
+    Player * p = new Player(playwin, map->get_yplayer_start(), map->get_xplayer_start(), '@', map, &player);
 
     int stepcounter = 0;
     
