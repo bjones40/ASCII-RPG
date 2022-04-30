@@ -137,7 +137,10 @@ int main(int argc, char ** argv)
     }//End newgamewin 	
     
     Terrain * map = new Terrain(playwin);
-    map->generatetiles(0, 31, 37);
+    int newgamestartx = 37;
+    int newgamestarty = 31;
+    map->generatetiles(Dessert_Desert, newgamestarty, newgamestartx);
+    
     Player * p = new Player(playwin, map->get_yplayer_start(), map->get_xplayer_start(), '@', map);
     //map->generatetiles(163, 51, stuff);
 

@@ -120,8 +120,6 @@ class Terrain
         int get_yplayer_start();
         void set_xplayer_start(int newstartX);
         void set_yplayer_start(int newstartY);
-
-        void setupportals(int id);
     
     private:
         WINDOW * curwin;
@@ -333,28 +331,278 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                 tiles[j][i].set_traverse(0);
             else if (temptile == 'X')
             {
-                tiles[j][i].set_teleport_id(1);
-                tiles[j][i].set_teleport_startY(46);
-                tiles[j][i].set_teleport_startX(6);
+                switch (thisid)
+                {
+                    case Dessert_Desert:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(Dessert_Desert_Dungeon);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(Dessert_Desert_Village);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Dessert_Desert_Village:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(Dessert_Desert);
+                                tiles[j][i].set_teleport_startY(31);
+                                tiles[j][i].set_teleport_startX(37);
+                                break;
+                        }
+                        break;
+                    case Dessert_Desert_Dungeon:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Cabbage_Campo1:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Cabbage_Campo1_Village:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Cabbage_Campo1_Dungeon:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Cabbage_Campo2:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Cabbage_Campo2_Dungeon:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Carrot_Canyon1:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Carrot_Canyon1_Village:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Carrot_Canyon1_Dungeon:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Carrot_Canyon2:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Carrot_Canyon2_Dungeon:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Soup_Sea1:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Soup_Sea1_Dungeon:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Soup_Sea2_Dungeon:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                    case Soup_Sea3_Dungeon:
+                        switch (currentportal)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                currentportal++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(1);
+                                tiles[j][i].set_teleport_startY(46);
+                                tiles[j][i].set_teleport_startX(6);
+                                break;
+                        }
+                        break;
+                }
             }
         }
     }
-}
-
-void Terrain::setupportals(int id)
-{
-    int portals = 0;
-    switch (id)
-        {
-            case 0:
-                portals = 2;
-
-                for (int i = 0; i < portals; i++)
-                {
-
-                }
-                break;
-        }
 }
 
 void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
