@@ -184,54 +184,54 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             {
             //pstartX = 37;
             //pstartY = 31;
-            mapxMax = 126;
+            mapxMax = 125;//126;
             mapyMax = 42;
             totalportals = 2;
 
             char DessertDesert[200][200] = 
             {
-                "                                                                                                ",
-                " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+",
-                " |~~~~~~~~~~MMMMttttttttttttttt, ., . ,.,., ., ., ., ., ., .ttttttttttMMM~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~MMMttttttttttttttttttt., ., ., ,. , tttttttttttttttttttttttttMM~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~MMMtttttttttttttttttttt,,, .. , . , ttttttttttttttttttttHHHHHHHHHMMMMM~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~MMMHHHHHHHHHttttHHHHHt, ., ., . ,. ttttttttttttttttttttttttHHHHHMM~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~MMMMMMMHHtttttttttHHHtt. ., .,., ., .tttttttttttttttttttttttttHHHHMMM~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~MMHHHHHHHHHHHttttHHHttt., . ,. , .,. ,tttttt., ., ., ., . ,..ttHMMMM~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~MMMMMHHHHHHHHHHHHHMMMMMt.,. ., . ,.. ,tMttttttt., . , . ,. , tHHHMMM~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~MMMHHHHHHHHHHHHHHHHHHMMMM.. ., ., , tttMMMHHHttt. ., ., ., ., tHHMM~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~MMMMMMMHHHHHHHHHHHHHHMMMMt, ., ., .,. tttMMMMHHHtt. ., , ,., ,ttMM~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~MMMMMMHHHHHHHHHHHHMMMMtt, ., ., ., .,,tMMMMMHHHHtt., .# #. ,.ttMMM~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~MMMMMMMMMMMMMMMMMttt., ., .,,. . ,, ttMMMMHHHttttt### ###ttMMMMM~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~MMMMMMMMMMMMMMtt., ., .,., ,. ,,.ttMMMMMMHtttttt#     #tMMMM~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~MMMMMMMMMMtt,., ., ,. , ., , .,tMMMMMMMMMMtttt#  X  #tttMMM~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~MMMMMMMMMMttt,. ., ,. ,. ., ,. , ttMMMMMMMMMMMttt#     #ttttMM~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~MMMMMMMMttt, ., ., ,. ., ., ,. ,.,ttMMMMMMMMMMMtt#######tttM~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~MMMMMttt., . ., ,. .,, . ,. ,.., ,ttttMMMMMMMMMtttttttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~MMMtt, ., . . ,. , ., .,., ,. , ,.. tttMMMMMMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~MMMt.,. ., ., ,. .,., . .,. ,., ., . ,ttttMMMMMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~MMMM., ., .,., ., ., ,. . , .,,. ,. , ,. tttMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~MMMMtttt. ,., ., , . , . ,. ,. ,. ,. , .,  ,,ttMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~MMMMtt., . . , ., ., ,. , . ,. ,. ,.,. ,ttttMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~~~~~~Mt. ,., ,. ., ., ., ., ., . ,. , .,tttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~Mtttt., . , ., . . , ., . ,.,. ,. ,ttttttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~~~MMHHtt., ., ,. ,. ,. ., ,. ,. ,. . .,tttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~~MMMHtttttt., ., ., ., ., ., ., ., ,.ttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~~~~~MMHtttttttttttt., ., , . ., ., ., tttttttMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~~~~MHHttttttttttttt,. , ., ., ., ,,.ttttttHHHHM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~~~~~MMMHHHHHHttttttt.,. .# #, .,ttttttttttHHHHHHMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~~~~~MMMHHHHtttttttttt### ###tttttttttttttHHHHHM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~~~~~~~~~MMHHttttttttttt#     #tttttttttHHHHHHHHM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~~~~~~MMMHHttttttttttt#  X  #ttttttttttttHHHHM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~~~~~~~~~MMHHHHHHHtttttt#     #tttttttttttHHHHMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~~~~~~~~~MMMMMHHHHHttt#######ttttttttttttHHMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~~~~~~~~~~~~~~~~MMMHHHtttttttttttttttttttttHHHHMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMHHttttttttttttttHHHHHHHMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMMMMMMMMttHHHHHHHMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMHHHMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+",
-                " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|",
-                " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+"
+                "                                                                                                                                                           ",
+                " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                           ",
+                " |~~~~~~~~~~MMMMttttttttttttttt, ., . ,.,., ., ., ., ., ., .ttttttttttMMM~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~MMMttttttttttttttttttt., ., ., ,. , tttttttttttttttttttttttttMM~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~MMMtttttttttttttttttttt,,, .. , . , ttttttttttttttttttttHHHHHHHHHMMMMM~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~MMMHHHHHHHHHttttHHHHHt, ., ., . ,. ttttttttttttttttttttttttHHHHHMM~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~MMMMMMMHHtttttttttHHHtt. ., .,., ., .tttttttttttttttttttttttttHHHHMMM~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~MMHHHHHHHHHHHttttHHHttt., . ,. , .,. ,tttttt., ., ., ., . ,..ttHMMMM~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~MMMMMHHHHHHHHHHHHHMMMMMt.,. ., . ,.. ,tMttttttt., . , . ,. , tHHHMMM~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~MMMHHHHHHHHHHHHHHHHHHMMMM.. ., ., , tttMMMHHHttt. ., ., ., ., tHHMM~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~MMMMMMMHHHHHHHHHHHHHHMMMMt, ., ., .,. tttMMMMHHHtt. ., , ,., ,ttMM~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~MMMMMMHHHHHHHHHHHHMMMMtt, ., ., ., .,,tMMMMMHHHHtt., .# #. ,.ttMMM~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~MMMMMMMMMMMMMMMMMttt., ., .,,. . ,, ttMMMMHHHttttt### ###ttMMMMM~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~MMMMMMMMMMMMMMtt., ., .,., ,. ,,.ttMMMMMMHtttttt#     #tMMMM~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~MMMMMMMMMMtt,., ., ,. , ., , .,tMMMMMMMMMMtttt#  X  #tttMMM~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~MMMMMMMMMMttt,. ., ,. ,. ., ,. , ttMMMMMMMMMMMttt#     #ttttMM~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~MMMMMMMMttt, ., ., ,. ., ., ,. ,.,ttMMMMMMMMMMMtt#######tttM~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~MMMMMttt., . ., ,. .,, . ,. ,.., ,ttttMMMMMMMMMtttttttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~MMMtt, ., . . ,. , ., .,., ,. , ,.. tttMMMMMMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~MMMt.,. ., ., ,. .,., . .,. ,., ., . ,ttttMMMMMMMMMMMMMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~MMMM., ., .,., ., ., ,. . , .,,. ,. , ,. tttMMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~MMMMtttt. ,., ., , . , . ,. ,. ,. ,. , .,  ,,ttMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~MMMMtt., . . , ., ., ,. , . ,. ,. ,.,. ,ttttMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~~~~~~Mt. ,., ,. ., ., ., ., ., . ,. , .,tttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~Mtttt., . , ., . . , ., . ,.,. ,. ,ttttttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~~~MMHHtt., ., ,. ,. ,. ., ,. ,. ,. . .,tttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~~MMMHtttttt., ., ., ., ., ., ., ., ,.ttttttM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~~~~~MMHtttttttttttt., ., , . ., ., ., tttttttMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~~~~MHHttttttttttttt,. , ., ., ., ,,.ttttttHHHHM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~~~~~MMMHHHHHHttttttt.,. .# #, .,ttttttttttHHHHHHMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~~~~~MMMHHHHtttttttttt### ###tttttttttttttHHHHHM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~~~~~~~~~MMHHttttttttttt#     #tttttttttHHHHHHHHM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~~~~~~MMMHHttttttttttt#  X  #ttttttttttttHHHHM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~~~~~~~~~MMHHHHHHHtttttt#     #tttttttttttHHHHMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~~~~~~~~~MMMMMHHHHHttt#######ttttttttttttHHMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~~~~~~~~~~~~~~~~MMMHHHtttttttttttttttttttttHHHHMMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMHHttttttttttttttHHHHHHHMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMMMMMMMMMMttHHHHHHHMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMMMHHHMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~MMMM~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~+                                                           ",
+                " |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~|                                                           ",
+                " +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+                                                           "
             };
             
             memcpy(map, DessertDesert, 200*200*sizeof(char));
@@ -306,8 +306,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             break;
         case Dessert_Desert_Dungeon:
             {
-                mapxMax = 200;
-                mapyMax = 200;
+                mapxMax = 180;
+                mapyMax = 180;
 
                 char DessertDesertDungeon[200][200] = 
                 {
@@ -377,30 +377,264 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             }
             break;
         case Cabbage_Campo1_Village:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 121;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 52;
+/*
+                char CabbageCampo1Village[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CabbageCampo1Village, 200*200*sizeof(char));
+*/
+            }
             break;
         case Cabbage_Campo1_Dungeon:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 77;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 26;
+/*
+                char CabbageCampo1Dungeon[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CabbageCampo1Dungeon, 200*200*sizeof(char));
+*/
+            }
             break;
         case Cabbage_Campo2:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 101;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 42;
+/*
+                char CabbageCampo2[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CabbageCampo2, 200*200*sizeof(char));
+*/
+            }
             break;
         case Cabbage_Campo2_Dungeon:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 77;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 26;
+/*
+                char CabbageCampo2Dungeon[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CabbageCampo2Dungeon, 200*200*sizeof(char));
+*/
+            }
             break;
         case Carrot_Canyon1:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 101;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 42;
+/*
+                char CarrotCanyon1[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CarrotCanyon1, 200*200*sizeof(char));
+*/
+            }
             break;
         case Carrot_Canyon1_Village:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 131;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 52;
+/*
+                char CarrotCanyon1Village[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CarrotCanyon1Village, 200*200*sizeof(char));
+*/
+            }
             break;
         case Carrot_Canyon1_Dungeon:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 77;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 26;
+/*
+                char CarrotCanyon1Dungeon[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CarrotCanyon1Dungeon, 200*200*sizeof(char));
+*/
+            }
             break;
         case Carrot_Canyon2:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 101;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 42;
+/*
+                char CarrotCanyon2[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CarrotCanyon2, 200*200*sizeof(char));
+*/
+            }
             break;
         case Carrot_Canyon2_Dungeon:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 77;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 26;
+/*
+                char CarrotCanyon2Dungeon[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CarrotCanyon2Dungeon, 200*200*sizeof(char));
+*/
+            }
             break;
         case Soup_Sea1:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 101;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 42;
+/*
+                char SoupSea1[200][200] = 
+                {
+
+                };
+
+                memxpy(map, SoupSea1, 200*200*sizeof(char));
+*/
+            }
             break;
         case Soup_Sea1_Dungeon:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 77;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 26;
+/*
+                char SoupSeaDungeon1[200][200] = 
+                {
+
+                };
+
+                memxpy(map, SoupSeaDungeon1, 200*200*sizeof(char));
+*/
+            }
             break;
         case Soup_Sea2_Dungeon:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 77;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 26;
+/*
+                char SoupSea2Dungeon[200][200] = 
+                {
+
+                };
+
+                memxpy(map, SoupSea2Dungeon, 200*200*sizeof(char));
+*/
+            }
             break;
         case Soup_Sea3_Dungeon:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 77;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 26;
+/*
+                char SoupSea3Dungeon[200][200] = 
+                {
+
+                };
+
+                memxpy(map, SoupSea3Dungeon, 200*200*sizeof(char));
+*/
+            }
             break;
         default:
             break;
@@ -438,8 +672,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                                 break;
                             case 1:
                                 tiles[j][i].set_teleport_id(Dessert_Desert_Village);
-                                tiles[j][i].set_teleport_startY(46);
-                                tiles[j][i].set_teleport_startX(6);
+                                tiles[j][i].set_teleport_startY(33);
+                                tiles[j][i].set_teleport_startX(123);
                                 break;
                         }
                         break;

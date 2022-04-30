@@ -137,9 +137,9 @@ int main(int argc, char ** argv)
     }//End newgamewin 	
     
     Terrain * map = new Terrain(playwin);
-    int newgamestartx = 37;
-    int newgamestarty = 31;
-    map->generatetiles(Dessert_Desert, newgamestarty, newgamestartx); 
+    int newgamestartx = 6;
+    int newgamestarty = 46;
+    map->generatetiles(Dessert_Desert_Village, newgamestarty, newgamestartx); 
 
     Hero player = Hero("man",1,0,5,5,3,5,newgamestartx,newgamestarty,Dessert_Desert);
     Monster enemy = Parse_Monster_Tables(player,normal_enemy);
