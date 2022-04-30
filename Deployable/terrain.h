@@ -1111,7 +1111,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +*************************************************************************+                                                    ",
                     " |*****###############################################################*****|                                                    ",
                     " +*****#     ##      ##       ##                              ##     #*****+                                                    ",
-                    " |*****#  2  ##      ##   4   ##     ######                   ##  3  #*****|                                                    ",
+                    " |*****#  2  ##      ##   s   ##     ######                   ##  3  #*****|                                                    ",
                     " +*****#             ##       ##     ######                          #*****+                                                    ",
                     " |*****########      ## ########     ###        ######################*****|                                                    ",
                     " +*****########      ## ########     ###        ######################*****+                                                    ",
@@ -1125,7 +1125,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     " +*****##############   ###          ###         ########     ########*****+                                                    ",
                     " |*****##############   ###          ###         ########     ########*****|                                                    ",
                     " +*****#          ###   ###       ######            ##               #*****+                                                    ",
-                    " |*****#  1  ##   ###   ###       ######            ##        ##  2  #*****|                                                    ",
+                    " |*****#  s  ##   ###   ###       ######            ##        ##  2  #*****|                                                    ",
                     " +*****#     ##         ###                         ##        ##     #*****+                                                    ",
                     " |*****###############################################################*****|                                                    ",
                     " +*************************************************************************+                                                    ",
@@ -1210,6 +1210,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
     
     
     int currentportal = 0;
+    int currentstairs = 0;
     
     // creating the map, setting tiles, and xLoc, and yLoc of each tile
 
@@ -1442,6 +1443,90 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
                     case Carrot_Canyon2_Dungeon:
                     case Soup_Sea2_Dungeon:
                     case Soup_Sea3_Dungeon:
+                        break;
+                }
+            }
+            
+            else if (temptile == 's')
+            {
+                switch (thisid)
+                {
+                    case Cabbage_Campo1_Dungeon:
+                        switch (currentstairs)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(Cabbage_Campo2_Dungeon);
+                                tiles[j][i].set_teleport_startY(21);
+                                tiles[j][i].set_teleport_startX(8);
+                                break;
+                        }
+                        break;
+                    case Cabbage_Campo2_Dungeon:
+                        switch (currentstairs)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(Cabbage_Campo1_Dungeon);
+                                tiles[j][i].set_teleport_startY(21);
+                                tiles[j][i].set_teleport_startX(8);
+                                break;
+                        }
+                        break;
+                    case Carrot_Canyon1_Dungeon:
+                        switch (currentstairs)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(Carrot_Canyon2_Dungeon);
+                                tiles[j][i].set_teleport_startY(13);
+                                tiles[j][i].set_teleport_startX(9);
+                                break;
+                        }
+                        break;
+                    case Carrot_Canyon2_Dungeon:
+                        switch (currentstairs)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(Carrot_Canyon1_Dungeon);
+                                tiles[j][i].set_teleport_startY(21);
+                                tiles[j][i].set_teleport_startX(8);
+                                break;
+                        }
+                        break;
+                    case Soup_Sea1_Dungeon:
+                        switch (currentstairs)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(Soup_Sea2_Dungeon);
+                                tiles[j][i].set_teleport_startY(20);
+                                tiles[j][i].set_teleport_startX(11);
+                                break;
+                        }
+                        break;
+                    case Soup_Sea2_Dungeon:
+                        switch (currentstairs)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(Soup_Sea3_Dungeon);
+                                tiles[j][i].set_teleport_startY(6);
+                                tiles[j][i].set_teleport_startX(10);
+                                currentstairs++;
+                                break;
+                            case 1:
+                                tiles[j][i].set_teleport_id(Soup_Sea1_Dungeon);
+                                tiles[j][i].set_teleport_startY(6);
+                                tiles[j][i].set_teleport_startX(11);
+                                break;
+                        }
+                        break;
+                    case Soup_Sea3_Dungeon:
+                        switch (currentstairs)
+                        {
+                            case 0:
+                                tiles[j][i].set_teleport_id(Soup_Sea2_Dungeon);
+                                tiles[j][i].set_teleport_startY(6);
+                                tiles[j][i].set_teleport_startX(25);
+                                break;
+                        }
+                    default:
                         break;
                 }
             }

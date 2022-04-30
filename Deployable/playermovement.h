@@ -48,7 +48,7 @@ void Player::mvup()
 {
     if (!curmap->tiles[xLoc][yLoc-1].get_traverse())
         return;
-    if (curmap->tiles[xLoc][yLoc-1].get_tilechar() == 'X')
+    if (curmap->tiles[xLoc][yLoc-1].get_tilechar() == 'X' || curmap->tiles[xLoc][yLoc-1].get_tilechar() == 's')
     {
         Terrain * nextmap = new Terrain(curwin);
         nextmap->generatetiles(curmap->tiles[xLoc][yLoc-1].get_teleport_id(), curmap->tiles[xLoc][yLoc-1].get_teleport_startY(), curmap->tiles[xLoc][yLoc-1].get_teleport_startX());
@@ -72,7 +72,7 @@ void Player::mvdown()
 {
     if (!curmap->tiles[xLoc][yLoc+1].get_traverse())
         return;
-    if (curmap->tiles[xLoc][yLoc+1].get_tilechar() == 'X')
+    if (curmap->tiles[xLoc][yLoc+1].get_tilechar() == 'X' || curmap->tiles[xLoc][yLoc+1].get_tilechar() == 's')
     {
         Terrain * nextmap = new Terrain(curwin);
         nextmap->generatetiles(curmap->tiles[xLoc][yLoc+1].get_teleport_id(), curmap->tiles[xLoc][yLoc+1].get_teleport_startY(), curmap->tiles[xLoc][yLoc+1].get_teleport_startX());
@@ -95,7 +95,7 @@ void Player::mvleft()
 {
     if (!curmap->tiles[xLoc-1][yLoc].get_traverse())
         return;
-    if (curmap->tiles[xLoc-1][yLoc].get_tilechar() == 'X')
+    if (curmap->tiles[xLoc-1][yLoc].get_tilechar() == 'X' || curmap->tiles[xLoc-1][yLoc].get_tilechar() == 's')
     {
         Terrain * nextmap = new Terrain(curwin);
         nextmap->generatetiles(curmap->tiles[xLoc-1][yLoc].get_teleport_id(), curmap->tiles[xLoc-1][yLoc].get_teleport_startY(), curmap->tiles[xLoc-1][yLoc].get_teleport_startX());
@@ -118,7 +118,7 @@ void Player::mvright()
 {
     if (!curmap->tiles[xLoc+1][yLoc].get_traverse())
         return;
-    if (curmap->tiles[xLoc+1][yLoc].get_tilechar() == 'X')
+    if (curmap->tiles[xLoc+1][yLoc].get_tilechar() == 'X' || curmap->tiles[xLoc+1][yLoc].get_tilechar() == 's')
     {
         Terrain * nextmap = new Terrain(curwin);
         nextmap->generatetiles(curmap->tiles[xLoc+1][yLoc].get_teleport_id(), curmap->tiles[xLoc+1][yLoc].get_teleport_startY(), curmap->tiles[xLoc+1][yLoc].get_teleport_startX());
