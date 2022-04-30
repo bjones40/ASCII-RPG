@@ -184,7 +184,20 @@ int main(int argc, char ** argv)
                 if (player_select == 1)
                 {
                     stepcounter++;
-                    encounterchance = rand() % 500 + 1;
+
+                    int currentmap = player.Get_Current_Map();
+
+                    switch (currentmap)
+                    {
+                        case Dessert_Desert_Village:
+                        case Cabbage_Campo1_Village:
+                        case Carrot_Canyon1_Village:
+                            encounterchance = 0;
+                            break;
+                        default:
+                            encounterchance = rand() % 500 + 1;
+                            break;
+                    }
                     
 
                     if (stepcounter >= 5 && encounterchance > 0 && encounterchance <= 10)

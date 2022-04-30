@@ -307,7 +307,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
         case Dessert_Desert_Dungeon:
             {
                 mapxMax = 200;
-                mapyMax = CamyMax+1;
+                mapyMax = 200;
 
                 char DessertDesertDungeon[200][200] = 
                 {
@@ -355,6 +355,52 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
 
                 memcpy(map, DessertDesertDungeon, 200*200*sizeof(char));
             }
+            break;
+        case Cabbage_Campo1:
+            {
+                if (mapxMax < CamxMax)
+                    mapxMax = 200;
+                else
+                    mapxMax = 101;
+                if (mapyMax < CamyMax)
+                    mapyMax = 200;
+                else
+                    mapyMax = 42;
+/*
+                char CabbageCampo1[200][200] = 
+                {
+
+                };
+
+                memxpy(map, CabbageCampo1, 200*200*sizeof(char));
+*/
+            }
+            break;
+        case Cabbage_Campo1_Village:
+            break;
+        case Cabbage_Campo1_Dungeon:
+            break;
+        case Cabbage_Campo2:
+            break;
+        case Cabbage_Campo2_Dungeon:
+            break;
+        case Carrot_Canyon1:
+            break;
+        case Carrot_Canyon1_Village:
+            break;
+        case Carrot_Canyon1_Dungeon:
+            break;
+        case Carrot_Canyon2:
+            break;
+        case Carrot_Canyon2_Dungeon:
+            break;
+        case Soup_Sea1:
+            break;
+        case Soup_Sea1_Dungeon:
+            break;
+        case Soup_Sea2_Dungeon:
+            break;
+        case Soup_Sea3_Dungeon:
             break;
         default:
             break;
