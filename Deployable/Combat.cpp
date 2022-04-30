@@ -9,8 +9,22 @@
 using namespace std;
 Item taco = Item("Taco",1,1,0);
 
-Monster Monster_Table[10][5] = {{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}};
-Monster Rare_Monster_Table[10];
+Monster Monster_Table[17][5] = {{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Dessert Village
+{Monster("Cabbage Slime",5,1,1,50,100,1,taco),Monster("Slime's Brother",5,1,1,50,100,1,taco),Monster("It's a slime",5,1,1,50,100,1,taco),Monster("OHNO SLIME",5,1,1,50,100,1,taco),Monster("OHNO bug",5,1,1,50,100,1,taco)}, //Dessert Desert
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Dessert Dessert Dungeon
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Cabbage Campo1
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Cabbage Campo Dungeon
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Cabbage Campo2
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Cabbage Campo2 Dungeon
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Carrot Canyon1
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Carrot Canyon1 Dungeon
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Carrot Canyon2
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Carrot Canyon2 Dungeon
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Soup Sea1
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Soup Sea1 Dungeon
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Soup Sea2 Dungeon
+{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}}; //Soup Sea3 Dungeon
+Monster Rare_Monster_Table[17] = {Monster("Tree Sentinel",100,40,20,1000,1000,0,taco)};
 Monster Boss_Monster_Table[10];
 
 //Usable on overworld to call up a monster to pass to the combat screen, use the enums to specify "table" in call!
@@ -21,7 +35,7 @@ Monster Parse_Monster_Tables(Hero player,int table){
     int location = player.Get_Current_Map();
     switch(table){
         case normal_enemy:
-            choice = rand()% 2;
+            choice = rand()% 5;
             output = Monster_Table[location][choice];
             break;
         case rare_enemy:

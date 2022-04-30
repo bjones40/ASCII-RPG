@@ -9,14 +9,14 @@ enum Itypes{consumable,weapon,armor,key};
 //Differentiates ability types
 enum Stypes{phys_attack,magic_attack,healing,buff};
 //Location enumeration
-enum Maps{Dessert_Desert, Dessert_Desert_Dungeon, 
+enum Maps{Dessert_Desert_Village, Dessert_Desert, Dessert_Desert_Dungeon, 
         Cabbage_Campo1,  Cabbage_Campo1_Dungeon,
         Cabbage_Campo2, Cabbage_Campo2_Dungeon,
         Carrot_Canyon1,  Carrot_Canyon1_Dungeon,
         Carrot_Canyon2, Carrot_Canyon2_Dungeon,
         Soup_Sea1, Soup_Sea1_Dungeon,
         Soup_Sea2_Dungeon, Soup_Sea3_Dungeon,
-        Dessert_Desert_Village,Cabbage_Campo1_Village,
+        Cabbage_Campo1_Village,
         Carrot_Canyon1_Village};
 //Differentiates enemy type for calling upon appropriate table from Parse_Monster_Tables
 enum Enemy_Type{normal_enemy,rare_enemy,boss};
