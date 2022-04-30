@@ -46,6 +46,18 @@ void Player::mvup()
 {
     if (!curmap->tiles[xLoc][yLoc-1].get_traverse())
         return;
+    if (curmap->tiles[xLoc][yLoc-1].get_tilechar() == 'X')
+    {
+        Terrain * nextmap = new Terrain(curwin);
+        nextmap->generatetiles(curmap->tiles[xLoc][yLoc-1].get_teleport_id(), 46, 6);//curmap->tiles[xLoc][yLoc-1].get_teleport_startY(), curmap->tiles[xLoc][yLoc-1].get_teleport_startX());
+        xLoc = nextmap->get_xplayer_start();
+        yLoc = nextmap->get_yplayer_start();
+        yMax = nextmap->get_map_yMax();
+        xMax = nextmap->get_map_xMax();
+        curmap = nextmap;
+        return;
+
+    }
     map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
     //mvwaddch(curwin, yLoc, xLoc, map_char);
     yLoc--;
@@ -57,6 +69,18 @@ void Player::mvdown()
 {
     if (!curmap->tiles[xLoc][yLoc+1].get_traverse())
         return;
+    if (curmap->tiles[xLoc][yLoc+1].get_tilechar() == 'X')
+    {
+        Terrain * nextmap = new Terrain(curwin);
+        nextmap->generatetiles(curmap->tiles[xLoc][yLoc+1].get_teleport_id(), 46, 6);//curmap->tiles[xLoc][yLoc-1].get_teleport_startY(), curmap->tiles[xLoc][yLoc-1].get_teleport_startX());
+        xLoc = nextmap->get_xplayer_start();
+        yLoc = nextmap->get_yplayer_start();
+        yMax = nextmap->get_map_yMax();
+        xMax = nextmap->get_map_xMax();
+        curmap = nextmap;
+        return;
+
+    }
     map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
     //mvwaddch(curwin, yLoc, xLoc, map_char);
     yLoc++;
@@ -68,6 +92,18 @@ void Player::mvleft()
 {
     if (!curmap->tiles[xLoc-1][yLoc].get_traverse())
         return;
+    if (curmap->tiles[xLoc-1][yLoc].get_tilechar() == 'X')
+    {
+        Terrain * nextmap = new Terrain(curwin);
+        nextmap->generatetiles(curmap->tiles[xLoc-1][yLoc].get_teleport_id(), 46, 6);//curmap->tiles[xLoc][yLoc-1].get_teleport_startY(), curmap->tiles[xLoc][yLoc-1].get_teleport_startX());
+        xLoc = nextmap->get_xplayer_start();
+        yLoc = nextmap->get_yplayer_start();
+        yMax = nextmap->get_map_yMax();
+        xMax = nextmap->get_map_xMax();
+        curmap = nextmap;
+        return;
+
+    }
     map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
     //mvwaddch(curwin, yLoc, xLoc, map_char);
     xLoc--;
@@ -79,6 +115,18 @@ void Player::mvright()
 {
     if (!curmap->tiles[xLoc+1][yLoc].get_traverse())
         return;
+    if (curmap->tiles[xLoc+1][yLoc].get_tilechar() == 'X')
+    {
+        Terrain * nextmap = new Terrain(curwin);
+        nextmap->generatetiles(curmap->tiles[xLoc+1][yLoc].get_teleport_id(), 46, 6);//curmap->tiles[xLoc][yLoc-1].get_teleport_startY(), curmap->tiles[xLoc][yLoc-1].get_teleport_startX());
+        xLoc = nextmap->get_xplayer_start();
+        yLoc = nextmap->get_yplayer_start();
+        yMax = nextmap->get_map_yMax();
+        xMax = nextmap->get_map_xMax();
+        curmap = nextmap;
+        return;
+
+    }
     map_char = curmap->tiles[xLoc][yLoc].get_tilechar();
     //mvwaddch(curwin, yLoc, xLoc, map_char);
     xLoc++;

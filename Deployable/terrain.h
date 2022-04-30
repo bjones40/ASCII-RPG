@@ -114,27 +114,31 @@ class Terrain
         void displayCamera(int pyLoc, int pxLoc, char pchar);
         int get_map_xMax();
         int get_map_yMax();
+        int get_map_id();
         
         int get_xplayer_start();
         int get_yplayer_start();
         void set_xplayer_start(int newstartX);
         void set_yplayer_start(int newstartY);
 
-        int portals[10];
+        void setupportals(int id);
     
     private:
         WINDOW * curwin;
         int mapxMax, mapyMax, CamxMax, CamyMax;
         int pstartX, pstartY;
+        int thisid;
 };
 
 Terrain::Terrain(WINDOW * win)
 {
     curwin = win;
     getmaxyx(curwin, CamyMax, CamxMax);
-    //keypad(curwin, true);
-    //Tile tilemap[xMax][yMax];
-    //generatetiles();
+}
+
+int Terrain::get_map_id()
+{
+    return thisid;
 }
 
 int Terrain::get_xplayer_start()
@@ -168,9 +172,11 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
 {
     set_xplayer_start(pstartXparam);
     set_yplayer_start(pstartYparam);
+    thisid = mapid;
     
     char map[200][200];
 
+    int totalportals = 0;
 
     // getting data for chosen map
 
@@ -182,7 +188,8 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             //pstartY = 31;
             mapxMax = 126;
             mapyMax = 42;
-            
+            totalportals = 2;
+
             char DessertDesert[200][200] = 
             {
                 "                                                                                                ",
@@ -238,6 +245,7 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             //pstartY = 46;
             mapxMax = 128;
             mapyMax = 52;
+            totalportals = 1;
 
             char DessertDesertVillage[200][200] =
             {
@@ -307,10 +315,10 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
     }
     
     
-    
+    int currentportal = 0;
     
     // creating the map, setting tiles, and xLoc, and yLoc of each tile
-    
+
     for (int i = 0; i < mapyMax; i++)
     {
         for (int j = 0; j < mapxMax; j++)
@@ -324,9 +332,29 @@ void Terrain::generatetiles(int mapid, int pstartYparam, int pstartXparam)
             if (temptile == '#' || temptile == '+' || temptile == '-' || temptile == '|')
                 tiles[j][i].set_traverse(0);
             else if (temptile == 'X')
-                tiles[j][i].get_teleport_id();
+            {
+                tiles[j][i].set_teleport_id(1);
+                tiles[j][i].set_teleport_startY(46);
+                tiles[j][i].set_teleport_startX(6);
+            }
         }
     }
+}
+
+void Terrain::setupportals(int id)
+{
+    int portals = 0;
+    switch (id)
+        {
+            case 0:
+                portals = 2;
+
+                for (int i = 0; i < portals; i++)
+                {
+
+                }
+                break;
+        }
 }
 
 void Terrain::displayCamera(int pyLoc, int pxLoc, char pchar)
