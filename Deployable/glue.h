@@ -191,5 +191,6 @@ void Hello_World();
 bool Combat_Loop(Hero &,Monster enemy, WINDOW * logwin, WINDOW * controlswin, WINDOW * battlewin);
 void Rewards(Hero &,Monster &, WINDOW * logwin);
 Monster Parse_Monster_Tables(Hero,int);
+void Level_Up(Hero &,WINDOW * logwin);
 
 #endif

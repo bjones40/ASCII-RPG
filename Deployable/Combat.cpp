@@ -28,6 +28,10 @@ Monster Monster_Table[17][5] = {{Monster("slime",5,1,1,50,100,1,taco),Monster("s
 Monster Rare_Monster_Table[17] = {Monster("Tree Sentinel",100,40,20,1000,1000,0,taco)};
 Monster Boss_Monster_Table[17];
 
+//Level Skills table, index = level acquired
+Skill Levelup_Skills[10] = {Skill(),Skill(),Skill("Throw Rock","picks up a small rock and hurls it, it's apparently very effective.",2,10,magic_attack),
+Skill(),Skill("Dia","using their inner calories, heals their wounds a bit",3,15,healing),Skill(),Skill(),Skill(),Skill(),Skill()};
+
 //Usable on overworld to call up a monster to pass to the combat screen, use the enums to specify "table" in call!
 Monster Parse_Monster_Tables(Hero player,int table){
     srand(time(NULL));
@@ -123,11 +127,39 @@ void DisplayToControls(string output[10], WINDOW * controlswin)
     wrefresh(controlswin);
     
 }
-
+//checks for and applies levelup
+void Level_Up(Hero & player,WINDOW * logwin){
+    if(player.Get_Exp() >= floor(10*(pow(player.Get_Level(),1.5)))){
+        string skillget = "";
+        int HPUP = rand() % 2 + 3;
+        int MPUP = rand() % 2 + 3;
+        int AttackUP = rand() % 3+1;
+        player.Set_Level(player.Get_Level() + 1);
+        player.Set_HP(player.Get_HP()+HPUP);
+        player.Set_MP(player.Get_MP()+MPUP);
+        player.Set_Attack(player.Get_Attack()+AttackUP);
+        player.Set_Defense(player.Get_Defense()+1);
+        if(Levelup_Skills[player.Get_Level()].Get_Name() != "Null"){
+            player.Gain_Skill(Levelup_Skills[player.Get_Level()]);
+            skillget = "\n"+player.Get_Name()+" learns: "+Levelup_Skills[player.Get_Level()].Get_Name()+"\n";
+        }
+        string level_up_text = "LEVEL UP!\n"+player.Get_Name()+" has obtained level "+to_string(player.Get_Level())+" and gains:\nHP: "
+        +to_string(HPUP)+"\nMP: "+to_string(MPUP)+"\nAttack: "+to_string(AttackUP)+"\nDef: 1"+skillget+"\nHP/MP restored.\n";
+        player.Set_tmp_hp(player.Get_HP());
+        player.Set_tmp_mp(player.Get_MP());
+        DisplayToLog(level_up_text,logwin);
+        //cout << level_up_text;
+    }
+}
 void Rewards(Hero & player,Monster & enemy, WINDOW * logwin){
     player.Set_Gold_Count(player.Get_Gold_Count() + enemy.Get_Gold());
     player.Set_Exp(player.Get_Exp() + enemy.Get_Exp_Drop());
     string reward_string = player.Get_Name() +" receives: "+to_string(enemy.Get_Exp_Drop())+"exp, "+to_string(enemy.Get_Gold())+"gold";
+    if((rand() % 100) == 0){
+        player.Gain_Item(enemy.Get_Drop());
+        reward_string += player.Get_Name()+"found a: "+enemy.Get_Drop().Get_Name();
+    }
+    Level_Up(player,logwin);
     DisplayToLog(reward_string, logwin);
     //cout << player.Get_Name() <<" receives:\n"<<to_string(enemy.Get_Exp_Drop())<<"exp\n"<<to_string(enemy.Get_Gold())<<"gold\n";
     //impliment random chance for item drops
