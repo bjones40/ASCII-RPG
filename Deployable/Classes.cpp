@@ -3,7 +3,7 @@ using namespace std;
 #include <iostream>
 //Skill class, modifies player's damage during calculations when used, different types have different costs
 Skill::Skill(){
-    this->name = "Dummy";
+    this->name = "Null";
     this->modifier = 0.0;
 }
 Skill::Skill(string name,string flavor_text,int cost,double modifier,int type){

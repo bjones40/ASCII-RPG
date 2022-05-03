@@ -10,7 +10,7 @@ using namespace std;
 Item taco = Item("Taco",1,1,0);
 
 //There are 17 maps in total
-Monster Monster_Table[17][5] = {{Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Dessert Village
+Monster Monster_Table[17][5] = {{Monster("slime",5,1,1,5,100,1,taco),Monster("slime2",5,1,1,5,100,1,taco),Monster("slime3",5,1,1,5,100,1,taco),Monster("slime4",5,1,1,5,100,1,taco),Monster("expslime",5,1,1,100,100,1,taco)}, //Dessert Village
 {Monster("Cabbage Slime",5,1,1,50,100,1,taco),Monster("Slime's Brother",5,1,1,50,100,1,taco),Monster("It's a slime",5,1,1,50,100,1,taco),Monster("OHNO SLIME",5,1,1,50,100,1,taco),Monster("OHNO bug",5,1,1,50,100,1,taco)}, //Dessert Desert
 {Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Dessert Dessert Dungeon
 {Monster("slime",5,1,1,50,100,1,taco),Monster("slime2",5,1,1,50,100,1,taco),Monster("slime3",5,1,1,50,100,1,taco),Monster("slime4",5,1,1,50,100,1,taco),Monster("slime5",5,1,1,50,100,1,taco)}, //Cabbage Campo1
@@ -129,8 +129,11 @@ void DisplayToControls(string output[10], WINDOW * controlswin)
 }
 //checks for and applies levelup
 void Level_Up(Hero & player,WINDOW * logwin){
+    //Level Up formula: floor(base_exp*(level^difficulty_ramp)).  Base_exp = first level up value, difficulty_ramp = how fast exp to next climbs
     if(player.Get_Exp() >= floor(10*(pow(player.Get_Level(),1.5)))){
         string skillget = "";
+
+        //Calculate how many stats player gains and assign
         int HPUP = rand() % 2 + 3;
         int MPUP = rand() % 2 + 3;
         int AttackUP = rand() % 3+1;
@@ -139,30 +142,50 @@ void Level_Up(Hero & player,WINDOW * logwin){
         player.Set_MP(player.Get_MP()+MPUP);
         player.Set_Attack(player.Get_Attack()+AttackUP);
         player.Set_Defense(player.Get_Defense()+1);
+
+        //Check for a skill @ new player level (skills are in Levelup_Skills[])
         if(Levelup_Skills[player.Get_Level()].Get_Name() != "Null"){
             player.Gain_Skill(Levelup_Skills[player.Get_Level()]);
-            skillget = "\n"+player.Get_Name()+" learns: "+Levelup_Skills[player.Get_Level()].Get_Name()+"\n";
+            skillget = player.Get_Name()+" learns: "+Levelup_Skills[player.Get_Level()].Get_Name();
         }
-        string level_up_text = "LEVEL UP!\n"+player.Get_Name()+" has obtained level "+to_string(player.Get_Level())+" and gains:\nHP: "
-        +to_string(HPUP)+"\nMP: "+to_string(MPUP)+"\nAttack: "+to_string(AttackUP)+"\nDef: 1"+skillget+"\nHP/MP restored.\n";
+
+        //output to adventure log
+        string level_up_text = "LEVEL UP!  "+player.Get_Name()+" has obtained level "+to_string(player.Get_Level());
+        DisplayToLog(level_up_text,logwin);
+        level_up_text = "and gains: HP: "+to_string(HPUP)+" MP: "+to_string(MPUP)+" Attack: "+to_string(AttackUP)+" Def: 1";
+        DisplayToLog(level_up_text,logwin);
+        level_up_text = skillget;
+        DisplayToLog(level_up_text,logwin);
+        level_up_text = "HP/MP restored.";
+        DisplayToLog(level_up_text,logwin);
+
+        //Level up means free realestate heals
         player.Set_tmp_hp(player.Get_HP());
         player.Set_tmp_mp(player.Get_MP());
-        DisplayToLog(level_up_text,logwin);
+
         //cout << level_up_text;
     }
 }
 void Rewards(Hero & player,Monster & enemy, WINDOW * logwin){
+    //Get exp and gold
     player.Set_Gold_Count(player.Get_Gold_Count() + enemy.Get_Gold());
     player.Set_Exp(player.Get_Exp() + enemy.Get_Exp_Drop());
+
+    //String to ouput to log
     string reward_string = player.Get_Name() +" receives: "+to_string(enemy.Get_Exp_Drop())+"exp, "+to_string(enemy.Get_Gold())+"gold";
+    DisplayToLog(reward_string, logwin);
+
+    //1% chance to get the item a monster was carrying
     if((rand() % 100) == 0){
         player.Gain_Item(enemy.Get_Drop());
-        reward_string += player.Get_Name()+"found a: "+enemy.Get_Drop().Get_Name();
+        reward_string = player.Get_Name()+"found a: "+enemy.Get_Drop().Get_Name();
+        DisplayToLog(reward_string, logwin);
     }
+
+    //Check for levelup
     Level_Up(player,logwin);
-    DisplayToLog(reward_string, logwin);
+    
     //cout << player.Get_Name() <<" receives:\n"<<to_string(enemy.Get_Exp_Drop())<<"exp\n"<<to_string(enemy.Get_Gold())<<"gold\n";
-    //impliment random chance for item drops
 }
 bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlswin, WINDOW * battlewin){
     //Flags and utility data declarations
@@ -179,14 +202,16 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
     player_move = enemy.Get_Name() + " draws near!";
     
     // display player_move to log window
-    DisplayToLog(player_move, logwin);
+    //DisplayToLog(player_move, logwin);
     DisplayToBattle(player_move, battlewin);
  
     //cout << enemy.Get_Name() << " draws near!"  << endl;
     while(player.Get_tmp_hp() > 0 && enemy.Get_tmp_hp() > 0){
         chosen = false;
-        player_move = "\nman HP: "+to_string(player.Get_tmp_hp())+" MP: "+to_string(player.Get_tmp_mp());
+        DisplayToBattle("",battlewin);
+        player_move = player.Get_Name()+" HP: "+to_string(player.Get_tmp_hp())+" MP: "+to_string(player.Get_tmp_mp());
         DisplayToBattle(player_move, battlewin);
+        DisplayToBattle("Command?",battlewin);
         //Player move <all cut out //player_move strings are for n-curses implimentation later
         while(!chosen){
             //Reject all but ints, can change later depending on n-curses menu design
@@ -376,7 +401,9 @@ bool Combat_Loop(Hero &player,Monster enemy, WINDOW * logwin, WINDOW * controlsw
         //cout << player.Get_Name() << " has felled the " << enemy.Get_Name() << "!" << endl;
         
         //DisplayToLog(player_move, logwin);
+        DisplayToBattle("",battlewin);
         DisplayToBattle(player_move, battlewin);
+        DisplayToBattle("",battlewin);
         
         Rewards(player,enemy, logwin);
         return 1;

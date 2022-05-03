@@ -195,8 +195,8 @@ int main(int argc, char ** argv)
                         //    encounterchance = 0;
                         //    break;
                         default:
-                            //encounterchance = rand() % 500 + 1;
-                            encounterchance = 0;
+                            encounterchance = rand() % 500 + 1;
+                            // encounterchance = 0;
                             break;
                     }
                     

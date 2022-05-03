@@ -22,7 +22,9 @@ int main() {
     player.Gain_Item(sword);
     player.Gain_Item(burrito);
     player.Gain_Item(clothing);
- 
+    Combat_Loop(player,enemy);
+    Combat_Loop(player,enemy);
+    Combat_Loop(player,enemy);
 
 
 

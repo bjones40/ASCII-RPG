@@ -10,6 +10,9 @@ Monster Monster_Table[10][5] = {{Monster("slime",1,1,1,50,100,1,taco),Monster("s
 Monster Rare_Monster_Table[10];
 Monster Boss_Monster_Table[10];
 
+Skill Levelup_Skills[10] = {Skill(),Skill(),Skill("Throw Rock","picks up a small rock and hurls it, it's apparently very effective.",2,10,magic_attack),
+Skill(),Skill("Dia","using their inner calories, heals their wounds a bit",3,15,healing),Skill(),Skill(),Skill(),Skill(),Skill()};
+
 //Usable on overworld to call up a monster to pass to the combat screen, use the enums to specify "table" in call!
 Monster Parse_Monster_Tables(Hero player,int table){
     srand(time(NULL));
@@ -30,11 +33,38 @@ Monster Parse_Monster_Tables(Hero player,int table){
     }
     return output;
 }
+void Level_Up(Hero & player){
+    if(player.Get_Exp() >= floor(10*(pow(player.Get_Level(),1.5)))){
+        string skillget = "";
+        int HPUP = rand() % 2 + 3;
+        int MPUP = rand() % 2 + 3;
+        int AttackUP = rand() % 3+1;
+        player.Set_Level(player.Get_Level() + 1);
+        player.Set_HP(player.Get_HP()+HPUP);
+        player.Set_MP(player.Get_MP()+MPUP);
+        player.Set_Attack(player.Get_Attack()+AttackUP);
+        player.Set_Defense(player.Get_Defense()+1);
+        if(Levelup_Skills[player.Get_Level()].Get_Name() != "Null"){
+            player.Gain_Skill(Levelup_Skills[player.Get_Level()]);
+            skillget = "\n"+player.Get_Name()+" learns: "+Levelup_Skills[player.Get_Level()].Get_Name()+"\n";
+        }
+        string level_up_text = "LEVEL UP!\n"+player.Get_Name()+" has obtained level "+to_string(player.Get_Level())+" and gains:\nHP: "
+        +to_string(HPUP)+"\nMP: "+to_string(MPUP)+"\nAttack: "+to_string(AttackUP)+"\nDef: 1"+skillget+"\nHP/MP restored.\n";
+        player.Set_tmp_hp(player.Get_HP());
+        player.Set_tmp_mp(player.Get_MP());
+        //cout << level_up_text;
+    }
+}
 void Rewards(Hero & player,Monster & enemy){
     player.Set_Gold_Count(player.Get_Gold_Count() + enemy.Get_Gold());
     player.Set_Exp(player.Get_Exp() + enemy.Get_Exp_Drop());
     string reward_string = player.Get_Name() +" receives:\n"+to_string(enemy.Get_Exp_Drop())+"exp\n"+to_string(enemy.Get_Gold())+"gold\n";
     //cout << player.Get_Name() <<" receives:\n"<<to_string(enemy.Get_Exp_Drop())<<"exp\n"<<to_string(enemy.Get_Gold())<<"gold\n";
+    if((rand() % 100) == 0){
+        player.Gain_Item(enemy.Get_Drop());
+        reward_string += player.Get_Name()+"found a: "+enemy.Get_Drop().Get_Name();
+    }
+    Level_Up(player);
     //impliment random chance for item drops
 }
 void Combat_Loop(Hero &player,Monster enemy){
@@ -50,18 +80,18 @@ void Combat_Loop(Hero &player,Monster enemy){
     string move_menu = "";
 
     //Test skills
-    Item taco = Item("taco",10,1,0);
-    Item tacosword = Item("tacosword",10,534543,1);
-    Skill fireball = Skill("Fireball","You shoot a fireball",1,1.2,1);
-    Skill heal = Skill("Heal","wounds begin to close",2,5,2);
-    Skill bullshit = Skill("Diarahan"," is a cheating jerk.",0,enemy.Get_HP(),2);
-    Skill ded = Skill("Murderodyne"," blows you to pieces.",0,1000000,1);
-    player.Gain_Item(taco);
-    player.Gain_Item(tacosword);
-    player.Gain_Skill(fireball);
-    player.Gain_Skill(heal);
-    enemy.Gain_Skill(bullshit);
-    enemy.Gain_Skill(ded);
+    // Item taco = Item("taco",10,1,0);
+    // Item tacosword = Item("tacosword",10,534543,1);
+    // Skill fireball = Skill("Fireball","You shoot a fireball",1,1.2,1);
+    // Skill heal = Skill("Heal","wounds begin to close",2,5,2);
+    // Skill bullshit = Skill("Diarahan"," is a cheating jerk.",0,enemy.Get_HP(),2);
+    // Skill ded = Skill("Murderodyne"," blows you to pieces.",0,1000000,1);
+    // player.Gain_Item(taco);
+    // player.Gain_Item(tacosword);
+    // player.Gain_Skill(fireball);
+    // player.Gain_Skill(heal);
+    // enemy.Gain_Skill(bullshit);
+    // enemy.Gain_Skill(ded);
 
     player_move = enemy.Get_Name() + " draws near!\n";
     //cout << enemy.Get_Name() << " draws near!"  << endl;
@@ -87,7 +117,7 @@ void Combat_Loop(Hero &player,Monster enemy){
                     cin.clear();
                     cin.ignore(numeric_limits<streamsize>::max(), '\n');
                     
-                    cout << "Improper input, numbers only.\n";
+                    //cout << "Improper input, numbers only.\n";
                 }
                 else{
                     proper_input = true;
@@ -144,7 +174,7 @@ void Combat_Loop(Hero &player,Monster enemy){
                 }
             }
             else{
-                cout << "Incorrect selection" << endl;
+                //cout << "Incorrect selection" << endl;
             }
         }
         if(enemy.Get_tmp_hp() > 0){
