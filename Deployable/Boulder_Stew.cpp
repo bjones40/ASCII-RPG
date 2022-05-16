@@ -77,7 +77,7 @@ int main(int argc, char ** argv)
 	{
         //New game menu attributes
         refresh();
-        mvwaddstr(newgamewin, 1, 1, "BOULDER STEW");
+        mvwaddstr(newgamewin, 1, 1, "BOULDER STEW - PRESS ENTER TO PLAY");
         keypad(newgamewin, TRUE);
         s = wgetch(newgamewin);
         wborder(newgamewin, left, right, top, bottom, tlc, trc, blc, brc);
